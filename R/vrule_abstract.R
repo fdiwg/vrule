@@ -9,8 +9,9 @@ vrule_abstract <- R6Class("vrule_abstract",
     initialize = function(...){
     },
     
-    validate = function(value){
-      stop("Method not implemented")
+    validate = function(value, ...){
+      empty_rep = vrule_report$new()
+      return(empty_rep)
     },
     
     getCategory = function(){

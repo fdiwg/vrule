@@ -15,14 +15,17 @@ vrule_year <- R6Class("vrule_year",
     },
     validate = function(value){
       rep = super$validate(value)
-      if(nrow(rep)==0){
+      if(nrow(rep$report)==0){
         if(!is.na(value)) if(regexpr("^\\d{4}$", value) < 0){
-          rep <- data.frame(
-            category = self$getCategory(),
-            rule = self$getName(),
-            type = "ERROR",
-            message = sprintf("Source value %s is not valid year", value)
-          )  
+          rep <- vrule_report$new(
+            valid = FALSE,
+            report = data.frame(
+              category = self$getCategory(),
+              rule = self$getName(),
+              type = "ERROR",
+              message = sprintf("Source value %s is not valid year", value)
+            )
+          )
         }
       }
       return(rep)

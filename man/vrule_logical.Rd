@@ -16,6 +16,7 @@ vrule_logical
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-vrule_logical-new}{\code{vrule_logical$new()}}
+\item \href{#method-vrule_logical-validate}{\code{vrule_logical$validate()}}
 \item \href{#method-vrule_logical-clone}{\code{vrule_logical$clone()}}
 }
 }
@@ -24,7 +25,6 @@ vrule_logical
 <ul>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getCategory'><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getName'><code>vrule::vrule_abstract$getName()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_datatype" data-id="validate"><a href='../../vrule/html/vrule_datatype.html#method-vrule_datatype-validate'><code>vrule::vrule_datatype$validate()</code></a></span></li>
 </ul>
 </details>
 }}
@@ -34,6 +34,15 @@ vrule_logical
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_logical$new(na_allowed = FALSE, ...)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-vrule_logical-validate"></a>}}
+\if{latex}{\out{\hypertarget{method-vrule_logical-validate}{}}}
+\subsection{Method \code{validate()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{vrule_logical$validate(value)}\if{html}{\out{</div>}}
 }
 
 }

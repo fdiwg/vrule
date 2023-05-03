@@ -103,12 +103,12 @@ format_spec = R6Class("format_spec",
           if(!is.null(column_spec)){
             rep = column_spec$validate(data[i,j])
             rep = cbind(
-              i = if(nrow(rep)>0) i else integer(0),
-              j = if(nrow(rep)>0) j else integer(0),
-              row = if(nrow(rep)>0) paste("Row",i) else character(0), 
-              col = if(nrow(rep)>0) column_spec$name else character(0), 
-              col_alias = if(nrow(rep)>0) column_alias else character(0), 
-              rep
+              i = if(nrow(rep$report)>0) i else integer(0),
+              j = if(nrow(rep$report)>0) j else integer(0),
+              row = if(nrow(rep$report)>0) paste("Row",i) else character(0), 
+              col = if(nrow(rep$report)>0) column_spec$name else character(0), 
+              col_alias = if(nrow(rep$report)>0) column_alias else character(0), 
+              rep$report
             )
           }
           return(rep)

@@ -18,34 +18,35 @@ vrule_datatype <- R6Class("vrule_datatype",
     },
     
     validate = function(value){
-      report <-data.frame(
-        category = character(0),
-        rule = character(0),
-        type = character(0),
-        message = character(0)
-      )
-      if(self$na_allowed & is.na(value)) return(report)
+      rep <- super$validate(value)
+      if(self$na_allowed & is.na(value)) return(rep)
       
       val = suppressWarnings(as(value, self$type))
       if(is.na(val)){
-        report <- rbind(report,data.frame(
-          category = self$getCategory(),
-          rule = self$getName(),
-          type = "ERROR",
-          message = sprintf("Value %s is not %s", value, self$type)
-        ))
-      }else{
-        if(!is.na(val)) if(self$type != "logical") if(value != val){
-          report <- rbind(report,data.frame(
+        rep <- vrule_report$new(
+          valid = FALSE,
+          report = data.frame(
             category = self$getCategory(),
             rule = self$getName(),
             type = "ERROR",
-            message = sprintf("Source value %s is not equal to value (%s) after coercing to type '%s'", value, val, self$type)
-          ))
+            message = sprintf("Value %s is not %s", value, self$type)
+          )
+        )
+      }else{
+        if(!is.na(val)) if(self$type != "logical") if(value != val){
+          rep <- vrule_report$new(
+            valid = FALSE,
+            report = data.frame(
+              category = self$getCategory(),
+              rule = self$getName(),
+              type = "ERROR",
+              message = sprintf("Source value %s is not equal to value (%s) after coercing to type '%s'", value, val, self$type)
+            )
+          )
         }
       }
       
-      return(report)
+      return(rep)
     }
   )                                  
 )
@@ -106,8 +107,7 @@ vrule_double <- R6Class("vrule_double",
     },
     
     validate = function(value){
-      nvr = vrule_numeric$new()
-      rep = rbind(nvr$validate(value), super$validate(value))
+      rep = super$validate(value)
       return(rep)
     }
   )
@@ -126,6 +126,11 @@ vrule_logical <- R6Class("vrule_logical",
    public = list(
      initialize = function(na_allowed = FALSE, ...){
        super$initialize(type = "logical", na_allowed = na_allowed)
+     },
+     
+     validate = function(value){
+       rep = super$validate(value)
+       return(rep)
      }
    )
 )

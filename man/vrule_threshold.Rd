@@ -10,7 +10,7 @@ vrule_threshold
 vrule_threshold
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{vrule_threshold}
+\code{vrule::vrule_abstract} -> \code{\link[vrule:vrule_operator_binary]{vrule::vrule_operator_binary}} -> \code{\link[vrule:vrule_operator_relational]{vrule::vrule_operator_relational}} -> \code{vrule_threshold}
 }
 \section{Methods}{
 \subsection{Public methods}{

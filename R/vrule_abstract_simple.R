@@ -8,10 +8,10 @@ vrule_abstract_simple <- R6Class("vrule_abstract_simple",
   ),
   public = list(
     initialize = function(...){
+      super$initialize(...)
     },
     validate = function(value){
-      stop("Method not implemented")
+      super$validate(value)
     }
-    
   )                                  
 )

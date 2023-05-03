@@ -27,14 +27,9 @@ column_spec <- R6Class("column_spec",
      
      #validate
      validate = function(value){
-       rep = data.frame(
-         category = character(0),
-         rule = character(0),
-         type = character(0),
-         message = character(0)
-       )
+       rep = vrule_report$new()
        if(length(self$rules)>0){
-         the_rule = do.call(vrule_and$new, self$rules)
+         the_rule = do.call(vrule_operator_and$new, self$rules)
          rep = the_rule$validate(value)
        }
        return(rep)
