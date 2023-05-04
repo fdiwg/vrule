@@ -7,7 +7,7 @@ Authors@R: c(
   person("Alexandre", "Bennici", role = c("aut"), email = "alexandre.bennici@fao.org", comment = c(ORCID = "0000-0003-2160-3487")))
 Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 Depends: R (>= 4.0), methods
-Imports: R6, jsonlite, readr, rhandsontable
+Imports: R6, jsonlite, readr, stringi, rhandsontable
 Suggests: testthat
 Description: Provides tools to validate data based on business validation rules
 License: MIT + file LICENSE

@@ -101,7 +101,7 @@ format_spec = R6Class("format_spec",
           }
           rep = NULL
           if(!is.null(column_spec)){
-            rep = column_spec$validate(data[i,j])
+            rep = column_spec$validate(value = data[i,j], row = data[i,])
             rep = cbind(
               i = if(nrow(rep$report)>0) i else integer(0),
               j = if(nrow(rep$report)>0) j else integer(0),

@@ -42,7 +42,7 @@ vrule_operator_or
 \if{latex}{\out{\hypertarget{method-vrule_operator_or-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_operator_or$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_operator_or$validate(value, row)}\if{html}{\out{</div>}}
 }
 
 }

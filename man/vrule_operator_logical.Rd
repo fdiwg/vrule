@@ -42,7 +42,7 @@ vrule_operator_logical
 \if{latex}{\out{\hypertarget{method-vrule_operator_logical-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_operator_logical$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_operator_logical$validate(value, row)}\if{html}{\out{</div>}}
 }
 
 }

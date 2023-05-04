@@ -27,9 +27,9 @@ vrule_operator_logical <- R6Class("vrule_operator_logical",
       self$rules = rules
     },
     
-    validate = function(value){
+    validate = function(value, row){
       reports = lapply(self$rules, function(rule){
-        rule_report = rule$validate(value)
+        rule_report = if(inherits(rule, "vrule_abstract_complex")) rule$validate(value, row) else rule$validate(value)
         return(rule_report)
       })
       rep = vrule_report$new(
@@ -56,8 +56,8 @@ vrule_operator_and <- R6Class("vrule_operator_and",
       super$initialize(operator = "&", ...)
     },
     
-    validate = function(value){
-      super$validate(value)
+    validate = function(value, row){
+      super$validate(value, row)
     }
   )
 )
@@ -77,8 +77,8 @@ vrule_operator_or <- R6Class("vrule_operator_or",
       super$initialize(operator = "|", ...)
     },
     
-    validate = function(value){
-      super$validate(value)
+    validate = function(value, row){
+      super$validate(value, row)
     }
   )
 )

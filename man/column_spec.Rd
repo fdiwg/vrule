@@ -32,7 +32,7 @@ column_spec
 \if{latex}{\out{\hypertarget{method-column_spec-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{column_spec$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$validate(value, row)}\if{html}{\out{</div>}}
 }
 
 }

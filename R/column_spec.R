@@ -26,11 +26,11 @@ column_spec <- R6Class("column_spec",
      },
      
      #validate
-     validate = function(value){
+     validate = function(value, row){
        rep = vrule_report$new()
        if(length(self$rules)>0){
          the_rule = do.call(vrule_operator_and$new, self$rules)
-         rep = the_rule$validate(value)
+         rep = the_rule$validate(value, row)
        }
        return(rep)
      },
