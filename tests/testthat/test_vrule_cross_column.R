@@ -29,8 +29,8 @@ test_that("vrule_cross_column - numerics",{
 test_that("vrule_cross_column - dates",{
   
   df = data.frame(
-    time_start = as.Date(c("2010-01-01","2010-01-01")), 
-    time_end = as.Date(c("2009-01-01", "2010-01-31"))
+    time_start = as.Date(c("2010-01-01","2010-01-01", "2010-01-01", NA, NA)), 
+    time_end = as.Date(c("2009-01-01", "2010-01-31", NA, "2010-01-01", NA))
   )
   rule = vrule_cross_column$new(operator = "<", expr = "row$time_end")
   
@@ -45,5 +45,23 @@ test_that("vrule_cross_column - dates",{
   expect_is(rep2, "vrule_report")
   expect_true(rep2$valid)
   expect_is(rep2$report, "data.frame")
+  
+  df_row3 = df[3,]
+  rep3 = rule$validate(value = df_row3$time_start, row = df_row3)
+  expect_is(rep3, "vrule_report")
+  expect_false(rep3$valid)
+  expect_is(rep3$report, "data.frame")
+  
+  df_row4 = df[4,]
+  rep4 = rule$validate(value = df_row4$time_start, row = df_row4)
+  expect_is(rep4, "vrule_report")
+  expect_false(rep4$valid)
+  expect_is(rep4$report, "data.frame")
+  
+  df_row5 = df[5,]
+  rep5 = rule$validate(value = df_row5$time_start, row = df_row5)
+  expect_is(rep5, "vrule_report")
+  expect_false(rep5$valid)
+  expect_is(rep5$report, "data.frame")
   
 })
