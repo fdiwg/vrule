@@ -32,3 +32,20 @@ vrule_year <- R6Class("vrule_year",
     }
   )
 )
+
+#' vrule_date
+#' @name vrule_date
+#' @docType class
+#' @importFrom R6 R6Class
+
+
+#' vrule_datetime
+#' @name vrule_datetime
+#' @docType class
+#' @importFrom R6 R6Class
+
+
+#' vrule_timestamp
+#' @name vrule_timestamp
+#' @docType class
+#' @importFrom R6 R6Class
