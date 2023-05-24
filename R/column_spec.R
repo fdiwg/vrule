@@ -17,11 +17,7 @@ column_spec <- R6Class("column_spec",
        if(!is.null(json$required)) self$required = json$required
        #rules
        if(!is.null(json$rules)){
-         self$rules = lapply(json$rules, function(json_rule){
-           clazz = vrule_abstract$getClassByName(json_rule$name)
-           rule = do.call(clazz$new, json_rule$args)
-           return(rule)
-         })
+         self$rules = decodeVrules(json$rules)
        }
      },
      

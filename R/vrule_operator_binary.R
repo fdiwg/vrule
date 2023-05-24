@@ -22,7 +22,28 @@ vrule_operator_binary <- R6Class("vrule_operator_binary",
       expr_value = self$expr
       op_expr = sprintf("value %s expr_value", self$operator)
       cond = eval(parse(text = op_expr))
-      if(!cond){
+      if(is.na(cond)){
+        rep_msg = ""
+        if(is.na(value) & is.na(expr_value)){
+          rep_msg = sprintf("Source and target values are NA. Cannot compare each other with operator %s", self$operator) 
+        }else{
+          if(is.na(value)){
+            rep_msg = sprintf("Source value is NA. Cannot compare to target value %s with operator %s", self$expr, self$operator)
+          }
+          if(is.na(expr_value)){
+            rep_msg = sprintf("Target value is NA. Cannot compare source value %s to it with operator %s", value, self$operator)
+          }
+        }
+        rep <- vrule_report$new(
+          valid = FALSE,
+          report = data.frame(
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = "ERROR",
+            message = rep_msg
+          )
+        )
+      }else if(!cond){
         rep <- vrule_report$new(
           valid = FALSE,
           report = data.frame(
