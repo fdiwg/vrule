@@ -21,13 +21,12 @@ format_spec = R6Class("format_spec",
       })
     },
     
-    #validate
-    validate = function(data){
+    #validateStructure
+    validateStructure = function(data){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
       
-      #1. check structure
       structure_report = do.call("rbind", lapply(self$column_specs, function(column_spec){
         rep <-data.frame(
           i = integer(0),
@@ -74,12 +73,16 @@ format_spec = R6Class("format_spec",
           }))
         )
       }
-      #if some error --> we stop here
-      if(nrow(structure_report)>0) if(any(structure_report$type == "ERROR")){
-        return(structure_report)
+      return(structure_report)
+      
+    },
+    
+    #validateContent
+    validateContent = function(data){
+      if(tibble::is_tibble(data)){
+        data = as.data.frame(data)
       }
       
-      #2. check content
       content_report = do.call("rbind", lapply(1:nrow(data), function(i){
         row_errors = do.call("rbind", lapply(1:ncol(data), function(j){
           column_spec = NULL
@@ -115,6 +118,26 @@ format_spec = R6Class("format_spec",
         }))
         return(row_errors)
       }))
+      
+      return(content_report)
+      
+    },
+    
+    #validate
+    validate = function(data){
+      if(tibble::is_tibble(data)){
+        data = as.data.frame(data)
+      }
+      
+      #1. check structure
+      structure_report = self$validateStructure(data)
+      #if some error --> we stop here
+      if(nrow(structure_report)>0) if(any(structure_report$type == "ERROR")){
+        return(structure_report)
+      }
+      
+      #2. check content
+      content_report = self$validateContent(data)
       
       #3. check duplicates
       #TODO
