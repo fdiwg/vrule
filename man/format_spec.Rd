@@ -13,6 +13,8 @@ format_spec
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-format_spec-new}{\code{format_spec$new()}}
+\item \href{#method-format_spec-validateStructure}{\code{format_spec$validateStructure()}}
+\item \href{#method-format_spec-validateContent}{\code{format_spec$validateContent()}}
 \item \href{#method-format_spec-validate}{\code{format_spec$validate()}}
 \item \href{#method-format_spec-validate_and_display_as_handsontable}{\code{format_spec$validate_and_display_as_handsontable()}}
 \item \href{#method-format_spec-clone}{\code{format_spec$clone()}}
@@ -24,6 +26,24 @@ format_spec
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$new(json)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-validateStructure"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-validateStructure}{}}}
+\subsection{Method \code{validateStructure()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validateStructure(data)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-validateContent"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-validateContent}{}}}
+\subsection{Method \code{validateContent()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validateContent(data)}\if{html}{\out{</div>}}
 }
 
 }
