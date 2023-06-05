@@ -47,3 +47,65 @@ vrule_threshold <- R6Class("vrule_threshold",
    }
  )
 )
+
+#' vrule_min
+#' @name vrule_min
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_min <- R6Class("vrule_min",
+   inherit = vrule_operator_relational,
+   public = list(
+     initialize = function(minValue){
+       super$initialize(operator = ">=", expr = minValue)
+     },
+     
+     validate = function(value){
+       super$validate(value)
+     }
+   )
+)
+
+#' vrule_max
+#' @name vrule_max
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_max <- R6Class("vrule_max",
+   inherit = vrule_operator_relational,
+   public = list(
+     initialize = function(maxValue){
+       super$initialize(operator = "<=", expr = maxValue)
+     },
+     
+     validate = function(value){
+       super$validate(value)
+     }
+   )
+)
+
+#' vrule_range
+#' @name vrule_range
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_range <- R6Class("vrule_range",
+   inherit = vrule_abstract_simple,
+   public = list(
+     minValue = NA,
+     maxValue = NA,
+     initialize = function(minValue, maxValue){
+        self$minValue = minValue
+        self$maxValue = maxValue
+     },
+     
+     validate = function(value){
+       range_rule = vrule_operator_and$new(
+         vrule_min$new(minValue = self$minValue),
+         vrule_max$new(maxValue = self$maxValue)
+       )
+       report = range_rule$validate(value)
+       return(report)
+     }
+   )
+)
