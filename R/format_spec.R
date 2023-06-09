@@ -21,6 +21,14 @@ format_spec = R6Class("format_spec",
       })
     },
     
+    #getColumnSpecByName
+    getColumnSpecByName = function(name){
+      cspec = NULL
+      cspecs = self$column_specs[sapply(self$column_specs, function(spec){spec$name == name})]
+      if(length(cspecs)>0) cspec = cspecs[[1]]
+      return(cspec)
+    },
+    
     #validateStructure
     validateStructure = function(data){
       if(tibble::is_tibble(data)){
