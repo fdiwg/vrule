@@ -29,6 +29,29 @@ format_spec = R6Class("format_spec",
       return(cspec)
     },
     
+    #getColumnSpecByURN
+    getColumnSpecByURN = function(urn){
+      cspec = NULL
+      cspecs = self$column_specs[sapply(self$column_specs, function(spec){spec$urn == urn})]
+      if(length(cspecs)>0) cspec = cspecs[[1]]
+      return(cspec)
+    },
+    
+    #getColumnSpecByAlias
+    getColumnSpecByAlias = function(alias){
+      cspec = NULL
+      cspecs = self$column_specs[sapply(self$column_specs, function(spec){alias %in% spec$aliases})]
+      if(length(cspecs)>0) cspec = cspecs[[1]]
+      return(cspec)
+    },
+    
+    #getColumnSpec
+    getColumnSpec = function(column){
+      cspec = self$getColumnSpecByName(name = column)
+      if(is.null(cspec)) cspec = self$getCOlumnSpecByAlias(alias = column)
+      return(cspec)
+    },
+    
     #validateStructure
     validateStructure = function(data){
       if(tibble::is_tibble(data)){
@@ -103,22 +126,11 @@ format_spec = R6Class("format_spec",
       
       content_report = do.call("rbind", lapply(1:nrow(data), function(i){
         row_errors = do.call("rbind", lapply(1:ncol(data), function(j){
-          column_spec = NULL
+          column_name = colnames(data)[j]
+          column_spec = self$getColumnSpec(column = column_name)
           column_alias = NA
-          column_specs = self$column_specs[sapply(self$column_specs, function(x){
-            x$name == colnames(data)[j] 
-          })]
-          if(length(column_specs)==0){
-            #check aliases
-            column_specs = self$column_specs[sapply(self$column_specs, function(x){
-              colnames(data)[j] %in% x$aliases 
-            })]
-            if(length(column_specs)>0){
-              column_spec = column_specs[[1]]
-              column_alias = column_spec$aliases[which(colnames(data)[j] %in% column_spec$aliases)]
-            }
-          }else{
-            column_spec = column_specs[[1]]
+          if(column_name %in% column_spec$aliases){
+            column_alias = column_name
           }
           rep = NULL
           if(!is.null(column_spec)){
