@@ -134,3 +134,20 @@ vrule_logical <- R6Class("vrule_logical",
      }
    )
 )
+
+#' vrule_character
+#' @name vrule_character
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_character <- R6Class("vrule_character",
+                         inherit = vrule_datatype,
+                         private = list(
+                           name = "Character data type"
+                         ),
+                         public = list(
+                           initialize = function(na_allowed = FALSE, ...){
+                             super$initialize(type = "character", na_allowed = na_allowed)
+                           }
+                         )
+)

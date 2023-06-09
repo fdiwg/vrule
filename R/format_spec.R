@@ -45,11 +45,21 @@ format_spec = R6Class("format_spec",
         if(column_spec$required & length(columns)==0){
           rep = data.frame(
             i = NA, j = NA,
-            row = NA, col = NA, col_alias = NA,
+            row = NA, col = column_spec$name, col_alias = NA,
             category = "Data structure",
             rule = "Column check",
             type = "ERROR",
-            message = sprintf("No column found for format column specification '%s'", column_spec$name)
+            message = sprintf("No column found for mandatory format column specification '%s'", column_spec$name)
+          )
+        }
+        if(!column_spec$required & length(columns)==0){
+          rep = data.frame(
+            i = NA, j = NA,
+            row = NA, col = column_spec$name, col_alias = NA,
+            category = "Data structure",
+            rule = "Column check",
+            type = "WARNING",
+            message = sprintf("No column found for optional format column specification '%s'", column_spec$name)
           )
         }
         return(rep)
@@ -63,7 +73,7 @@ format_spec = R6Class("format_spec",
           do.call("rbind", lapply(ignored_columns, function(ignored_column){
             rep = data.frame(
               i = NA, j = NA,
-              row = NA, col = NA, col_alias = NA,
+              row = NA, col = column_spec$name, col_alias = NA,
               category = "Data structure",
               rule = "Column check",
               type = "WARNING",
