@@ -53,30 +53,26 @@ vrule_codelist <- R6Class("vrule_codelist",
       #ref_values
       if(!is.null(self$ref_values)){
         if(!value %in% self$ref_values){
-          rep <- vrule_report$new(
+          rep <- create_vrule_report(
             valid = FALSE,
-            report = data.frame(
-              category = self$getCategory(),
-              rule = self$getName(),
-              type = "ERROR",
-              message = sprintf("Source value %s is not among allowed values [%s]", 
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = "ERROR",
+            message = sprintf("Source value %s is not among allowed values [%s]", 
                                 value, paste0(self$ref_values, collapse=","))
-            )
           )
         }
       }
       #ref codelist
       if(!is.null(self$ref_data)){
         if(!value %in% self$ref_data[[self$ref_data_column]]){
-          rep <- vrule_report$new(
+          rep <- create_vrule_report(
             valid = FALSE,
-            report = data.frame(
-              category = self$getCategory(),
-              rule = self$getName(),
-              type = "ERROR",
-              message = sprintf("Source value '%s' not allowed in codelist '%s'", 
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = "ERROR",
+            message = sprintf("Source value '%s' not allowed in codelist '%s'", 
                                 value, self$ref_data_url)
-            )
           )
         }
       }
