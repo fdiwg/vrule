@@ -11,10 +11,9 @@ vrule_report <- R6Class("vrule_report",
         category = character(0), 
         rule = character(0), 
         type = character(0), 
-        message = character(0), 
-        class = "data.frame", 
-        row.names = character(0)
-      )
+        message = character(0)
+      ),
+      class = "data.frame"
     ),
     initialize = function(valid = NULL, report = NULL){
       if(!is.null(valid)) self$valid = valid
@@ -37,9 +36,9 @@ create_vrule_report = function(
         rule = rule, 
         type = type, 
         message = message, 
-        class = "data.frame", 
-        row.names =c(NA,-1)
-      )
+      ),
+      class = "data.frame",
+      row.names =c(NA,-1)
     )
   )
 }
