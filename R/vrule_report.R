@@ -35,7 +35,7 @@ create_vrule_report = function(
         category = category, 
         rule = rule, 
         type = type, 
-        message = message, 
+        message = message 
       ),
       class = "data.frame",
       row.names =c(NA,-1)
