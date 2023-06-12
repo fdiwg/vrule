@@ -23,25 +23,21 @@ vrule_datatype <- R6Class("vrule_datatype",
       
       val = suppressWarnings(as(value, self$type))
       if(is.na(val)){
-        rep <- vrule_report$new(
+        rep <- create_vrule_report(
           valid = FALSE,
-          report = data.frame(
-            category = self$getCategory(),
-            rule = self$getName(),
-            type = "ERROR",
-            message = sprintf("Value %s is not %s", value, self$type)
-          )
+          category = self$getCategory(),
+          rule = self$getName(),
+          type = "ERROR",
+          message = sprintf("Value %s is not %s", value, self$type)
         )
       }else{
         if(!is.na(val)) if(self$type != "logical") if(value != val){
-          rep <- vrule_report$new(
+          rep <- create_vrule_report(
             valid = FALSE,
-            report = data.frame(
-              category = self$getCategory(),
-              rule = self$getName(),
-              type = "ERROR",
-              message = sprintf("Source value %s is not equal to value (%s) after coercing to type '%s'", value, val, self$type)
-            )
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = "ERROR",
+            message = sprintf("Source value %s is not equal to value (%s) after coercing to type '%s'", value, val, self$type)
           )
         }
       }
