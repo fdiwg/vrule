@@ -124,29 +124,38 @@ format_spec = R6Class("format_spec",
         data = as.data.frame(data)
       }
       
-      content_report = do.call("rbind", lapply(1:nrow(data), function(i){
-        row_errors = do.call("rbind", lapply(1:ncol(data), function(j){
-          column_name = colnames(data)[j]
-          column_spec = self$getColumnSpec(column = column_name)
-          column_alias = NA
-          if(column_name %in% column_spec$aliases){
-            column_alias = column_name
+      column_specs <- lapply(colnames(data), self$getColumnSpec)
+      
+      pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
+      
+      content_report = do.call("rbind", lapply(1:nrow(pairs), function(p){
+        pair = pairs[p,]
+        i = pair$i
+        j = pair$j
+        column_name = colnames(data)[j]
+        column_spec = column_specs[[j]]
+        column_alias = NA
+        if(column_name %in% column_spec$aliases){
+          column_alias = column_name
+        }
+        rep = NULL
+        if(!is.null(column_spec)){
+          rep = column_spec$validate(value = data[i,j], row = data[i,])
+          rep_ext = if(nrow(rep$report)>0){
+            structure(
+              list(i = i, j = j, row = paste("Row",i), 
+                   col = column_spec$name, col_alias = column_alias), 
+              class = "data.frame", row.names = 1)
+          }else{
+            structure(
+              list(i = integer(0), j = integer(0), row = character(0), 
+                  col = character(0), col_alias = character(0)), 
+              class = "data.frame", row.names = integer(0))
           }
-          rep = NULL
-          if(!is.null(column_spec)){
-            rep = column_spec$validate(value = data[i,j], row = data[i,])
-            rep = cbind(
-              i = if(nrow(rep$report)>0) i else integer(0),
-              j = if(nrow(rep$report)>0) j else integer(0),
-              row = if(nrow(rep$report)>0) paste("Row",i) else character(0), 
-              col = if(nrow(rep$report)>0) column_spec$name else character(0), 
-              col_alias = if(nrow(rep$report)>0) column_alias else character(0), 
-              rep$report
-            )
-          }
-          return(rep)
-        }))
-        return(row_errors)
+          rep = cbind(rep_ext, rep$report)
+        }
+        return(rep)
+
       }))
       
       return(content_report)
