@@ -13,6 +13,10 @@ format_spec
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-format_spec-new}{\code{format_spec$new()}}
+\item \href{#method-format_spec-getColumnSpecByName}{\code{format_spec$getColumnSpecByName()}}
+\item \href{#method-format_spec-getColumnSpecByURN}{\code{format_spec$getColumnSpecByURN()}}
+\item \href{#method-format_spec-getColumnSpecByAlias}{\code{format_spec$getColumnSpecByAlias()}}
+\item \href{#method-format_spec-getColumnSpec}{\code{format_spec$getColumnSpec()}}
 \item \href{#method-format_spec-validateStructure}{\code{format_spec$validateStructure()}}
 \item \href{#method-format_spec-validateContent}{\code{format_spec$validateContent()}}
 \item \href{#method-format_spec-validate}{\code{format_spec$validate()}}
@@ -26,6 +30,42 @@ format_spec
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$new(json)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-getColumnSpecByName"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-getColumnSpecByName}{}}}
+\subsection{Method \code{getColumnSpecByName()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$getColumnSpecByName(name)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-getColumnSpecByURN"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-getColumnSpecByURN}{}}}
+\subsection{Method \code{getColumnSpecByURN()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$getColumnSpecByURN(urn)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-getColumnSpecByAlias"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-getColumnSpecByAlias}{}}}
+\subsection{Method \code{getColumnSpecByAlias()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$getColumnSpecByAlias(alias)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-getColumnSpec"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-getColumnSpec}{}}}
+\subsection{Method \code{getColumnSpec()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$getColumnSpec(column)}\if{html}{\out{</div>}}
 }
 
 }

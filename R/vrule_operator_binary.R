@@ -36,24 +36,20 @@ vrule_operator_binary <- R6Class("vrule_operator_binary",
             rep_msg = sprintf("Target value is NA. Cannot compare source value %s to it with operator %s", value, self$operator)
           }
         }
-        rep <- vrule_report$new(
+        rep <- create_vrule_report(
           valid = FALSE,
-          report = data.frame(
-            category = self$getCategory(),
-            rule = self$getName(),
-            type = rep_type,
-            message = rep_msg
-          )
+          category = self$getCategory(),
+          rule = self$getName(),
+          type = rep_type,
+          message = rep_msg
         )
       }else if(!cond){
-        rep <- vrule_report$new(
+        rep <- create_vrule_report(
           valid = FALSE,
-          report = data.frame(
-            category = self$getCategory(),
-            rule = self$getName(),
-            type = "ERROR",
-            message = sprintf("Source value %s is not %s %s", value, self$operator, self$expr)
-          )
+          category = self$getCategory(),
+          rule = self$getName(),
+          type = "ERROR",
+          message = sprintf("Source value %s is not %s %s", value, self$operator, self$expr)
         )
       }
       return(rep)

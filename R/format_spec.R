@@ -128,7 +128,7 @@ format_spec = R6Class("format_spec",
       
       pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
       
-      content_report = do.call("rbind", lapply(1:nrow(pairs), function(p){
+      content_report = data.table::rbindlist( lapply(1:nrow(pairs), function(p){
         pair = pairs[p,]
         i = pair$i
         j = pair$j
@@ -141,18 +141,21 @@ format_spec = R6Class("format_spec",
         rep = NULL
         if(!is.null(column_spec)){
           rep = column_spec$validate(value = data[i,j], row = data[i,])
-          rep_ext = if(nrow(rep$report)>0){
+          rep = if(nrow(rep$report)>0){
             structure(
               list(i = i, j = j, row = paste("Row",i), 
-                   col = column_spec$name, col_alias = column_alias), 
+                   col = column_spec$name, col_alias = column_alias, 
+                   category = rep$report$category, rule = rep$report$rule, 
+                   type = rep$report$type, message = rep$report$message), 
               class = "data.frame", row.names = 1)
           }else{
             structure(
               list(i = integer(0), j = integer(0), row = character(0), 
-                  col = character(0), col_alias = character(0)), 
+                  col = character(0), col_alias = character(0), 
+                  category = character(0), rule = character(0), 
+                  type = character(0), message = character(0)),
               class = "data.frame", row.names = integer(0))
           }
-          rep = cbind(rep_ext, rep$report)
         }
         return(rep)
 
