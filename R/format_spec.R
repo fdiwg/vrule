@@ -104,7 +104,7 @@ format_spec = R6Class("format_spec",
           do.call("rbind", lapply(ignored_columns, function(ignored_column){
             rep = data.frame(
               i = NA, j = NA,
-              row = NA, col = column_spec$name, col_alias = NA,
+              row = NA, col = ignored_column, col_alias = NA,
               category = "Data structure",
               rule = "Column check",
               type = "WARNING",
@@ -119,51 +119,83 @@ format_spec = R6Class("format_spec",
     },
     
     #validateContent
-    validateContent = function(data){
+    validateContent = function(data, method = "grid"){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
       
       column_specs <- lapply(colnames(data), self$getColumnSpec)
       
-      pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
-      
-      content_report = do.call("rbind", lapply(1:nrow(pairs), function(p){
-        pair = pairs[p,]
-        i = pair$i
-        j = pair$j
-        column_name = colnames(data)[j]
-        column_spec = column_specs[[j]]
-        column_alias = NA
-        if(column_name %in% column_spec$aliases){
-          column_alias = column_name
+      content_report <- switch(method,
+        "grid" = {
+          pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
+          do.call("rbind", lapply(1:nrow(pairs), function(p){
+            pair = pairs[p,]
+            i = pair$i
+            j = pair$j
+            column_name = colnames(data)[j]
+            column_spec = column_specs[[j]]
+            column_alias = NA
+            if(column_name %in% column_spec$aliases){
+              column_alias = column_name
+            }
+            rep = NULL
+            if(!is.null(column_spec)){
+              rep = column_spec$validate(value = data[i,j], row = data[i,])
+              rep_ext = if(nrow(rep$report)>0){
+                structure(
+                  list(i = i, j = j, row = paste("Row",i), 
+                       col = column_spec$name, col_alias = column_alias), 
+                  class = "data.frame", row.names = c(NA,-1L))
+              }else{
+                structure(
+                  list(i = integer(0), j = integer(0), row = character(0), 
+                      col = character(0), col_alias = character(0)), 
+                  class = "data.frame", row.names = integer(0))
+              }
+              rep = cbind(rep_ext, rep$report)
+            }
+            return(rep)
+    
+          }))
+        },
+        "matrix" = {
+          i = 0
+          do.call("rbind", apply(as.matrix(data), 1, function(row){
+            i <<- i+1
+            row_df = structure(as.list(row), class = "data.frame", row.names = c(NA,-1L))
+            do.call("rbind", lapply(1:length(row), function(j){
+              
+              column_name = colnames(data)[j]
+              column_spec = column_specs[[j]]
+              column_alias = NA
+              if(column_name %in% column_spec$aliases){
+                column_alias = column_name
+              }
+              
+              rep = column_specs[[j]]$validate(row[j], row_df)
+              rep_ext = if(nrow(rep$report)>0){
+                structure(
+                  list(i = i, j = j, row = paste("Row",i), 
+                       col = column_spec$name, col_alias = column_alias), 
+                  class = "data.frame", row.names = c(NA,-1L))
+              }else{
+                structure(
+                  list(i = integer(0), j = integer(0), row = character(0), 
+                       col = character(0), col_alias = character(0)), 
+                  class = "data.frame", row.names = integer(0))
+              }
+              rep = cbind(rep_ext, rep$report)
+            }))
+          }))
         }
-        rep = NULL
-        if(!is.null(column_spec)){
-          rep = column_spec$validate(value = data[i,j], row = data[i,])
-          rep_ext = if(nrow(rep$report)>0){
-            structure(
-              list(i = i, j = j, row = paste("Row",i), 
-                   col = column_spec$name, col_alias = column_alias), 
-              class = "data.frame", row.names = 1)
-          }else{
-            structure(
-              list(i = integer(0), j = integer(0), row = character(0), 
-                  col = character(0), col_alias = character(0)), 
-              class = "data.frame", row.names = integer(0))
-          }
-          rep = cbind(rep_ext, rep$report)
-        }
-        return(rep)
-
-      }))
-      
+      )
       return(content_report)
       
     },
     
     #validate
-    validate = function(data){
+    validate = function(data, method = "matrix"){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
@@ -176,7 +208,7 @@ format_spec = R6Class("format_spec",
       }
       
       #2. check content
-      content_report = self$validateContent(data)
+      content_report = self$validateContent(data = data, method = method)
       
       #3. check duplicates
       #TODO
@@ -186,9 +218,9 @@ format_spec = R6Class("format_spec",
     }, 
     
     #handsontable
-    validate_and_display_as_handsontable = function(data, use_css_classes = FALSE){
+    validate_and_display_as_handsontable = function(data, method = "matrix", use_css_classes = FALSE){
       
-      report = self$validate(data)
+      report = self$validate(data = data, method = method)
       report = report[report$category != "Data structure",]
       
       #check if any warning
