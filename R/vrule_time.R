@@ -17,14 +17,12 @@ vrule_year <- R6Class("vrule_year",
       rep = super$validate(value)
       if(nrow(rep$report)==0){
         if(!is.na(value)) if(regexpr("^\\d{4}$", value) < 0){
-          rep <- vrule_report$new(
+          rep <- create_vrule_report(
             valid = FALSE,
-            report = data.frame(
-              category = self$getCategory(),
-              rule = self$getName(),
-              type = "ERROR",
-              message = sprintf("Source value %s is not valid year", value)
-            )
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = "ERROR",
+            message = sprintf("Source value %s is not valid year", value)
           )
         }
       }
@@ -52,14 +50,12 @@ vrule_date <- R6Class("vrule_date",
       rep = super$validate(value)
       if(nrow(rep$report)==0){
         if(!is.na(value)) if(regexpr("^[1-9]\\d{3}-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|(02)-(0[1-9]|[12][0-9]))", value) < 0){
-          rep <- vrule_report$new(
+          rep <- create_vrule_report(
             valid = FALSE,
-            report = data.frame(
-              category = self$getCategory(),
-              rule = self$getName(),
-              type = "ERROR",
-              message = sprintf("Source value %s is not valid date", value)
-            )
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = "ERROR",
+            message = sprintf("Source value %s is not valid date", value)
           )
         }
       }
