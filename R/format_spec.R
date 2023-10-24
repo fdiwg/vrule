@@ -158,13 +158,13 @@ format_spec = R6Class("format_spec",
             }
             return(rep)
           }
-          do.call("rbind", mapply(validatePair, pairs$i, pairs$j, 
+          Reduce(rbind, mapply(validatePair, pairs$i, pairs$j, 
                                   MoreArgs = list(data = data, column_specs = column_specs),
                                   SIMPLIFY = FALSE))
         },
         "grid" = {
           pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
-          do.call("rbind", lapply(1:nrow(pairs), function(p){
+          Reduce(rbind, lapply(1:nrow(pairs), function(p){
             pair = pairs[p,]
             i = pair$i
             j = pair$j
@@ -194,7 +194,7 @@ format_spec = R6Class("format_spec",
           do.call("rbind", apply(as.matrix(data), 1, function(row){
             i <<- i+1
             row_df = structure(as.list(row), class = "data.frame", row.names = c(NA,-1L))
-            do.call("rbind", lapply(1:length(row), function(j){
+            Reduce(rbind, lapply(1:length(row), function(j){
               
               column_name = colnames(data)[j]
               column_spec = column_specs[[j]]

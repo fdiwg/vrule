@@ -19,7 +19,7 @@ vrule_operator_logical <- R6Class("vrule_operator_logical",
         stop(sprintf("Invalid logical operator '%s'. Value should be among values [%s]",
                      operator, paste0(private$operators, collapse=",")))
       }
-      self$operator_fun = switch(operator, "&" = "all", "|" = "any")
+      self$operator_fun = switch(operator, "&" = all, "|" = any)
       rules = list(...)
       if(!all(sapply(rules, is, "vrule_abstract"))){
         stop("At least one rule defined is not an object extending 'vrule_abstract'")
@@ -32,8 +32,8 @@ vrule_operator_logical <- R6Class("vrule_operator_logical",
         rule$validate(value, row)
       })
       rep = vrule_report$new(
-        valid = do.call(self$operator_fun, lapply(reports, function(report){report$valid})),
-        report = do.call("rbind", lapply(reports, function(report){report$report}))
+        valid = self$operator_fun(sapply(reports, function(report){report$valid})),
+        report = Reduce(rbind, lapply(reports, function(report){report$report}))
       )
       return(rep)
     }
