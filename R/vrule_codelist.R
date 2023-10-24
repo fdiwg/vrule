@@ -48,8 +48,8 @@ vrule_codelist <- R6Class("vrule_codelist",
       }
     },
     
-    validate = function(value){
-      rep <- super$validate(value)
+    validate = function(value, ...){
+      rep <- super$validate(value, ...)
       #ref_values
       if(!is.null(self$ref_values)){
         if(!value %in% self$ref_values){

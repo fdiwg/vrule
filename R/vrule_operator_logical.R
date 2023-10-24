@@ -29,8 +29,7 @@ vrule_operator_logical <- R6Class("vrule_operator_logical",
     
     validate = function(value, row){
       reports = lapply(self$rules, function(rule){
-        rule_report = if(inherits(rule, "vrule_abstract_complex")) rule$validate(value, row) else rule$validate(value)
-        return(rule_report)
+        rule$validate(value, row)
       })
       rep = vrule_report$new(
         valid = do.call(self$operator_fun, lapply(reports, function(report){report$valid})),

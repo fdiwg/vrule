@@ -17,8 +17,8 @@ vrule_operator_binary <- R6Class("vrule_operator_binary",
       self$expr = expr
     },
     
-    validate = function(value){
-      rep = super$validate()
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
       expr_value = self$expr
       op_expr = sprintf("value %s expr_value", self$operator)
       cond = eval(parse(text = op_expr))

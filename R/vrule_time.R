@@ -13,8 +13,8 @@ vrule_year <- R6Class("vrule_year",
     initialize = function(na_allowed = FALSE, ...){
       super$initialize(na_allowed = na_allowed)
     },
-    validate = function(value){
-      rep = super$validate(value)
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
       if(nrow(rep$report)==0){
         if(!is.na(value)) if(regexpr("^\\d{4}$", value) < 0){
           rep <- create_vrule_report(
@@ -46,8 +46,8 @@ vrule_date <- R6Class("vrule_date",
     initialize = function(na_allowed = FALSE, ...){
       super$initialize(na_allowed = na_allowed)
     },
-    validate = function(value){
-      rep = super$validate(value)
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
       if(nrow(rep$report)==0){
         if(!is.na(value)) if(regexpr("^[1-9]\\d{3}-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|(02)-(0[1-9]|[12][0-9]))", value) < 0){
           rep <- create_vrule_report(

@@ -17,8 +17,8 @@ vrule_datatype <- R6Class("vrule_datatype",
       self$na_allowed = na_allowed
     },
     
-    validate = function(value){
-      rep <- super$validate(value)
+    validate = function(value, ...){
+      rep <- super$validate(value, ...)
       if(self$na_allowed & is.na(value)) return(rep)
       
       val = suppressWarnings(as(value, self$type))
@@ -80,8 +80,8 @@ vrule_integer <- R6Class("vrule_integer",
        super$initialize(type = "integer", na_allowed = na_allowed)
      },
      
-     validate = function(value){
-       rep = super$validate(value)
+     validate = function(value, ...){
+       rep = super$validate(value, ...)
        return(rep)
      }
    )
@@ -102,8 +102,8 @@ vrule_double <- R6Class("vrule_double",
       super$initialize(type = "double", na_allowed = na_allowed)
     },
     
-    validate = function(value){
-      rep = super$validate(value)
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
       return(rep)
     }
   )
@@ -124,8 +124,8 @@ vrule_logical <- R6Class("vrule_logical",
        super$initialize(type = "logical", na_allowed = na_allowed)
      },
      
-     validate = function(value){
-       rep = super$validate(value)
+     validate = function(value, ...){
+       rep = super$validate(value, ...)
        return(rep)
      }
    )

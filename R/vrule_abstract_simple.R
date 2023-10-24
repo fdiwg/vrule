@@ -10,8 +10,8 @@ vrule_abstract_simple <- R6Class("vrule_abstract_simple",
     initialize = function(...){
       super$initialize(...)
     },
-    validate = function(value){
-      super$validate(value)
+    validate = function(value, ...){
+      super$validate(value, ...)
     }
   )                                  
 )

@@ -19,7 +19,7 @@ vrule_operator_relational <- R6Class("vrule_operator_relational",
       super$initialize(operator = operator, expr = expr)
     },
     
-    validate = function(value){
+    validate = function(value, ...){
       nvr = vrule_numeric$new()
       rep = nvr$validate(value)
       if(nrow(rep$report)==0){
@@ -42,8 +42,8 @@ vrule_threshold <- R6Class("vrule_threshold",
      super$initialize(operator = operator, expr = threshold)
    },
    
-   validate = function(value){
-     super$validate(value)
+   validate = function(value, ...){
+     super$validate(value, ...)
    }
  )
 )
@@ -60,8 +60,8 @@ vrule_date_threshold <- R6Class("vrule_date_threshold",
                                super$initialize(operator = operator, expr = as.Date(threshold))
                              },
                              
-                             validate = function(value){
-                               super$validate(as.Date(value))
+                             validate = function(value, ...){
+                               super$validate(as.Date(value), ...)
                              }
                            )
 )
@@ -78,8 +78,8 @@ vrule_min <- R6Class("vrule_min",
        super$initialize(operator = ">=", expr = minValue)
      },
      
-     validate = function(value){
-       super$validate(value)
+     validate = function(value, ...){
+       super$validate(value, ...)
      }
    )
 )
@@ -96,8 +96,8 @@ vrule_date_min <- R6Class("vrule_date_min",
                          super$initialize(operator = ">=", expr = as.Date(minValue))
                        },
                        
-                       validate = function(value){
-                         super$validate(as.Date(value))
+                       validate = function(value, ...){
+                         super$validate(as.Date(value), ...)
                        }
                      )
 )
@@ -114,8 +114,8 @@ vrule_max <- R6Class("vrule_max",
        super$initialize(operator = "<=", expr = maxValue)
      },
      
-     validate = function(value){
-       super$validate(value)
+     validate = function(value, ...){
+       super$validate(value, ...)
      }
    )
 )
@@ -132,8 +132,8 @@ vrule_date_max <- R6Class("vrule_date_max",
                          super$initialize(operator = "<=", expr = as.Date(maxValue))
                        },
                        
-                       validate = function(value){
-                         super$validate(as.Date(value))
+                       validate = function(value, ...){
+                         super$validate(as.Date(value), ...)
                        }
                      )
 )
@@ -153,12 +153,12 @@ vrule_range <- R6Class("vrule_range",
                            self$maxValue = maxValue
                          },
                          
-                         validate = function(value){
+                         validate = function(value, ...){
                            range_rule = vrule_operator_and$new(
                              vrule_min$new(minValue = self$minValue),
                              vrule_max$new(maxValue = self$maxValue)
                            )
-                           report = range_rule$validate(value)
+                           report = range_rule$validate(value, ...)
                            return(report)
                          }
                        )
@@ -181,12 +181,12 @@ vrule_date_range <- R6Class("vrule_date_range",
         self$maxValue = as.Date(maxValue)
      },
      
-     validate = function(value){
+     validate = function(value, ...){
        range_rule = vrule_operator_and$new(
          vrule_min$new(minValue = self$minValue),
          vrule_max$new(maxValue = self$maxValue)
        )
-       report = range_rule$validate(as.Date(value))
+       report = range_rule$validate(as.Date(value), ...)
        return(report)
      }
    )

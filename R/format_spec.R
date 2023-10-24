@@ -119,14 +119,49 @@ format_spec = R6Class("format_spec",
     },
     
     #validateContent
-    validateContent = function(data, method = "grid"){
+    validateContent = function(data, method = "grid_mapply"){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
       
       column_specs <- lapply(colnames(data), self$getColumnSpec)
       
+      empty_rep = structure(
+        list(
+          i = integer(0), j = integer(0), row = character(0), 
+          col = character(0), col_alias = character(0),
+          category = character(0), rule = character(0),
+          type = character(0), message = character(0)),
+          class = "data.frame", row.names = integer(0)
+      )
+      
       content_report <- switch(method,
+        "grid_mapply" = {
+          pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
+          validatePair = function(i,j, data, column_specs){
+            column_name = colnames(data)[j]
+            column_spec = column_specs[[j]]
+            column_alias = NA
+            if(column_name %in% column_spec$aliases){
+              column_alias = column_name
+            }
+            rep = NULL
+            if(!is.null(column_spec)){
+              rep = column_spec$validate(value = data[i,j], row = data[i,])
+              if(nrow(rep$report)==0) return(empty_rep)
+              return(structure(
+                list(i = i, j = j, row = paste("Row",i), 
+                     col = column_spec$name, col_alias = column_alias,
+                     category = rep$report$category, rule = rep$report$rule,
+                     type = rep$report$type, message = rep$report$message), 
+                class = "data.frame", row.names = c(NA,-1L)))
+            }
+            return(rep)
+          }
+          do.call("rbind", mapply(validatePair, pairs$i, pairs$j, 
+                                  MoreArgs = list(data = data, column_specs = column_specs),
+                                  SIMPLIFY = FALSE))
+        },
         "grid" = {
           pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
           do.call("rbind", lapply(1:nrow(pairs), function(p){
@@ -142,21 +177,13 @@ format_spec = R6Class("format_spec",
             rep = NULL
             if(!is.null(column_spec)){
               rep = column_spec$validate(value = data[i,j], row = data[i,])
-              rep = if(nrow(rep$report)>0){
-                structure(
-                  list(i = i, j = j, row = paste("Row",i), 
-                       col = column_spec$name, col_alias = column_alias,
-                       category = rep$report$category, rule = rep$report$rule,
-                       type = rep$report$type, message = rep$report$message), 
-                  class = "data.frame", row.names = c(NA,-1L))
-              }else{
-                structure(
-                  list(i = integer(0), j = integer(0), row = character(0), 
-                      col = character(0), col_alias = character(0),
-                      category = character(0), rule = character(0),
-                      type = character(0), message = character(0)), 
-                  class = "data.frame", row.names = integer(0))
-              }
+              if(nrow(rep$report)==0) return(empty_rep)
+              return(structure(
+                list(i = i, j = j, row = paste("Row",i), 
+                     col = column_spec$name, col_alias = column_alias,
+                     category = rep$report$category, rule = rep$report$rule,
+                     type = rep$report$type, message = rep$report$message), 
+                class = "data.frame", row.names = c(NA,-1L)))
             }
             return(rep)
     
@@ -177,22 +204,14 @@ format_spec = R6Class("format_spec",
               }
               
               rep = column_specs[[j]]$validate(row[j], row_df)
-              rep = if(nrow(rep$report)>0){
-                structure(
+              if(nrow(rep$report)==0) return(empty_rep)
+              return(structure(
                   list(i = i, j = j, row = paste("Row",i), 
                        col = column_spec$name, col_alias = column_alias,
                        category = rep$report$category, rule = rep$report$rule,
                        type = rep$report$type, message = rep$report$message), 
-                  class = "data.frame", row.names = c(NA,-1L))
-              }else{
-                structure(
-                  list(i = integer(0), j = integer(0), row = character(0), 
-                       col = character(0), col_alias = character(0),
-                       category = character(0), rule = character(0),
-                       type = character(0), message = character(0)),
-                  class = "data.frame", row.names = integer(0))
-              }
-              return(rep)
+                  class = "data.frame", row.names = c(NA,-1L)))
+              
             }))
           }))
         }

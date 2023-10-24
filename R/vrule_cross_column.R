@@ -33,7 +33,7 @@ vrule_cross_column <- R6Class("vrule_cross_column",
     validate = function(value, row){
       expr = private$eval_crossfield_expr(row = row, expr = self$expr)
       logical_rule = vrule_operator_binary$new(operator = self$operator, expr = expr)
-      logical_rule$validate(value = value) 
+      logical_rule$validate(value = value, row = row) 
     }
   )
 )
