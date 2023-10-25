@@ -58,18 +58,20 @@ format_spec = R6Class("format_spec",
         data = as.data.frame(data)
       }
       
+      empty_rep = c(
+        i = integer(0),
+        j = integer(0),
+        row = character(0),
+        col = character(0),
+        col_alias = character(0),
+        category = character(0),
+        rule = character(0),
+        type = character(0),
+        message = character(0)
+      )
+      
       structure_report = do.call("rbind", lapply(self$column_specs, function(column_spec){
-        rep <-data.frame(
-          i = integer(0),
-          j = integer(0),
-          row = character(0),
-          col = character(0),
-          col_alias = character(0),
-          category = character(0),
-          rule = character(0),
-          type = character(0),
-          message = character(0)
-        )
+        rep <- empty_rep
         columns = colnames(data)[sapply(colnames(data), function(x){
           x %in% c(column_spec$name, column_spec$aliases)
         })]
@@ -119,7 +121,8 @@ format_spec = R6Class("format_spec",
     },
     
     #validateContent
-    validateContent = function(data, method = "grid_mapply"){
+    validateContent = function(data, method = "grid_mapply", 
+                               parallel = FALSE, cl = NULL, ...){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
@@ -158,9 +161,24 @@ format_spec = R6Class("format_spec",
             }
             return(rep)
           }
-          Reduce(rbind, mapply(validatePair, pairs$i, pairs$j, 
+          if(parallel){
+            parallel_handler <- NULL
+            if(is.null(cl)){
+              parallel_handler = parallel::mcmapply
+              if(Sys.info()[1] == "Windows"){
+                warning("parallel handler 'mcmapply' is not applicable for Windows OS")
+              }
+            }else{
+              parallel_handler = parallel::clusterMap
+            }
+            Reduce(rbind, parallel_handler(cl = cl, validatePair, pairs$i, pairs$j, 
+                                           MoreArgs = list(data = data, column_specs = column_specs),
+                                           SIMPLIFY = FALSE, ...))
+          }else{
+            Reduce(rbind, mapply(validatePair, pairs$i, pairs$j, 
                                   MoreArgs = list(data = data, column_specs = column_specs),
                                   SIMPLIFY = FALSE))
+          }
         },
         "grid" = {
           pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
@@ -222,7 +240,8 @@ format_spec = R6Class("format_spec",
     },
     
     #validate
-    validate = function(data, method = "matrix"){
+    validate = function(data, method = "grid_mapply",
+                        parallel = FALSE, cl = NULL, ...){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
@@ -235,7 +254,8 @@ format_spec = R6Class("format_spec",
       }
       
       #2. check content
-      content_report = self$validateContent(data = data, method = method)
+      content_report = self$validateContent(data = data, method = method,
+                                            parallel = parallel, cl = cl, ...)
       
       #3. check duplicates
       #TODO
@@ -245,9 +265,11 @@ format_spec = R6Class("format_spec",
     }, 
     
     #handsontable
-    validate_and_display_as_handsontable = function(data, method = "matrix", use_css_classes = FALSE){
+    validate_and_display_as_handsontable = function(data, method = "matrix", 
+                                                    parallel = parallel, cl = cl,
+                                                    use_css_classes = FALSE, ...){
       
-      report = self$validate(data = data, method = method)
+      report = self$validate(data = data, method = method, parallel = parallel, cl = cl, ...)
       report = report[report$category != "Data structure",]
       
       #check if any warning
