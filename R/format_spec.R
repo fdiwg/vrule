@@ -168,12 +168,16 @@ format_spec = R6Class("format_spec",
               if(Sys.info()[1] == "Windows"){
                 warning("parallel handler 'mcmapply' is not applicable for Windows OS")
               }
+              Reduce(rbind, parallel_handler(validatePair, pairs$i, pairs$j, 
+                                             MoreArgs = list(data = data, column_specs = column_specs),
+                                             SIMPLIFY = FALSE, ...))
             }else{
               parallel_handler = parallel::clusterMap
+              Reduce(rbind, parallel_handler(cl = cl, validatePair, pairs$i, pairs$j, 
+                                             MoreArgs = list(data = data, column_specs = column_specs),
+                                             SIMPLIFY = FALSE, ...))
             }
-            Reduce(rbind, parallel_handler(cl = cl, validatePair, pairs$i, pairs$j, 
-                                           MoreArgs = list(data = data, column_specs = column_specs),
-                                           SIMPLIFY = FALSE, ...))
+            
           }else{
             Reduce(rbind, mapply(validatePair, pairs$i, pairs$j, 
                                   MoreArgs = list(data = data, column_specs = column_specs),
