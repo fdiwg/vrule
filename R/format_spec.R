@@ -48,7 +48,7 @@ format_spec = R6Class("format_spec",
     #getColumnSpec
     getColumnSpec = function(column){
       cspec = self$getColumnSpecByName(name = column)
-      if(is.null(cspec)) cspec = self$getCOlumnSpecByAlias(alias = column)
+      if(is.null(cspec)) cspec = self$getColumnSpecByAlias(alias = column)
       return(cspec)
     },
     
@@ -58,7 +58,7 @@ format_spec = R6Class("format_spec",
         data = as.data.frame(data)
       }
       
-      empty_rep = c(
+      empty_rep = data.frame(
         i = integer(0),
         j = integer(0),
         row = character(0),
