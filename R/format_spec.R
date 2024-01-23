@@ -10,15 +10,40 @@ format_spec = R6Class("format_spec",
     urn = NA,
     title = NA,
     column_specs = list(),
-    initialize = function(json){
-      self$name = json$name
-      self$urn = json$urn
-      self$title = json$title
-      #column_specs
-      self$column_specs = lapply(json$column_specs, function(json_column_spec){
-        column_spec = column_spec$new(json = json_column_spec)
-        return(column_spec)
-      })
+    initialize = function(json = NULL){
+      if(!is.null(json)){
+        self$name = json$name
+        self$urn = json$urn
+        self$title = json$title
+        #column_specs
+        self$column_specs = lapply(json$column_specs, function(json_column_spec){
+          column_spec = column_spec$new(json = json_column_spec)
+          return(column_spec)
+        })
+      }
+    },
+    
+    #setName
+    setName = function(name){
+      self$name = name
+    },
+    
+    #setURN
+    setURN = function(urn){
+      self$urn = urn
+    },
+    
+    #setTitle
+    setTitle = function(title){
+      self$title = title
+    },
+    
+    #addColumnSpec
+    addColumnSpec = function(column_spec){
+      if(!inherits(column_spec, "column_spec")){
+        stop("The column specification should be an object of class 'column_spec'")
+      }
+      self$column_specs[[length(self$column_specs)+1]] <- column_spec
     },
     
     #getColumnSpecByName
