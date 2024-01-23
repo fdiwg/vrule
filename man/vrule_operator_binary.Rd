@@ -42,7 +42,7 @@ vrule_operator_binary
 \if{latex}{\out{\hypertarget{method-vrule_operator_binary-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_operator_binary$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_operator_binary$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
 }

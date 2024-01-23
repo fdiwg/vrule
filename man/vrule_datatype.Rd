@@ -42,7 +42,7 @@ vrule_datatype
 \if{latex}{\out{\hypertarget{method-vrule_datatype-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_datatype$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_datatype$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
 }

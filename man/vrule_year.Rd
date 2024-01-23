@@ -42,7 +42,7 @@ vrule_year
 \if{latex}{\out{\hypertarget{method-vrule_year-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_year$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_year$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
 }

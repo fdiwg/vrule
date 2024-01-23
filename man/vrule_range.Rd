@@ -42,7 +42,7 @@ vrule_range
 \if{latex}{\out{\hypertarget{method-vrule_range-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_range$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_range$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
 }

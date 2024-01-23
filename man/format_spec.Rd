@@ -13,6 +13,10 @@ format_spec
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-format_spec-new}{\code{format_spec$new()}}
+\item \href{#method-format_spec-setName}{\code{format_spec$setName()}}
+\item \href{#method-format_spec-setURN}{\code{format_spec$setURN()}}
+\item \href{#method-format_spec-setTitle}{\code{format_spec$setTitle()}}
+\item \href{#method-format_spec-addColumnSpec}{\code{format_spec$addColumnSpec()}}
 \item \href{#method-format_spec-getColumnSpecByName}{\code{format_spec$getColumnSpecByName()}}
 \item \href{#method-format_spec-getColumnSpecByURN}{\code{format_spec$getColumnSpecByURN()}}
 \item \href{#method-format_spec-getColumnSpecByAlias}{\code{format_spec$getColumnSpecByAlias()}}
@@ -29,7 +33,43 @@ format_spec
 \if{latex}{\out{\hypertarget{method-format_spec-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$new(json)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$new(json = NULL)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-setName"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-setName}{}}}
+\subsection{Method \code{setName()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$setName(name)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-setURN"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-setURN}{}}}
+\subsection{Method \code{setURN()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$setURN(urn)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-setTitle"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-setTitle}{}}}
+\subsection{Method \code{setTitle()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$setTitle(title)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-addColumnSpec"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-addColumnSpec}{}}}
+\subsection{Method \code{addColumnSpec()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$addColumnSpec(column_spec)}\if{html}{\out{</div>}}
 }
 
 }
@@ -83,7 +123,13 @@ format_spec
 \if{latex}{\out{\hypertarget{method-format_spec-validateContent}{}}}
 \subsection{Method \code{validateContent()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$validateContent(data)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validateContent(
+  data,
+  method = "grid_mapply",
+  parallel = FALSE,
+  cl = NULL,
+  ...
+)}\if{html}{\out{</div>}}
 }
 
 }
@@ -92,7 +138,13 @@ format_spec
 \if{latex}{\out{\hypertarget{method-format_spec-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$validate(data)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validate(
+  data,
+  method = "grid_mapply",
+  parallel = FALSE,
+  cl = NULL,
+  ...
+)}\if{html}{\out{</div>}}
 }
 
 }
@@ -101,7 +153,14 @@ format_spec
 \if{latex}{\out{\hypertarget{method-format_spec-validate_and_display_as_handsontable}{}}}
 \subsection{Method \code{validate_and_display_as_handsontable()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$validate_and_display_as_handsontable(data, use_css_classes = FALSE)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validate_and_display_as_handsontable(
+  data,
+  method = "matrix",
+  parallel = parallel,
+  cl = cl,
+  use_css_classes = FALSE,
+  ...
+)}\if{html}{\out{</div>}}
 }
 
 }

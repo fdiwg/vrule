@@ -13,6 +13,11 @@ column_spec
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-column_spec-new}{\code{column_spec$new()}}
+\item \href{#method-column_spec-setName}{\code{column_spec$setName()}}
+\item \href{#method-column_spec-setURN}{\code{column_spec$setURN()}}
+\item \href{#method-column_spec-setAliases}{\code{column_spec$setAliases()}}
+\item \href{#method-column_spec-setRequired}{\code{column_spec$setRequired()}}
+\item \href{#method-column_spec-addRule}{\code{column_spec$addRule()}}
 \item \href{#method-column_spec-validate}{\code{column_spec$validate()}}
 \item \href{#method-column_spec-hasCodelist}{\code{column_spec$hasCodelist()}}
 \item \href{#method-column_spec-clone}{\code{column_spec$clone()}}
@@ -23,7 +28,52 @@ column_spec
 \if{latex}{\out{\hypertarget{method-column_spec-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{column_spec$new(json)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$new(json = NULL)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-column_spec-setName"></a>}}
+\if{latex}{\out{\hypertarget{method-column_spec-setName}{}}}
+\subsection{Method \code{setName()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$setName(name)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-column_spec-setURN"></a>}}
+\if{latex}{\out{\hypertarget{method-column_spec-setURN}{}}}
+\subsection{Method \code{setURN()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$setURN(urn)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-column_spec-setAliases"></a>}}
+\if{latex}{\out{\hypertarget{method-column_spec-setAliases}{}}}
+\subsection{Method \code{setAliases()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$setAliases(aliases)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-column_spec-setRequired"></a>}}
+\if{latex}{\out{\hypertarget{method-column_spec-setRequired}{}}}
+\subsection{Method \code{setRequired()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$setRequired(required)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-column_spec-addRule"></a>}}
+\if{latex}{\out{\hypertarget{method-column_spec-addRule}{}}}
+\subsection{Method \code{addRule()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$addRule(rule)}\if{html}{\out{</div>}}
 }
 
 }

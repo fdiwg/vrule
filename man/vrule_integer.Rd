@@ -42,7 +42,7 @@ vrule_integer
 \if{latex}{\out{\hypertarget{method-vrule_integer-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_integer$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_integer$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
 }

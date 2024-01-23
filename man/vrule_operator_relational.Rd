@@ -42,7 +42,7 @@ vrule_operator_relational
 \if{latex}{\out{\hypertarget{method-vrule_operator_relational-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_operator_relational$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_operator_relational$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
 }

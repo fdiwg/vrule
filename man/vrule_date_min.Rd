@@ -42,7 +42,7 @@ vrule_date_min
 \if{latex}{\out{\hypertarget{method-vrule_date_min-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_date_min$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_date_min$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
 }

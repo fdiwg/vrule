@@ -42,7 +42,7 @@ vrule_threshold
 \if{latex}{\out{\hypertarget{method-vrule_threshold-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_threshold$validate(value)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_threshold$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
 }
