@@ -154,6 +154,11 @@ format_spec = R6Class("format_spec",
       
       column_specs <- lapply(colnames(data), self$getColumnSpec)
       
+      #ensure we ignore columns not part of the part (no column_spec)
+      data = data[,which(!sapply(column_specs, is.null))]
+      
+      column_specs = column_specs[!sapply(column_specs, is.null)]
+      
       empty_rep = structure(
         list(
           i = integer(0), j = integer(0), row = character(0), 
@@ -242,15 +247,13 @@ format_spec = R6Class("format_spec",
             i <<- i+1
             row_df = structure(as.list(row), class = "data.frame", row.names = c(NA,-1L))
             Reduce(rbind, lapply(1:length(row), function(j){
-              
               column_name = colnames(data)[j]
               column_spec = column_specs[[j]]
               column_alias = NA
               if(column_name %in% column_spec$aliases){
                 column_alias = column_name
               }
-              
-              rep = column_specs[[j]]$validate(row[j], row_df)
+              rep = column_spec$validate(row[j], row_df)
               if(nrow(rep$report)==0) return(empty_rep)
               return(structure(
                   list(i = i, j = j, row = paste("Row",i), 
