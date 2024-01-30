@@ -13,11 +13,15 @@ vrule_codelist <- R6Class("vrule_codelist",
     ref_data_url = NULL,
     ref_data = NULL,
     ref_data_column = "code",
+    ref_data_column_alt = "label",
     ref_meta_url = NULL,
     ref_meta = NULL,
     ref_values = NULL,
+    allow_labels = TRUE,
     initialize = function(ref_values = NULL,
-                          ref_data_url = NULL, ref_data_column = "code",
+                          ref_data_url = NULL, 
+                          ref_data_column = "code", ref_data_column_alt = "label",
+                          allow_labels = FALSE,
                           ref_meta_url = NULL){
       #case of raw values
       self$ref_values = ref_values
@@ -25,6 +29,8 @@ vrule_codelist <- R6Class("vrule_codelist",
       if(!is.null(ref_data_url)){
         self$ref_data_url = ref_data_url
         self$ref_data_column = ref_data_column
+        self$ref_data_column_alt = ref_data_column_alt
+        self$allow_labels = allow_labels
         ref_data  = try(readr::read_csv(self$ref_data_url, guess_max = 0, show_col_types = FALSE), silent = FALSE)
         if(!is(ref_data, "try-error")){
           self$ref_data = ref_data
@@ -71,9 +77,20 @@ vrule_codelist <- R6Class("vrule_codelist",
             category = self$getCategory(),
             rule = self$getName(),
             type = "ERROR",
-            message = sprintf("Source value '%s' not allowed in codelist '%s'", 
+            message = sprintf("Source value '%s' does not match any code in codelist '%s'", 
                                 value, self$ref_data_url)
           )
+          if(self$allow_labels) if(value %in% self$ref_data[[self$ref_data_column_alt]]){
+            code = self$ref_data[self$ref_data[[self$ref_data_column_alt]]==value,][[self$ref_data_column]]
+            rep <- create_vrule_report(
+              valid = TRUE,
+              category = self$getCategory(),
+              rule = self$getName(),
+              type = "WARNING",
+              message = sprintf("Source value '%s' does match label for code '%s' in codelist '%s'",
+                                value, code, self$ref_data_url)
+            )
+          }
         }
       }
       
