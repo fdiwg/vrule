@@ -63,7 +63,8 @@ column_spec <- R6Class("column_spec",
      
      #hasCodelist
      hasCodelist = function(){
-       any(sapply(self$rules, is, "vrule_codelist"))
+       any(sapply(self$rules, is, "vrule_codelist")) |
+       any(sapply(self$rules, is, "vrule_raw_codelist"))
      }
    )                       
 )
