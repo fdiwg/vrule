@@ -153,11 +153,13 @@ format_spec = R6Class("format_spec",
       }
       
       column_specs <- lapply(colnames(data), self$getColumnSpec)
+      null_column_specs <- sapply(column_specs, is.null)
       
       #ensure we ignore columns not part of the part (no column_spec)
-      data = data[,which(!sapply(column_specs, is.null))]
+      data = data[,which(!null_column_specs)]
       
-      column_specs = column_specs[!sapply(column_specs, is.null)]
+      #ensure we retain only non null column specs
+      column_specs = column_specs[!null_column_specs]
       
       empty_rep = structure(
         list(
@@ -168,28 +170,22 @@ format_spec = R6Class("format_spec",
           class = "data.frame", row.names = integer(0)
       )
       
+      rep_wrapper = function(i, j, rep, column_spec, column_name){
+        structure(
+          list(i = i, j = j, row = paste("Row",i), 
+               col = column_spec$name, col_alias = if(column_name %in% column_spec$aliases) column_name else NA,
+               category = rep$report$category, rule = rep$report$rule,
+               type = rep$report$type, message = rep$report$message), 
+          class = "data.frame", row.names = c(NA,-1L))
+      }
+      
       content_report <- switch(method,
         "grid_mapply" = {
           pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
           validatePair = function(i,j, data, column_specs){
-            column_name = colnames(data)[j]
-            column_spec = column_specs[[j]]
-            column_alias = NA
-            if(column_name %in% column_spec$aliases){
-              column_alias = column_name
-            }
-            rep = NULL
-            if(!is.null(column_spec)){
-              rep = column_spec$validate(value = data[i,j], row = data[i,])
-              if(nrow(rep$report)==0) return(empty_rep)
-              return(structure(
-                list(i = i, j = j, row = paste("Row",i), 
-                     col = column_spec$name, col_alias = column_alias,
-                     category = rep$report$category, rule = rep$report$rule,
-                     type = rep$report$type, message = rep$report$message), 
-                class = "data.frame", row.names = c(NA,-1L)))
-            }
-            return(rep)
+            rep = column_specs[[j]]$validate(value = data[i,j], row = data[i,])
+            if(nrow(rep$report)==0) return(empty_rep)
+            return(rep_wrapper(i = i, j = j, rep = rep, column_spec = column_specs[[j]], column_name = colnames(data)[j]))
           }
           if(parallel){
             parallel_handler <- NULL
@@ -218,26 +214,9 @@ format_spec = R6Class("format_spec",
           pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
           Reduce(rbind, lapply(1:nrow(pairs), function(p){
             pair = pairs[p,]
-            i = pair$i
-            j = pair$j
-            column_name = colnames(data)[j]
-            column_spec = column_specs[[j]]
-            column_alias = NA
-            if(column_name %in% column_spec$aliases){
-              column_alias = column_name
-            }
-            rep = NULL
-            if(!is.null(column_spec)){
-              rep = column_spec$validate(value = data[i,j], row = data[i,])
-              if(nrow(rep$report)==0) return(empty_rep)
-              return(structure(
-                list(i = i, j = j, row = paste("Row",i), 
-                     col = column_spec$name, col_alias = column_alias,
-                     category = rep$report$category, rule = rep$report$rule,
-                     type = rep$report$type, message = rep$report$message), 
-                class = "data.frame", row.names = c(NA,-1L)))
-            }
-            return(rep)
+            rep = column_specs[[j]]$validate(value = data[pair$i,pair$j], row = data[pair$i,])
+            if(nrow(rep$report)==0) return(empty_rep)
+            return(rep_wrapper(i = pair$i, j = pair$j, rep = rep, column_spec = column_specs[[j]], column_name = colnames(data)[j]))
     
           }))
         },
@@ -247,20 +226,9 @@ format_spec = R6Class("format_spec",
             i <<- i+1
             row_df = structure(as.list(row), class = "data.frame", row.names = c(NA,-1L))
             Reduce(rbind, lapply(1:length(row), function(j){
-              column_name = colnames(data)[j]
-              column_spec = column_specs[[j]]
-              column_alias = NA
-              if(column_name %in% column_spec$aliases){
-                column_alias = column_name
-              }
-              rep = column_spec$validate(row[j], row_df)
+              rep = column_specs[[j]]$validate(row[j], row_df)
               if(nrow(rep$report)==0) return(empty_rep)
-              return(structure(
-                  list(i = i, j = j, row = paste("Row",i), 
-                       col = column_spec$name, col_alias = column_alias,
-                       category = rep$report$category, rule = rep$report$rule,
-                       type = rep$report$type, message = rep$report$message), 
-                  class = "data.frame", row.names = c(NA,-1L)))
+              return(rep_wrapper(i = i, j = j, rep = rep, column_spec = column_specs[[j]], column_name = colnames(data)[j]))
               
             }))
           }))
@@ -426,6 +394,61 @@ format_spec = R6Class("format_spec",
       report = self$validate(data = data, method = method, parallel = parallel, cl = cl, ...)
       report = report[report$category != "Data structure",]
       self$display_as_handsontable(data = data, report = report, read_only = read_only, use_css_classes = use_css_classes)
+    },
+    
+    #standardize_structure
+    standardize_structure = function(data, report, exclude_unused = TRUE){
+      format_spec_cols = sapply(self$column_specs, function(x){x$name})
+      data_names<-names(data)
+      for (i in 1:length(self$column_specs)){
+        target<-self$column_specs[[i]]
+        std_name<-target$name
+        alt_names<-unlist(target$aliases)
+        if(std_name%in%data_names){}else{
+          if(any(alt_names%in%data_names)){
+            usedName<-alt_names[alt_names%in%data_names]
+            names(data)[names(data) == usedName] <- std_name
+          }
+        }
+      }
+      if(exclude_unused){
+        data<-data[intersect(format_spec_cols,names(data))]
+      }
+      return(data)
+    },
+    
+    #standardize_content
+    standardize_content = function(data, report){
+      data = self$standardize_structure(data, report, exclude_unused = T)
+      cl_col_specs = self$column_specs[sapply(self$column_specs, function(x){x$hasCodelist()})]
+      
+      if(length(cl_col_specs)>0){
+        cols<-sapply(cl_col_specs, function(x){x$name})
+        correct_order<-names(data)
+        data$row_order<-1:nrow(data)
+        for(col_spec in cl_col_specs){
+          col = col_spec$name
+          if(col %in% correct_order){
+            all_ref<-col_spec$rules[[1]]$ref_data
+            all_ref<-as.data.frame(all_ref)
+            ref<-unique(subset(all_ref,label%in%unique(data[,col]),select=c(code,label)))
+            
+            data_not_mappable = data[(!data[,col] %in% all_ref$code) & (!data[,col] %in% all_ref$label),]
+            data_to_map = data[(!data[,col] %in% ref$code) & data[,col] %in% ref$label,]
+            data_to_map<-merge(data_to_map,ref,by.x=col,by.y="label",all.x=T,sort=F)
+            data_to_map[,col] <- data_to_map$code
+            data_to_map$code <- NULL
+            data_not_to_map = data[data[,col] %in% all_ref$code,]
+            data<- rbind(data_not_mappable, data_to_map, data_not_to_map)
+            data<- data[order(data$row_order),]
+            data<-subset(data,select=c(correct_order,"row_order"))
+          }
+          
+        }
+        data <- data[order(data$row_order), ]
+        data <-subset(data,select=-c(row_order))
+      }
+      return(data)
     }
   )
 )
