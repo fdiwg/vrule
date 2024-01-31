@@ -296,13 +296,8 @@ format_spec = R6Class("format_spec",
       return(report)
     }, 
     
-    #handsontable
-    validate_and_display_as_handsontable = function(data, method = "matrix", 
-                                                    parallel = parallel, cl = cl,
-                                                    use_css_classes = FALSE, ...){
-      
-      report = self$validate(data = data, method = method, parallel = parallel, cl = cl, ...)
-      report = report[report$category != "Data structure",]
+    #display_as_handsontable
+    display_as_handsontable = function(data, report, read_only = TRUE, use_css_classes = FALSE){
       
       #check if any warning
       rows_with_warning <- c()
@@ -333,7 +328,7 @@ format_spec = R6Class("format_spec",
       #create handsontable
       out_tbl <- rhandsontable::rhandsontable(
         data, 
-        readOnly = TRUE,
+        readOnly = read_only,
         use_css_classes = use_css_classes,
         rows_with_warning = rows_with_warning-1,
         cols_with_warning = cols_with_warning-1,
@@ -355,15 +350,10 @@ format_spec = R6Class("format_spec",
                 var cell_valid = true;
                 
                 //manage cells with warnings
-                console.log('Warnings');
-                console.log('Warning rows');
                 row_warning_to_highlight = instance.params.rows_with_warning
                 row_warning_to_highlight = row_warning_to_highlight instanceof Array ? row_warning_to_highlight : [row_warning_to_highlight]
-                console.log(row_warning_to_highlight);
-                console.log('Warning cols');
                 col_warning_to_highlight = instance.params.cols_with_warning
                 col_warning_to_highlight = col_warning_to_highlight instanceof Array ? col_warning_to_highlight : [col_warning_to_highlight]
-                console.log(col_warning_to_highlight);
                 for (var i=0; i < row_warning_to_highlight.length; i++) {
                     for(var j=0; j < col_warning_to_highlight.length; j++){
                       var warning_row = row_warning_to_highlight.length == 1? row_warning_to_highlight[i].row : row_warning_to_highlight[i];
@@ -381,15 +371,10 @@ format_spec = R6Class("format_spec",
                 }
                 
                 //manage cells with errors
-                console.log('Errors');
-                console.log('Error rows');
                 row_error_to_highlight = instance.params.rows_with_error
                 row_error_to_highlight = row_error_to_highlight instanceof Array ? row_error_to_highlight : [row_error_to_highlight]
-                console.log(row_error_to_highlight);
-                console.log('Error cols');
                 col_error_to_highlight = instance.params.cols_with_error
                 col_error_to_highlight = col_error_to_highlight instanceof Array ? col_error_to_highlight : [col_error_to_highlight]
-                console.log(col_error_to_highlight);
                 for (var i = 0; i < row_error_to_highlight.length; i++) {
                     for(var j = 0; j < col_error_to_highlight.length; j++){
                       var error_row = row_error_to_highlight.length == 1? row_error_to_highlight[i].row : row_error_to_highlight[i];
@@ -431,6 +416,16 @@ format_spec = R6Class("format_spec",
         }
       }
       out_tbl
+    },
+    
+    #validate_and_display_as_handsontable
+    validate_and_display_as_handsontable = function(data, method = "matrix", 
+                                                    parallel = parallel, cl = cl,
+                                                    read_only = TRUE, use_css_classes = FALSE, ...){
+      
+      report = self$validate(data = data, method = method, parallel = parallel, cl = cl, ...)
+      report = report[report$category != "Data structure",]
+      self$display_as_handsontable(data = data, report = report, read_only = read_only, use_css_classes = use_css_classes)
     }
   )
 )
