@@ -418,7 +418,7 @@ format_spec = R6Class("format_spec",
     },
     
     #standardizeContent
-    standardizeContent = function(data, report){
+    standardizeContent = function(data){
       data = self$standardizeStructure(data, exclude_unused = T)
       cl_col_specs = self$column_specs[sapply(self$column_specs, function(x){x$hasCodelist()})]
       
