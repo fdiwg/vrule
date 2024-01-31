@@ -156,10 +156,10 @@ format_spec = R6Class("format_spec",
       null_column_specs <- sapply(column_specs, is.null)
       
       #ensure we ignore columns not part of the part (no column_spec)
-      data = data[,which(!null_column_specs)]
+      if(length(null_column_specs)>0) data = data[which(!null_column_specs)]
       
       #ensure we retain only non null column specs
-      column_specs = column_specs[!null_column_specs]
+      if(length(null_column_specs)>0) column_specs = column_specs[!null_column_specs]
       
       empty_rep = structure(
         list(
