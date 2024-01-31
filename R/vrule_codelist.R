@@ -10,12 +10,12 @@ vrule_codelist <- R6Class("vrule_codelist",
     name = "Codelist"
   ),
   public = list(
+    ref_data_url = NULL,
     ref_data = NULL,
     ref_data_column = "code",
     ref_data_column_alt = "label",
     ref_meta_url = NULL,
     ref_meta = NULL,
-    ref_values = NULL,
     allow_labels = TRUE,
     initialize = function(ref_data_url = NULL, 
                           ref_data_column = "code", ref_data_column_alt = "label",
