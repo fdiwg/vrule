@@ -396,8 +396,8 @@ format_spec = R6Class("format_spec",
       self$display_as_handsontable(data = data, report = report, read_only = read_only, use_css_classes = use_css_classes)
     },
     
-    #standardize_structure
-    standardize_structure = function(data, report, exclude_unused = TRUE){
+    #standardizeStructure
+    standardizeStructure = function(data, exclude_unused = TRUE){
       format_spec_cols = sapply(self$column_specs, function(x){x$name})
       data_names<-names(data)
       for (i in 1:length(self$column_specs)){
@@ -417,9 +417,9 @@ format_spec = R6Class("format_spec",
       return(data)
     },
     
-    #standardize_content
-    standardize_content = function(data, report){
-      data = self$standardize_structure(data, report, exclude_unused = T)
+    #standardizeContent
+    standardizeContent = function(data, report){
+      data = self$standardizeStructure(data, exclude_unused = T)
       cl_col_specs = self$column_specs[sapply(self$column_specs, function(x){x$hasCodelist()})]
       
       if(length(cl_col_specs)>0){
