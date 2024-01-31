@@ -398,6 +398,7 @@ format_spec = R6Class("format_spec",
     
     #standardizeStructure
     standardizeStructure = function(data, exclude_unused = TRUE){
+      if(is.tibble(data)) data = as.data.frame(data)
       format_spec_cols = sapply(self$column_specs, function(x){x$name})
       data_names<-names(data)
       for (i in 1:length(self$column_specs)){
@@ -419,6 +420,7 @@ format_spec = R6Class("format_spec",
     
     #standardizeContent
     standardizeContent = function(data){
+      if(is.tibble(data)) data = as.data.frame(data)
       data = self$standardizeStructure(data, exclude_unused = T)
       cl_col_specs = self$column_specs[sapply(self$column_specs, function(x){x$hasCodelist()})]
       
@@ -447,6 +449,7 @@ format_spec = R6Class("format_spec",
         }
         data <- data[order(data$row_order), ]
         data <-subset(data,select=-c(row_order))
+        row.names(data)<-1:nrow(data)
       }
       return(data)
     }
