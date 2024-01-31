@@ -265,7 +265,7 @@ format_spec = R6Class("format_spec",
     }, 
     
     #display_as_handsontable
-    display_as_handsontable = function(data, report, read_only = TRUE, use_css_classes = FALSE){
+    display_as_handsontable = function(data, report, ...){
       
       #check if any warning
       rows_with_warning <- c()
@@ -296,12 +296,11 @@ format_spec = R6Class("format_spec",
       #create handsontable
       out_tbl <- rhandsontable::rhandsontable(
         data, 
-        readOnly = read_only,
-        use_css_classes = use_css_classes,
         rows_with_warning = rows_with_warning-1,
         cols_with_warning = cols_with_warning-1,
         rows_with_error = rows_with_error-1,
-        cols_with_error = cols_with_error-1
+        cols_with_error = cols_with_error-1,
+        ...
       ) %>%
         hot_cols(
           #fixedColumnsLeft = 1,
