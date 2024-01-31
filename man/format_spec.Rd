@@ -24,6 +24,7 @@ format_spec
 \item \href{#method-format_spec-validateStructure}{\code{format_spec$validateStructure()}}
 \item \href{#method-format_spec-validateContent}{\code{format_spec$validateContent()}}
 \item \href{#method-format_spec-validate}{\code{format_spec$validate()}}
+\item \href{#method-format_spec-display_as_handsontable}{\code{format_spec$display_as_handsontable()}}
 \item \href{#method-format_spec-validate_and_display_as_handsontable}{\code{format_spec$validate_and_display_as_handsontable()}}
 \item \href{#method-format_spec-clone}{\code{format_spec$clone()}}
 }
@@ -149,6 +150,20 @@ format_spec
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-display_as_handsontable"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-display_as_handsontable}{}}}
+\subsection{Method \code{display_as_handsontable()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$display_as_handsontable(
+  data,
+  report,
+  read_only = TRUE,
+  use_css_classes = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-validate_and_display_as_handsontable"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-validate_and_display_as_handsontable}{}}}
 \subsection{Method \code{validate_and_display_as_handsontable()}}{
@@ -158,6 +173,7 @@ format_spec
   method = "matrix",
   parallel = parallel,
   cl = cl,
+  read_only = TRUE,
   use_css_classes = FALSE,
   ...
 )}\if{html}{\out{</div>}}
