@@ -10,7 +10,6 @@ vrule_codelist <- R6Class("vrule_codelist",
     name = "Codelist"
   ),
   public = list(
-    ref_data_url = NULL,
     ref_data = NULL,
     ref_data_column = "code",
     ref_data_column_alt = "label",
@@ -18,13 +17,10 @@ vrule_codelist <- R6Class("vrule_codelist",
     ref_meta = NULL,
     ref_values = NULL,
     allow_labels = TRUE,
-    initialize = function(ref_values = NULL,
-                          ref_data_url = NULL, 
+    initialize = function(ref_data_url = NULL, 
                           ref_data_column = "code", ref_data_column_alt = "label",
                           allow_labels = FALSE,
                           ref_meta_url = NULL){
-      #case of raw values
-      self$ref_values = ref_values
       #case of codelist url
       if(!is.null(ref_data_url)){
         self$ref_data_url = ref_data_url
@@ -56,41 +52,26 @@ vrule_codelist <- R6Class("vrule_codelist",
     
     validate = function(value, ...){
       rep <- super$validate(value, ...)
-      #ref_values
-      if(!is.null(self$ref_values)){
-        if(!value %in% self$ref_values){
-          rep <- create_vrule_report(
-            valid = FALSE,
-            category = self$getCategory(),
-            rule = self$getName(),
-            type = "ERROR",
-            message = sprintf("Source value %s is not among allowed values [%s]", 
-                                value, paste0(self$ref_values, collapse=","))
-          )
-        }
-      }
       #ref codelist
-      if(!is.null(self$ref_data)){
-        if(!value %in% self$ref_data[[self$ref_data_column]]){
+      if(!value %in% self$ref_data[[self$ref_data_column]]){
+        rep <- create_vrule_report(
+          valid = FALSE,
+          category = self$getCategory(),
+          rule = self$getName(),
+          type = "ERROR",
+          message = sprintf("Source value '%s' does not match any code in codelist '%s'", 
+                              value, self$ref_data_url)
+        )
+        if(self$allow_labels) if(value %in% self$ref_data[[self$ref_data_column_alt]]){
+          code = self$ref_data[self$ref_data[[self$ref_data_column_alt]]==value,][[self$ref_data_column]]
           rep <- create_vrule_report(
-            valid = FALSE,
+            valid = TRUE,
             category = self$getCategory(),
             rule = self$getName(),
-            type = "ERROR",
-            message = sprintf("Source value '%s' does not match any code in codelist '%s'", 
-                                value, self$ref_data_url)
+            type = "WARNING",
+            message = sprintf("Source value '%s' does match label for code '%s' in codelist '%s'",
+                              value, code, self$ref_data_url)
           )
-          if(self$allow_labels) if(value %in% self$ref_data[[self$ref_data_column_alt]]){
-            code = self$ref_data[self$ref_data[[self$ref_data_column_alt]]==value,][[self$ref_data_column]]
-            rep <- create_vrule_report(
-              valid = TRUE,
-              category = self$getCategory(),
-              rule = self$getName(),
-              type = "WARNING",
-              message = sprintf("Source value '%s' does match label for code '%s' in codelist '%s'",
-                                value, code, self$ref_data_url)
-            )
-          }
         }
       }
       

@@ -34,9 +34,10 @@ vrule_codelist
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_codelist$new(
-  ref_values = NULL,
   ref_data_url = NULL,
   ref_data_column = "code",
+  ref_data_column_alt = "label",
+  allow_labels = FALSE,
   ref_meta_url = NULL
 )}\if{html}{\out{</div>}}
 }
