@@ -183,8 +183,8 @@ format_spec = R6Class("format_spec",
       
       content_report <- switch(method,
         "rowcol" = {
-          do.call("rbind", lapply(1:ncol(data), function(j){
-            do.call("rbind", lapply(1:nrow(data), function(i){
+          data.table::rbindlist(lapply(1:ncol(data), function(j){
+            data.table::rbindlist(lapply(1:nrow(data), function(i){
               rep = column_specs[[j]]$validate(value = data[i,j], data[i,])
               if(nrow(rep$report)==0) return(empty_rep)
               return(rep_wrapper(i = i, j = j, rep = rep, column_spec = column_specs[[j]], column_name = colnames(data)[j]))
@@ -225,9 +225,9 @@ format_spec = R6Class("format_spec",
           pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
           Reduce(rbind, lapply(1:nrow(pairs), function(p){
             pair = pairs[p,]
-            rep = column_specs[[j]]$validate(value = data[pair$i,pair$j], row = data[pair$i,])
+            rep = column_specs[[pair$j]]$validate(value = data[pair$i,pair$j], row = data[pair$i,])
             if(nrow(rep$report)==0) return(empty_rep)
-            return(rep_wrapper(i = pair$i, j = pair$j, rep = rep, column_spec = column_specs[[j]], column_name = colnames(data)[j]))
+            return(rep_wrapper(i = pair$i, j = pair$j, rep = rep, column_spec = column_specs[[pair$j]], column_name = colnames(data)[pair$j]))
     
           }))
         },

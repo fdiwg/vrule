@@ -26,6 +26,8 @@ format_spec
 \item \href{#method-format_spec-validate}{\code{format_spec$validate()}}
 \item \href{#method-format_spec-display_as_handsontable}{\code{format_spec$display_as_handsontable()}}
 \item \href{#method-format_spec-validate_and_display_as_handsontable}{\code{format_spec$validate_and_display_as_handsontable()}}
+\item \href{#method-format_spec-standardizeStructure}{\code{format_spec$standardizeStructure()}}
+\item \href{#method-format_spec-standardizeContent}{\code{format_spec$standardizeContent()}}
 \item \href{#method-format_spec-clone}{\code{format_spec$clone()}}
 }
 }
@@ -126,7 +128,7 @@ format_spec
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$validateContent(
   data,
-  method = "grid_mapply",
+  method = "rowcol",
   parallel = FALSE,
   cl = NULL,
   ...
@@ -154,12 +156,7 @@ format_spec
 \if{latex}{\out{\hypertarget{method-format_spec-display_as_handsontable}{}}}
 \subsection{Method \code{display_as_handsontable()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$display_as_handsontable(
-  data,
-  report,
-  read_only = TRUE,
-  use_css_classes = FALSE
-)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$display_as_handsontable(data, report, ...)}\if{html}{\out{</div>}}
 }
 
 }
@@ -177,6 +174,24 @@ format_spec
   use_css_classes = FALSE,
   ...
 )}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-standardizeStructure"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-standardizeStructure}{}}}
+\subsection{Method \code{standardizeStructure()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$standardizeStructure(data, exclude_unused = TRUE)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-standardizeContent"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-standardizeContent}{}}}
+\subsection{Method \code{standardizeContent()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$standardizeContent(data)}\if{html}{\out{</div>}}
 }
 
 }
