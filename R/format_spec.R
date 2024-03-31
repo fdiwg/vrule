@@ -351,19 +351,14 @@ format_spec = R6Class("format_spec",
             }
             }") 
       
-      for(i in 1:nrow(data)){
-        for(j in 1:ncol(data)){
-          cell_report = report[report$i == i & report$j == j,]
-          if(nrow(cell_report)==0){
-            cell_report <- NULL
-          }else{
-            cell_report <- paste0(sapply(1:nrow(cell_report), function(idx){
-              paste0("- ", cell_report[idx, "type"], ": ", cell_report[idx, "message"])
-            }), collapse="\n")
-          }
-          out_tbl <- out_tbl %>% 
-            hot_cell(i, j, comment = cell_report)
-        }
+      report$pair = paste(report$i,report$j,sep="_")
+      for(pair in unique(report$pair)){
+        cell_rep = report[report$pair == pair,]
+        cell_report <- paste0(sapply(1:nrow(cell_rep), function(idx){
+          paste0("- ", cell_rep[idx, "type"], ": ", cell_rep[idx, "message"])
+        }), collapse="\n")
+        out_tbl <- out_tbl %>%
+          hot_cell(cell_rep[1L,"i"], cell_rep[1L,"j"], comment = cell_report)
       }
       out_tbl
     },
