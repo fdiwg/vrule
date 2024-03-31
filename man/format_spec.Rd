@@ -126,7 +126,7 @@ format_spec
 \if{latex}{\out{\hypertarget{method-format_spec-validateContent}{}}}
 \subsection{Method \code{validateContent()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$validateContent(data, method = "rowcol", parallel = FALSE, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validateContent(data, parallel = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
 }
@@ -135,7 +135,7 @@ format_spec
 \if{latex}{\out{\hypertarget{method-format_spec-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$validate(data, method = "rowcol", parallel = FALSE, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validate(data, parallel = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
 }
@@ -155,7 +155,6 @@ format_spec
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$validate_and_display_as_handsontable(
   data,
-  method = "matrix",
   parallel = parallel,
   read_only = TRUE,
   use_css_classes = FALSE,

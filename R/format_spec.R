@@ -190,9 +190,9 @@ format_spec = R6Class("format_spec",
           }, data = data, 
           column_specs = column_specs, 
           validatePair = validatePair,
-          mc.cores = parallel::detectCores()))
+          mc.cores = getVruleOption("cores")))
         }else{
-          cl <- parallel::makeCluster(min(nrow(data), parallel::detectCores()))
+          cl <- parallel::makeCluster(min(nrow(data), getVruleOption("cores")))
           parallel::clusterEvalQ(cl, library("vrule"))
           parallel::clusterEvalQ(cl, library("data.table"))
           parallel::clusterExport(cl, varlist= "data")
