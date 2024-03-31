@@ -53,12 +53,16 @@ column_spec <- R6Class("column_spec",
      
      #validate
      validate = function(value, row){
-       rep = vrule_report$new()
        if(length(self$rules)>0){
-         the_rule = do.call(vrule_operator_and$new, self$rules)
-         rep = the_rule$validate(value, row)
+         the_rule = if(length(self$rules)>1){
+           do.call(vrule_operator_and$new, self$rules)
+         }else{
+           self$rules[[1]]
+         }
+         return(the_rule$validate(value, row))
+       }else{
+         return(vrule_report$new())
        }
-       return(rep)
      },
      
      #hasCodelist

@@ -18,18 +18,15 @@ vrule_raw_codelist <- R6Class("vrule_raw_codelist",
     
     validate = function(value, ...){
       rep <- super$validate(value, ...)
-      #ref_values
-      if(!is.null(self$ref_values)){
-        if(!value %in% self$ref_values){
-          rep <- create_vrule_report(
-            valid = FALSE,
-            category = self$getCategory(),
-            rule = self$getName(),
-            type = "ERROR",
-            message = sprintf("Source value %s is not among allowed values [%s]", 
-                              value, paste0(self$ref_values, collapse=","))
-          )
-        }
+      if(length(which(value == self$ref_values))==0){
+        rep <- create_vrule_report(
+          valid = FALSE,
+          category = self$getCategory(),
+          rule = self$getName(),
+          type = "ERROR",
+          message = sprintf("Source value %s is not among allowed values [%s]", 
+                            value, paste0(self$ref_values, collapse=","))
+        )
       }
       return(rep)
     }

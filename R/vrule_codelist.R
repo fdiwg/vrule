@@ -53,7 +53,7 @@ vrule_codelist <- R6Class("vrule_codelist",
     validate = function(value, ...){
       rep <- super$validate(value, ...)
       #ref codelist
-      if(!value %in% self$ref_data[[self$ref_data_column]]){
+      if(length(which(value == self$ref_data[[self$ref_data_column]]))==0){
         rep <- create_vrule_report(
           valid = FALSE,
           category = self$getCategory(),
@@ -62,7 +62,7 @@ vrule_codelist <- R6Class("vrule_codelist",
           message = sprintf("Source value '%s' does not match any code in codelist '%s'", 
                               value, self$ref_data_url)
         )
-        if(self$allow_labels) if(value %in% self$ref_data[[self$ref_data_column_alt]]){
+        if(self$allow_labels) if(length(which(value == self$ref_data[[self$ref_data_column_alt]]))>0){
           code = self$ref_data[self$ref_data[[self$ref_data_column_alt]]==value,][[self$ref_data_column]]
           rep <- create_vrule_report(
             valid = TRUE,

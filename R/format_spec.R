@@ -146,7 +146,7 @@ format_spec = R6Class("format_spec",
     },
     
     #validateContent
-    validateContent = function(data, method = "grid_mapply", 
+    validateContent = function(data, method = "rowcol", 
                                parallel = FALSE, cl = NULL, ...){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
@@ -155,11 +155,13 @@ format_spec = R6Class("format_spec",
       column_specs <- lapply(colnames(data), self$getColumnSpec)
       null_column_specs <- sapply(column_specs, is.null)
       
-      #ensure we ignore columns not part of the part (no column_spec)
-      if(length(null_column_specs)>0) data = data[which(!null_column_specs)]
       
-      #ensure we retain only non null column specs
-      if(length(null_column_specs)>0) column_specs = column_specs[!null_column_specs]
+      if(length(null_column_specs)>0){
+        #ensure we ignore columns not part of the part (no column_spec)
+        data = data[which(!null_column_specs)]
+        #ensure we retain only non null column specs
+        column_specs = column_specs[!null_column_specs]
+      }
       
       empty_rep = structure(
         list(
@@ -180,6 +182,15 @@ format_spec = R6Class("format_spec",
       }
       
       content_report <- switch(method,
+        "rowcol" = {
+          do.call("rbind", lapply(1:ncol(data), function(j){
+            do.call("rbind", lapply(1:nrow(data), function(i){
+              rep = column_specs[[j]]$validate(value = data[i,j], data[i,])
+              if(nrow(rep$report)==0) return(empty_rep)
+              return(rep_wrapper(i = i, j = j, rep = rep, column_spec = column_specs[[j]], column_name = colnames(data)[j]))
+            }))
+          }))
+        },
         "grid_mapply" = {
           pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
           validatePair = function(i,j, data, column_specs){
