@@ -6,14 +6,11 @@
 vrule_report <- R6Class("vrule_report",
   public = list(
     valid = TRUE,
-    report = structure(
-      list(
-        category = character(0), 
-        rule = character(0), 
-        type = character(0), 
-        message = character(0)
-      ),
-      class = "data.frame"
+    report = data.table::data.table(
+      category = character(0), 
+      rule = character(0), 
+      type = character(0), 
+      message = character(0)
     ),
     initialize = function(valid = NULL, report = NULL){
       if(!is.null(valid)) self$valid = valid
@@ -30,15 +27,11 @@ create_vrule_report = function(
 ){
   vrule_report$new(
     valid = valid,
-    report = structure(
-      list(
-        category = category, 
-        rule = rule, 
-        type = type, 
-        message = message 
-      ),
-      class = "data.frame",
-      row.names =c(NA,-1)
+    report = data.table::data.table(
+      category = category, 
+      rule = rule, 
+      type = type, 
+      message = message
     )
   )
 }

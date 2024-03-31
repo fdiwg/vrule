@@ -25,10 +25,18 @@ vrule_if <- R6Class("vrule_if",
       expr = eval(parse(text = self$if_condition))
       if(is.logical(expr)){
         if(isTRUE(expr)){
-          logical_rule = do.call(vrule_operator_and$new, self$then_apply)
+          logical_rule = if(length(self$then_apply)>1){
+            do.call(vrule_operator_and$new, self$then_apply)
+          }else{
+            self$then_apply[[1]]
+          }
           rep = logical_rule$validate(value, row)
         }else{
-          logical_rule = do.call(vrule_operator_and$new, self$else_apply)
+          logical_rule = if(length(self$else_apply)>1){
+            do.call(vrule_operator_and$new, self$else_apply)
+          }else{
+            self$else_apply[[1]]
+          }
           rep = logical_rule$validate(value, row)
         }
       }

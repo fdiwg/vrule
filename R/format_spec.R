@@ -146,8 +146,7 @@ format_spec = R6Class("format_spec",
     },
     
     #validateContent
-    validateContent = function(data, method = "rowcol", 
-                               parallel = FALSE, cl = NULL, ...){
+    validateContent = function(data, parallel = FALSE, ...){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
@@ -162,97 +161,71 @@ format_spec = R6Class("format_spec",
         #ensure we retain only non null column specs
         column_specs = column_specs[!null_column_specs]
       }
-      
-      empty_rep = structure(
-        list(
+
+      validatePair = function(i,j, data, column_specs){
+        rep = column_specs[[j]]$validate(value = data[i,j], row = data[i,])
+        if(nrow(rep$report)==0) return(data.table::data.table(
           i = integer(0), j = integer(0), row = character(0), 
           col = character(0), col_alias = character(0),
           category = character(0), rule = character(0),
-          type = character(0), message = character(0)),
-          class = "data.frame", row.names = integer(0)
-      )
-      
-      rep_wrapper = function(i, j, rep, column_spec, column_name){
-        structure(
-          list(i = i, j = j, row = paste("Row",i), 
-               col = column_spec$name, col_alias = if(column_name %in% column_spec$aliases) column_name else NA,
-               category = rep$report$category, rule = rep$report$rule,
-               type = rep$report$type, message = rep$report$message), 
-          class = "data.frame", row.names = c(NA,-1L))
+          type = character(0), message = character(0)
+        ))
+        column_name = colnames(data)[j]
+        return(data.table::data.table(
+          i = i, j = j, row = paste("Row",i), 
+          col = column_specs[[j]]$name, col_alias = if(column_name %in% column_specs[[j]]$aliases) column_name else NA,
+          category = rep$report$category, rule = rep$report$rule,
+          type = rep$report$type, message = rep$report$message
+        ))
+
       }
       
-      content_report <- switch(method,
-        "rowcol" = {
-          data.table::rbindlist(lapply(1:ncol(data), function(j){
-            data.table::rbindlist(lapply(1:nrow(data), function(i){
-              rep = column_specs[[j]]$validate(value = data[i,j], data[i,])
-              if(nrow(rep$report)==0) return(empty_rep)
-              return(rep_wrapper(i = i, j = j, rep = rep, column_spec = column_specs[[j]], column_name = colnames(data)[j]))
+      content_report <- if(parallel){
+        parallel_handler = NULL
+        if(Sys.info()[1] != "Windows"){
+          data.table::rbindlist(parallel::mclapply(1:nrow(data), function(i, data, column_specs, validatePair){
+            data.table::rbindlist(lapply(1:ncol(data), function(j){
+              c(i, j, data, column_specs)
             }))
-          }))
-        },
-        "grid_mapply" = {
-          pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
-          validatePair = function(i,j, data, column_specs){
-            rep = column_specs[[j]]$validate(value = data[i,j], row = data[i,])
-            if(nrow(rep$report)==0) return(empty_rep)
-            return(rep_wrapper(i = i, j = j, rep = rep, column_spec = column_specs[[j]], column_name = colnames(data)[j]))
-          }
-          if(parallel){
-            parallel_handler <- NULL
-            if(is.null(cl)){
-              parallel_handler = parallel::mcmapply
-              if(Sys.info()[1] == "Windows"){
-                warning("parallel handler 'mcmapply' is not applicable for Windows OS")
-              }
-              Reduce(rbind, parallel_handler(validatePair, pairs$i, pairs$j, 
-                                             MoreArgs = list(data = data, column_specs = column_specs),
-                                             SIMPLIFY = FALSE, ...))
-            }else{
-              parallel_handler = parallel::clusterMap
-              Reduce(rbind, parallel_handler(cl = cl, validatePair, pairs$i, pairs$j, 
-                                             MoreArgs = list(data = data, column_specs = column_specs),
-                                             SIMPLIFY = FALSE, ...))
-            }
-            
-          }else{
-            Reduce(rbind, mapply(validatePair, pairs$i, pairs$j, 
-                                  MoreArgs = list(data = data, column_specs = column_specs),
-                                  SIMPLIFY = FALSE))
-          }
-        },
-        "grid" = {
-          pairs = expand.grid(j = 1:ncol(data), i = 1:nrow(data))
-          Reduce(rbind, lapply(1:nrow(pairs), function(p){
-            pair = pairs[p,]
-            rep = column_specs[[pair$j]]$validate(value = data[pair$i,pair$j], row = data[pair$i,])
-            if(nrow(rep$report)==0) return(empty_rep)
-            return(rep_wrapper(i = pair$i, j = pair$j, rep = rep, column_spec = column_specs[[pair$j]], column_name = colnames(data)[pair$j]))
-    
-          }))
-        },
-        "matrix" = {
-          i = 0
-          do.call("rbind", apply(as.matrix(data), 1, function(row){
-            i <<- i+1
-            row_df = structure(as.list(row), class = "data.frame", row.names = c(NA,-1L))
-            Reduce(rbind, lapply(1:length(row), function(j){
-              rep = column_specs[[j]]$validate(row[j], row_df)
-              if(nrow(rep$report)==0) return(empty_rep)
-              return(rep_wrapper(i = i, j = j, rep = rep, column_spec = column_specs[[j]], column_name = colnames(data)[j]))
-              
-            }))
-          }))
+          }, data = data, 
+          column_specs = column_specs, 
+          validatePair = validatePair,
+          mc.cores = parallel::detectCores()))
+        }else{
+          cl <- parallel::makeCluster(min(nrow(data), parallel::detectCores()))
+          parallel::clusterEvalQ(cl, library("vrule"))
+          parallel::clusterEvalQ(cl, library("data.table"))
+          parallel::clusterExport(cl, varlist= "data")
+          out = data.table::rbindlist(
+            parallel::parLapply(
+              cl = cl, 1:nrow(data), 
+              fun = function(i, data, column_specs, validatePair){
+                data.table::rbindlist(lapply(1:ncol(data), function(j){
+                  validatePair(i, j, data, column_specs)
+                }))
+              },
+              data = data,
+              column_specs = column_specs,
+              validatePair = validatePair
+            )
+          )
+          parallel::stopCluster(cl)
+          out
         }
-      )
+      }else{
+        data.table::rbindlist(lapply(1:nrow(data), function(i){
+          data.table::rbindlist(lapply(1:ncol(data), function(j){
+            validatePair(i, j, data, column_specs)
+          }))
+        }))
+      }
 
       return(content_report)
       
     },
     
     #validate
-    validate = function(data, method = "grid_mapply",
-                        parallel = FALSE, cl = NULL, ...){
+    validate = function(data, parallel = FALSE, ...){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
@@ -265,8 +238,7 @@ format_spec = R6Class("format_spec",
       }
       
       #2. check content
-      content_report = self$validateContent(data = data, method = method,
-                                            parallel = parallel, cl = cl, ...)
+      content_report = self$validateContent(data = data, parallel = parallel, ...)
       
       #3. check duplicates
       #TODO
@@ -397,11 +369,10 @@ format_spec = R6Class("format_spec",
     },
     
     #validate_and_display_as_handsontable
-    validate_and_display_as_handsontable = function(data, method = "matrix", 
-                                                    parallel = parallel, cl = cl,
+    validate_and_display_as_handsontable = function(data, parallel = parallel,
                                                     read_only = TRUE, use_css_classes = FALSE, ...){
       
-      report = self$validate(data = data, method = method, parallel = parallel, cl = cl, ...)
+      report = self$validate(data = data, parallel = parallel, ...)
       report = report[report$category != "Data structure",]
       self$display_as_handsontable(data = data, report = report, read_only = read_only, use_css_classes = use_css_classes)
     },
