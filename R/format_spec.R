@@ -374,7 +374,7 @@ format_spec = R6Class("format_spec",
     
     #standardizeStructure
     standardizeStructure = function(data, exclude_unused = TRUE){
-      if(is.tibble(data)) data = as.data.frame(data)
+      if(tibble::is_tibble(data)) data = as.data.frame(data)
       format_spec_cols = sapply(self$column_specs, function(x){x$name})
       data_names<-names(data)
       for (i in 1:length(self$column_specs)){
@@ -396,7 +396,7 @@ format_spec = R6Class("format_spec",
     
     #standardizeContent
     standardizeContent = function(data){
-      if(is.tibble(data)) data = as.data.frame(data)
+      if(tibble::is_tibble(data)) data = as.data.frame(data)
       data = self$standardizeStructure(data, exclude_unused = T)
       cl_col_specs = self$column_specs[sapply(self$column_specs, function(x){x$hasCodelist()})]
       
@@ -407,19 +407,22 @@ format_spec = R6Class("format_spec",
         for(col_spec in cl_col_specs){
           col = col_spec$name
           if(col %in% correct_order){
-            all_ref<-col_spec$rules[[1]]$ref_data
-            all_ref<-as.data.frame(all_ref)
-            ref<-unique(subset(all_ref,label%in%unique(data[,col]),select=c(code,label)))
-            
-            data_not_mappable = data[(!data[,col] %in% all_ref$code) & (!data[,col] %in% all_ref$label),]
-            data_to_map = data[(!data[,col] %in% ref$code) & data[,col] %in% ref$label,]
-            data_to_map<-merge(data_to_map,ref,by.x=col,by.y="label",all.x=T,sort=F)
-            data_to_map[,col] <- data_to_map$code
-            data_to_map$code <- NULL
-            data_not_to_map = data[data[,col] %in% all_ref$code,]
-            data<- rbind(data_not_mappable, data_to_map, data_not_to_map)
-            data<- data[order(data$row_order),]
-            data<-subset(data,select=c(correct_order,"row_order"))
+            rule = col_spec$rules[[1]]
+            if(is(rule, "vrule_codelist")){
+              all_ref<-rule$ref_data
+              all_ref<-as.data.frame(all_ref)
+              ref<-unique(subset(all_ref,label%in%unique(data[,col]),select=c(code,label)))
+              
+              data_not_mappable = data[(!data[,col] %in% all_ref$code) & (!data[,col] %in% all_ref$label),]
+              data_to_map = data[(!data[,col] %in% ref$code) & data[,col] %in% ref$label,]
+              data_to_map<-merge(data_to_map,ref,by.x=col,by.y="label",all.x=T,sort=F)
+              data_to_map[,col] <- data_to_map$code
+              data_to_map$code <- NULL
+              data_not_to_map = data[data[,col] %in% all_ref$code,]
+              data<- rbind(data_not_mappable, data_to_map, data_not_to_map)
+              data<- data[order(data$row_order),]
+              data<-subset(data,select=c(correct_order,"row_order"))
+            }
           }
           
         }
