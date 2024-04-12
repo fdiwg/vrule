@@ -185,9 +185,10 @@ format_spec = R6Class("format_spec",
         if(Sys.info()[1] != "Windows"){
           data.table::rbindlist(parallel::mclapply(1:nrow(data), function(i, data, column_specs, validatePair){
             data.table::rbindlist(lapply(1:ncol(data), function(j){
-              c(i, j, data, column_specs)
+              validatePair(i, j, data, column_specs)
             }))
-          }, data = data, 
+          }, 
+          data = data, 
           column_specs = column_specs, 
           validatePair = validatePair,
           mc.cores = getVruleOption("cores")))
