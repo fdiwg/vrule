@@ -31,14 +31,18 @@ vrule_datatype <- R6Class("vrule_datatype",
           message = sprintf("Value %s is not %s", value, self$type)
         )
       }else{
-        if(!is.na(val)) if(self$type != "logical") if(value != val){
-          rep <- create_vrule_report(
-            valid = FALSE,
-            category = self$getCategory(),
-            rule = self$getName(),
-            type = "ERROR",
-            message = sprintf("Source value %s is not equal to value (%s) after coercing to type '%s'", value, val, self$type)
-          )
+        if(!is.na(val)) if(self$type != "logical") {
+          sci_regexpr <- "^(-?(\\d+\\.)?\\d+)E([+-]?)(\\d+)$"
+          checked = if(grepl(sci_regexpr, value)) FALSE else (value != val)
+          if(checked){
+            rep <- create_vrule_report(
+              valid = FALSE,
+              category = self$getCategory(),
+              rule = self$getName(),
+              type = "ERROR",
+              message = sprintf("Source value %s is not equal to value (%s) after coercing to type '%s'", value, val, self$type)
+            )
+          }
         }
       }
       
