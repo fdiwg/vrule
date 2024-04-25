@@ -8,3 +8,20 @@
 \description{
 Provides tools to validate data based on business validation rules.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/fdiwg/vrule}
+  \item Report bugs at \url{https://github.com/fdiwg/vrule/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Emmanuel Blondel \email{emmanuel.blondel@fao.org} (\href{https://orcid.org/0000-0002-5870-5762}{ORCID})
+
+Authors:
+\itemize{
+  \item Alexandre Bennici \email{alexandre.bennici@fao.org} (\href{https://orcid.org/0000-0003-2160-3487}{ORCID})
+}
+
+}
