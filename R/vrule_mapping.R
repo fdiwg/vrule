@@ -7,7 +7,7 @@ vrule_mapping <- R6Class("vrule_mapping",
   inherit = vrule_abstract_complex,
   private = list(
     category = "Controlled terms",
-    name = "mapping"
+    name = "Mapping"
   ),
   public = list(
     ref_data_url = NULL,
