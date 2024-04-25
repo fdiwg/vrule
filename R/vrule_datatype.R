@@ -32,7 +32,7 @@ vrule_datatype <- R6Class("vrule_datatype",
         )
       }else{
         if(!is.na(val)) if(self$type != "logical") {
-          sci_regexpr <- "^(-?(\\d+\\.)?\\d+)E([+-]?)(\\d+)$"
+          sci_regexpr <- "^(-?(\\d+\\.)?\\d+)[eE]([+-]?)(\\d+)$"
           checked = if(grepl(sci_regexpr, value)) FALSE else (value != val)
           if(checked){
             rep <- create_vrule_report(
