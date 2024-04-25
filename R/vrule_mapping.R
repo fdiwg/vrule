@@ -4,7 +4,7 @@
 #' @importFrom R6 R6Class
 #' @export
 vrule_mapping <- R6Class("vrule_mapping",
-  inherit = vrule_abstract_simple,
+  inherit = vrule_abstract_complex,
   private = list(
     category = "Controlled terms",
     name = "mapping"
@@ -14,17 +14,20 @@ vrule_mapping <- R6Class("vrule_mapping",
     ref_data = NULL,
     ref_source_term = NULL,
     ref_target_term = NULL,
+    data_target_term = NULL,
     ref_meta_url = NULL,
     ref_meta = NULL,
     initialize = function(ref_data_url = NULL, 
                           ref_source_term = NULL,
                           ref_target_term = NULL,
+                          data_target_term = NULL,
                           ref_meta_url = NULL){
       #case of mapping url
       if(!is.null(ref_data_url)){
         self$ref_data_url = ref_data_url
         self$ref_source_term = ref_source_term
         self$ref_target_term = ref_target_term
+        self$data_target_term = data_target_term
         ref_data  = try(readr::read_csv(self$ref_data_url, guess_max = 0, show_col_types = FALSE), silent = FALSE)
         if(!is(ref_data, "try-error")){
           ref_data = as.data.frame(ref_data)
@@ -53,9 +56,10 @@ vrule_mapping <- R6Class("vrule_mapping",
       }
     },
     
-    validate = function(value, target, ...){
-      rep <- super$validate(value, ...)
+    validate = function(value, row){
+      rep <- super$validate(value, row)
       #ref mapping
+      target = row[,self$data_target_term]
       map = self$ref_data[
         self$ref_data[,self$ref_source_term] == value &
         self$ref_data[,self$ref_target_term] == target,]
