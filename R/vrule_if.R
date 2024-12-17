@@ -34,10 +34,12 @@ vrule_if <- R6Class("vrule_if",
         }else{
           logical_rule = if(length(self$else_apply)>1){
             do.call(vrule_operator_and$new, self$else_apply)
-          }else{
+          }else if(length(self$else_apply)==1){
             self$else_apply[[1]]
+          }else{
+            NULL
           }
-          rep = logical_rule$validate(value, row)
+          if(!is.null(logical_rule)) rep = logical_rule$validate(value, row)
         }
       }
       return(rep)
