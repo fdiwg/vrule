@@ -350,8 +350,8 @@ format_spec = R6Class("format_spec",
                   }
                 }
             }
-            }") 
-      
+            }")
+      report = as.data.frame(report)
       report$pair = paste(report$i,report$j,sep="_")
       for(pair in unique(report$pair)){
         cell_rep = report[report$pair == pair,]
@@ -365,7 +365,7 @@ format_spec = R6Class("format_spec",
     },
     
     #validate_and_display_as_handsontable
-    validate_and_display_as_handsontable = function(data, parallel = parallel,
+    validate_and_display_as_handsontable = function(data, parallel = FALSE,
                                                     read_only = TRUE, use_css_classes = FALSE, ...){
       
       report = self$validate(data = data, parallel = parallel, ...)
