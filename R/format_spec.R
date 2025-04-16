@@ -9,12 +9,14 @@ format_spec = R6Class("format_spec",
     name = NA,
     urn = NA,
     title = NA,
+    type = NA,
     column_specs = list(),
     initialize = function(json = NULL){
       if(!is.null(json)){
         self$name = json$name
         self$urn = json$urn
         self$title = json$title
+        self$type = if(!is.null(json$type)) json$type else "default"
         #column_specs
         self$column_specs = lapply(json$column_specs, function(json_column_spec){
           column_spec = column_spec$new(json = json_column_spec)
@@ -36,6 +38,11 @@ format_spec = R6Class("format_spec",
     #setTitle
     setTitle = function(title){
       self$title = title
+    },
+    
+    #setType
+    setType = function(type){
+      self$type = type
     },
     
     #addColumnSpec
@@ -145,6 +152,39 @@ format_spec = R6Class("format_spec",
       
     },
     
+    #validateSeries
+    validateSeries = function(data){
+      dup_report = NULL
+      if(tibble::is_tibble(data)){
+        data = as.data.frame(data)
+      }
+      
+      column_specs <- lapply(colnames(data), self$getColumnSpec)
+      null_column_specs <- sapply(column_specs, is.null)
+
+      if(length(null_column_specs)>0){
+        #ensure we ignore columns not part of the part (no column_spec)
+        data = data[which(!null_column_specs)]
+        #ensure we retain only non null column specs
+        column_specs = column_specs[!null_column_specs]
+      }
+      
+      dimension_specs = column_specs[sapply(column_specs, function(x){x$dimension})]
+      dimensions = sapply(dimension_specs, function(x){x$name})
+      dup_idx = duplicated(data[,dimensions])
+      if(any(dup_idx)){
+        dup_report = do.call(data.table::rbindlist, lapply(which(dup_idx), function(idx){
+          data.table::data.table(
+            i = idx, j = 1:ncol(data), row = paste("Row",idx), 
+            col = colnames(data), col_alias = NA,
+            category = "Duplicates", rule = "Duplicate series",
+            type = "ERROR", message = sprintf("Duplicate series for dimensions [%s]", paste(dimensions, collapse=","))
+          )
+        }))
+      }
+      return(dup_report)
+    },
+    
     #validateContent
     validateContent = function(data, parallel = FALSE, ...){
       if(tibble::is_tibble(data)){
@@ -153,7 +193,6 @@ format_spec = R6Class("format_spec",
       
       column_specs <- lapply(colnames(data), self$getColumnSpec)
       null_column_specs <- sapply(column_specs, is.null)
-      
       
       if(length(null_column_specs)>0){
         #ensure we ignore columns not part of the part (no column_spec)
@@ -177,7 +216,6 @@ format_spec = R6Class("format_spec",
           category = rep$report$category, rule = rep$report$rule,
           type = rep$report$type, message = rep$report$message
         ))
-
       }
       
       content_report <- if(parallel){
@@ -220,6 +258,14 @@ format_spec = R6Class("format_spec",
           }))
         }))
       }
+      
+      #3. check duplicates
+      if(self$type == "series"){
+        series_report = self$validateSeries(data = data)
+        if(nrow(series_report)>0){
+          content_report = rbind(content_report, series_report) 
+        }
+      }
 
       return(content_report)
       
@@ -241,9 +287,6 @@ format_spec = R6Class("format_spec",
       #2. check content
       content_report = self$validateContent(data = data, parallel = parallel, ...)
       
-      #3. check duplicates
-      #TODO
-      
       report = rbind(structure_report, content_report)
       return(report)
     }, 
@@ -256,9 +299,8 @@ format_spec = R6Class("format_spec",
       cols_with_warning <- c()
       report_with_warning <- report[report$type == "WARNING",]
       if(nrow(report_with_warning)>0){
-        report_with_warning <- unique(report_with_warning[,c("row", "col")])
-        report_with_warning$row <- sapply(report_with_warning$row, function(x){as.integer(gsub("Row ", "", x))})
-        report_with_warning$col <- sapply(report_with_warning$col, function(x){which(colnames(data)==x)})
+        report_with_warning <- unique(report_with_warning[,c("i", "j")])
+        colnames(report_with_warning) <- c("row", "col")
         row.names(report_with_warning) <- NULL
         report_with_warning <- as.matrix(report_with_warning)
         rows_with_warning <- report_with_warning[,1]
@@ -269,9 +311,8 @@ format_spec = R6Class("format_spec",
       cols_with_error <- c()
       report_with_error <- report[report$type == "ERROR",]
       if(nrow(report_with_error)>0){
-        report_with_error <- unique(report_with_error[,c("row", "col")])
-        report_with_error$row <- sapply(report_with_error$row, function(x){as.integer(gsub("Row ", "", x))})
-        report_with_error$col <- sapply(report_with_error$col, function(x){which(colnames(data)==x)})
+        report_with_error <- unique(report_with_error[,c("i", "j")])
+        colnames(report_with_error) <- c("row", "col")
         row.names(report_with_error) <- NULL
         report_with_error <- as.matrix(report_with_error)
         rows_with_error <- report_with_error[,1]

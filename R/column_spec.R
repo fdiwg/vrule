@@ -7,6 +7,7 @@ column_spec <- R6Class("column_spec",
    public = list(
      name = NA,
      urn = NA,
+     dimension = FALSE,
      aliases = list(),
      required = TRUE,
      rules = list(),
@@ -14,6 +15,7 @@ column_spec <- R6Class("column_spec",
        if(!is.null(json)){
          self$name = json$name
          self$urn = json$urn
+         self$dimension = if(!is.null(json$dimension)) json$dimension else FALSE
          if(!is.null(json$aliases)) self$aliases = json$aliases
          if(!is.null(json$required)) self$required = json$required
          #rules
@@ -31,6 +33,11 @@ column_spec <- R6Class("column_spec",
      #setURN
      setURN = function(urn){
        self$urn = urn
+     },
+     
+     #isDimension
+     isDimension = function(isDimension){
+       self$dimension = isDimension
      },
      
      #setAliases
