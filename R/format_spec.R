@@ -173,7 +173,7 @@ format_spec = R6Class("format_spec",
       dimensions = sapply(dimension_specs, function(x){x$name})
       dup_idx = duplicated(data[,dimensions])
       if(any(dup_idx)){
-        dup_report = do.call(data.table::rbindlist, lapply(which(dup_idx), function(idx){
+        dup_report = do.call("rbind", lapply(which(dup_idx), function(idx){
           data.table::data.table(
             i = idx, j = 1:ncol(data), row = paste("Row",idx), 
             col = colnames(data), col_alias = NA,
