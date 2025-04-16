@@ -262,7 +262,7 @@ format_spec = R6Class("format_spec",
       #3. check duplicates
       if(self$type == "series"){
         series_report = self$validateSeries(data = data)
-        if(nrow(series_report)>0){
+        if(!is.null(series_report)){
           content_report = rbind(content_report, series_report) 
         }
       }
