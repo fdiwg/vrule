@@ -59,14 +59,36 @@ column_spec <- R6Class("column_spec",
      },
      
      #validate
-     validate = function(value, row){
+     validate = function(values, rows){
        if(length(self$rules)>0){
          the_rule = if(length(self$rules)>1){
            do.call(vrule_operator_and$new, self$rules)
          }else{
            self$rules[[1]]
          }
-         return(the_rule$validate(value, row))
+         out = NULL
+         if(length(values)==1){
+           out = the_rule$validate(values, rows) 
+         }else{
+           j = which(names(rows) == self$name)
+           #vectorized form
+           report =  do.call("rbind", lapply(1:length(values), function(i){
+             rep = the_rule$validate(value = values[[i]], row = rows[i,])
+             if(nrow(rep$report)==0) return(NULL)
+             ii = as.integer(row.names(rows[i,]))
+             cbind(
+               i = ii, j = j,
+               row = paste("Row",ii),
+               col = self$name, col_alias = NA,
+               rep$report
+             )
+           }))
+           out = vrule_report$new(
+             valid = !any(report$type == "ERROR"),
+             report = report
+           )
+         }
+         return(out)
        }else{
          return(vrule_report$new())
        }

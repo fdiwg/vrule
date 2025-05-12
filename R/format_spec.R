@@ -186,7 +186,8 @@ format_spec = R6Class("format_spec",
     },
     
     #validateContent
-    validateContent = function(data, parallel = FALSE, ...){
+    validateContent = function(data, mode = c("column","pair"), parallel = FALSE, ...){
+      mode = match.arg(mode)
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
@@ -201,8 +202,9 @@ format_spec = R6Class("format_spec",
         column_specs = column_specs[!null_column_specs]
       }
 
+      #validatePair
       validatePair = function(i,j, data, column_specs){
-        rep = column_specs[[j]]$validate(value = data[i,j], row = data[i,])
+        rep = column_specs[[j]]$validate(values = data[i,j], rows = data[i,])
         if(nrow(rep$report)==0) return(data.table::data.table(
           i = integer(0), j = integer(0), row = character(0), 
           col = character(0), col_alias = character(0),
@@ -218,6 +220,23 @@ format_spec = R6Class("format_spec",
         ))
       }
       
+      #validateColumn
+      validateColumn = function(x, column, spec) {
+        rep <- spec$validate(values = column, rows = x)
+        if (nrow(rep$report) == 0) {
+          return(data.table::data.table(
+            i = integer(0), j = integer(0), row = character(0), 
+            col = character(0), col_alias = character(0),
+            category = character(0), rule = character(0),
+            type = character(0), message = character(0)
+          ))
+        }
+        rep$report$col_alias = sapply(1:nrow(rep$report), function(i){
+          if(colnames(x)[rep$report[i,]$j] %in% column_specs[[rep$report[i,]$j]]$aliases) colnames(x)[rep$report[i,]$j] else NA
+        })
+        return(rep$report)
+      }
+      
       content_report <- if(parallel){
         parallel_handler = NULL
         if(Sys.info()[1] != "Windows"){
@@ -231,32 +250,66 @@ format_spec = R6Class("format_spec",
           validatePair = validatePair,
           mc.cores = getVruleOption("cores")))
         }else{
-          cl <- parallel::makeCluster(min(nrow(data), getVruleOption("cores")))
+          cl_cores = min(nrow(data), getVruleOption("cores"))
+          cl <- parallel::makeCluster(spec = cl_cores)
           parallel::clusterEvalQ(cl, library("vrule"))
           parallel::clusterEvalQ(cl, library("data.table"))
           parallel::clusterExport(cl, varlist= "data")
-          out = data.table::rbindlist(
-            parallel::parLapply(
-              cl = cl, 1:nrow(data), 
-              fun = function(i, data, column_specs, validatePair){
-                data.table::rbindlist(lapply(1:ncol(data), function(j){
-                  validatePair(i, j, data, column_specs)
-                }))
-              },
-              data = data,
-              column_specs = column_specs,
-              validatePair = validatePair
-            )
+          
+          out = switch(mode,
+            "pair" = {
+              data.table::rbindlist(
+                parallel::parLapply(
+                  cl = cl, 1:nrow(data), 
+                  fun = function(i, data, column_specs, validatePair){
+                    data.table::rbindlist(lapply(1:ncol(data), function(j){
+                      validatePair(i, j, data, column_specs)
+                    }))
+                  },
+                  data = data,
+                  column_specs = column_specs,
+                  validatePair = validatePair
+                )
+              )
+            },
+            "column" = {
+              chunk_size <- ceiling(nrow(data) / cl_cores)
+              chunks <- split(data, ceiling(seq_len(nrow(data)) / chunk_size))
+              data.table::rbindlist(
+                parallel::parLapply(
+                  cl = cl, 1:length(chunks), 
+                  fun = function(i, chunks, column_specs, validateColumn){
+                    outcol = data.table::rbindlist(lapply(1:ncol(chunks[[i]]), function(j){
+                      validateColumn(x = chunks[[i]], column = chunks[[i]][[j]], spec = column_specs[[j]])
+                    }))
+                    data.table::setorder(outcol, i, j)
+                    outcol
+                  },
+                  chunks = chunks,
+                  column_specs = column_specs,
+                  validateColumn = validateColumn
+                )
+              )
+            }
           )
           parallel::stopCluster(cl)
           out
         }
       }else{
-        data.table::rbindlist(lapply(1:nrow(data), function(i){
-          data.table::rbindlist(lapply(1:ncol(data), function(j){
-            validatePair(i, j, data, column_specs)
-          }))
-        }))
+        switch(mode,
+          "pair"= data.table::rbindlist(lapply(1:nrow(data), function(i){
+            data.table::rbindlist(lapply(1:ncol(data), function(j){
+              validatePair(i, j, data, column_specs)
+            }))
+          })),
+          "column" = {
+            out = data.table::rbindlist(lapply(1:ncol(data), function(j) {
+              validateColumn(x = data, column = data[[j]], spec = column_specs[[j]])
+            }))
+            data.table::setorder(out, i, j)
+            out
+          }
+        )
       }
       
       #3. check duplicates
@@ -272,7 +325,9 @@ format_spec = R6Class("format_spec",
     },
     
     #validate
-    validate = function(data, parallel = FALSE, ...){
+    validate = function(data, mode = c("column","pair"), parallel = FALSE, ...){
+      mode = match.arg(mode)
+      
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
       }
@@ -285,7 +340,7 @@ format_spec = R6Class("format_spec",
       }
       
       #2. check content
-      content_report = self$validateContent(data = data, parallel = parallel, ...)
+      content_report = self$validateContent(data = data, mode = mode, parallel = parallel, ...)
       
       report = rbind(structure_report, content_report)
       return(report)
