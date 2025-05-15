@@ -528,6 +528,40 @@ format_spec = R6Class("format_spec",
         row.names(data)<-1:nrow(data)
       }
       return(data)
+    },
+    
+    #createTemplate
+    createTemplate = function(use_aliases=FALSE,dir=getwd()){
+      original_dir <- getwd()
+      setwd(dir)
+      col_names<-unlist(lapply(self$column_specs, function(col) {
+        col_name<-col$name
+        if(use_aliases)col_name<-unlist(col$aliases)[[1]]
+        return(col_name)
+      }))
+      
+      data_template <- setNames(data.frame(matrix(ncol = length(col_names), nrow = 0)), col_names)
+      data_file<-file.path(dir,sprintf("template_%s.csv",self$name))
+      write.csv(data_template,data_file,row.names = FALSE)
+      
+      list_files <- unlist(lapply(self$column_specs, function(col) {
+        if (col$hasCodelist()) {
+          unlist(lapply(col$rules, function(rule) {
+            if (!is.null(rule$ref_data)) {
+              file_name <- file.path(dir,basename(rule$ref_data_url))
+              write.csv(rule$ref_data, file_name, row.names = FALSE)
+              return(file_name)
+            }
+            return(NULL)
+          }))
+        }
+      }))
+      list_files<-c(data_file,list_files)
+      zipfile_name <- file.path(dir,sprintf("template_%s.zip",self$name))
+      zip(zipfile_name, files = basename(list_files))
+      file.remove(list_files)
+      setwd(original_dir)
+      return(zipfile_name)
     }
   )
 )
