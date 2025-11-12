@@ -452,7 +452,7 @@ format_spec = R6Class("format_spec",
       for(pair in unique(report$pair)){
         cell_rep = report[report$pair == pair,]
         cell_report <- paste0(sapply(1:nrow(cell_rep), function(idx){
-          paste0("- ", cell_rep[idx, "type"], ": ", cell_rep[idx, "message"])
+          paste0("- ", stringr::str_to_sentence(cell_rep[idx, "type"]), ": ", cell_rep[idx, "message"])
         }), collapse="\n")
         out_tbl <- out_tbl %>%
           hot_cell(cell_rep[1L,"i"], cell_rep[1L,"j"], comment = cell_report)

@@ -13,6 +13,7 @@ vrule_operator_binary <- R6Class("vrule_operator_binary",
     operator = NA,
     expr = NA,
     initialize = function(operator, expr, ...){
+      super$initialize(...)
       self$operator = operator
       self$expr = expr
     },
@@ -23,7 +24,7 @@ vrule_operator_binary <- R6Class("vrule_operator_binary",
       op_expr = sprintf("value %s expr_value", self$operator)
       cond = eval(parse(text = op_expr))
       if(is.na(cond)){
-        rep_type = "ERROR"
+        rep_type = self$getType()
         rep_msg = ""
         if(is.na(value) & is.na(expr_value)){
           rep_msg = sprintf("Source and target values are NA. Cannot compare each other with operator %s", self$operator) 
@@ -48,7 +49,7 @@ vrule_operator_binary <- R6Class("vrule_operator_binary",
           valid = FALSE,
           category = self$getCategory(),
           rule = self$getName(),
-          type = "ERROR",
+          type = self$getType(),
           message = sprintf("Source value %s is not %s %s", value, self$operator, self$expr)
         )
       }

@@ -10,10 +10,11 @@ vrule_datatype <- R6Class("vrule_datatype",
     name = "Data type"
   ),
   public = list(
-    type = NA,
+    datatype = NA,
     na_allowed = FALSE,
-    initialize = function(type, na_allowed = FALSE, ...){
-      self$type = type
+    initialize = function(datatype, na_allowed = FALSE, ...){
+      super$initialize(...)
+      self$datatype = datatype
       self$na_allowed = na_allowed
     },
     
@@ -21,17 +22,17 @@ vrule_datatype <- R6Class("vrule_datatype",
       rep <- super$validate(value, ...)
       if(self$na_allowed & is.na(value)) return(rep)
       
-      val = suppressWarnings(as(value, self$type))
+      val = suppressWarnings(as(value, self$datatype))
       if(is.na(val)){
         rep <- create_vrule_report(
           valid = FALSE,
           category = self$getCategory(),
           rule = self$getName(),
-          type = "ERROR",
-          message = sprintf("Value %s is not %s", value, self$type)
+          type = self$getType(),
+          message = sprintf("Value %s is not %s", value, self$datatype)
         )
       }else{
-        if(!is.na(val)) if(self$type != "logical") {
+        if(!is.na(val)) if(self$datatype != "logical") {
           sci_regexpr <- "^(-?(\\d+\\.)?\\d+)[eE]([+-]?)(\\d+)$"
           checked = if(grepl(sci_regexpr, value)) FALSE else (value != val)
           if(checked){
@@ -39,8 +40,8 @@ vrule_datatype <- R6Class("vrule_datatype",
               valid = FALSE,
               category = self$getCategory(),
               rule = self$getName(),
-              type = "ERROR",
-              message = sprintf("Source value %s is not equal to value (%s) after coercing to type '%s'", value, val, self$type)
+              type = self$getType(),
+              message = sprintf("Source value %s is not equal to value (%s) after coercing to data type '%s'", value, val, self$datatype)
             )
           }
         }
@@ -63,7 +64,7 @@ vrule_numeric <- R6Class("vrule_numeric",
    ),
    public = list(
      initialize = function(na_allowed = FALSE, ...){
-       super$initialize(type = "numeric", na_allowed = na_allowed)
+       super$initialize(datatype = "numeric", na_allowed = na_allowed, ...)
      }
    )
 )
@@ -81,7 +82,7 @@ vrule_integer <- R6Class("vrule_integer",
    ),
    public = list(
      initialize = function(na_allowed = FALSE, ...){
-       super$initialize(type = "integer", na_allowed = na_allowed)
+       super$initialize(datatype = "integer", na_allowed = na_allowed, ...)
      },
      
      validate = function(value, ...){
@@ -103,7 +104,7 @@ vrule_double <- R6Class("vrule_double",
   ),
   public = list(
     initialize = function(na_allowed = FALSE, ...){
-      super$initialize(type = "double", na_allowed = na_allowed)
+      super$initialize(datatype = "double", na_allowed = na_allowed, ...)
     },
     
     validate = function(value, ...){
@@ -125,7 +126,7 @@ vrule_logical <- R6Class("vrule_logical",
    ),
    public = list(
      initialize = function(na_allowed = FALSE, ...){
-       super$initialize(type = "logical", na_allowed = na_allowed)
+       super$initialize(datatype = "logical", na_allowed = na_allowed, ...)
      },
      
      validate = function(value, ...){
@@ -147,7 +148,7 @@ vrule_character <- R6Class("vrule_character",
                          ),
                          public = list(
                            initialize = function(na_allowed = FALSE, ...){
-                             super$initialize(type = "character", na_allowed = na_allowed)
+                             super$initialize(datatype = "character", na_allowed = na_allowed, ...)
                            }
                          )
 )

@@ -13,7 +13,8 @@ vrule_if <- R6Class("vrule_if",
     if_condition = NA,
     then_apply = list(),
     else_apply = list(),
-    initialize = function(if_condition, then_apply = list(), else_apply = list()){
+    initialize = function(if_condition, then_apply = list(), else_apply = list(), ...){
+      super$initialize(...)
       self$if_condition = if_condition
       self$then_apply = then_apply
       self$else_apply = else_apply
@@ -26,14 +27,14 @@ vrule_if <- R6Class("vrule_if",
       if(is.logical(expr)){
         if(isTRUE(expr)){
           logical_rule = if(length(self$then_apply)>1){
-            do.call(vrule_operator_and$new, self$then_apply)
+            do.call(vrule_operator_and$new, c(self$then_apply, type = self$getType()))
           }else{
             self$then_apply[[1]]
           }
           rep = logical_rule$validate(value, row)
         }else{
           logical_rule = if(length(self$else_apply)>1){
-            do.call(vrule_operator_and$new, self$else_apply)
+            do.call(vrule_operator_and$new, c(self$else_apply, type = self$getType()))
           }else if(length(self$else_apply)==1){
             self$else_apply[[1]]
           }else{

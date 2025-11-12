@@ -11,7 +11,7 @@ vrule_year <- R6Class("vrule_year",
   ),
   public = list(
     initialize = function(na_allowed = FALSE, ...){
-      super$initialize(na_allowed = na_allowed)
+      super$initialize(na_allowed = na_allowed, ...)
     },
     validate = function(value, ...){
       rep = super$validate(value, ...)
@@ -21,7 +21,7 @@ vrule_year <- R6Class("vrule_year",
             valid = FALSE,
             category = self$getCategory(),
             rule = self$getName(),
-            type = "ERROR",
+            type = self$getType(),
             message = sprintf("Source value %s is not valid year", value)
           )
         }
@@ -44,7 +44,7 @@ vrule_date <- R6Class("vrule_date",
   ),
   public = list(
     initialize = function(na_allowed = FALSE, ...){
-      super$initialize(na_allowed = na_allowed)
+      super$initialize(na_allowed = na_allowed, ...)
     },
     validate = function(value, ...){
       rep = super$validate(value, ...)
@@ -54,7 +54,7 @@ vrule_date <- R6Class("vrule_date",
             valid = FALSE,
             category = self$getCategory(),
             rule = self$getName(),
-            type = "ERROR",
+            type = self$getType(),
             message = sprintf("Source value %s is not valid date", value)
           )
         }

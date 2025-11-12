@@ -25,14 +25,15 @@ vrule_cross_column <- R6Class("vrule_cross_column",
   public = list(
     operator = NA,
     expr = NA,
-    initialize = function(operator, expr){
+    initialize = function(operator, expr, ...){
+      super$initialize(...)
       self$operator = operator
       self$expr = expr
     },
     
     validate = function(value, row){
       expr = private$eval_crossfield_expr(row = row, expr = self$expr)
-      logical_rule = vrule_operator_binary$new(operator = self$operator, expr = expr)
+      logical_rule = vrule_operator_binary$new(operator = self$operator, expr = expr, type = self$getType())
       logical_rule$validate(value = value, row = row) 
     }
   )

@@ -11,7 +11,8 @@ vrule_raw_codelist <- R6Class("vrule_raw_codelist",
   ),
   public = list(
     ref_values = NULL,
-    initialize = function(ref_values = NULL){
+    initialize = function(ref_values = NULL, ...){
+      super$initialize(...)
       #case of raw values
       self$ref_values = ref_values
     },
@@ -23,7 +24,7 @@ vrule_raw_codelist <- R6Class("vrule_raw_codelist",
           valid = FALSE,
           category = self$getCategory(),
           rule = self$getName(),
-          type = "ERROR",
+          type = self$getType(),
           message = sprintf("Source value %s is not among allowed values [%s]", 
                             value, paste0(self$ref_values, collapse=","))
         )

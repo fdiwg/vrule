@@ -8,6 +8,7 @@ vrule_abstract_complex <- R6Class("vrule_abstract_complex",
   ),
   public = list(
    initialize = function(...){
+     super$initialize(...)
    },
    validate = function(value, ...){
      super$validate(value, ...)

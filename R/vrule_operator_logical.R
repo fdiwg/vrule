@@ -14,7 +14,7 @@ vrule_operator_logical <- R6Class("vrule_operator_logical",
     operator_fun = NA,
     rules = list(),
     initialize = function(operator, ...){
-      super$initialize(operator, expr = NULL)
+      super$initialize(operator, expr = NULL, ...)
       if(!operator %in% private$operators){
         stop(sprintf("Invalid logical operator '%s'. Value should be among values [%s]",
                      operator, paste0(private$operators, collapse=",")))

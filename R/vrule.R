@@ -8,6 +8,7 @@
 #' @import jsonlite
 #' @import readr
 #' @import rhandsontable
+#' @importFrom string str_to_sentence
 #' @importFrom data.table rbindlist
 #' @import parallel
 #'

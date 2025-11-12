@@ -20,7 +20,8 @@ vrule_codelist <- R6Class("vrule_codelist",
     initialize = function(ref_data_url = NULL, 
                           ref_data_column = "code", ref_data_column_alt = "label",
                           allow_labels = FALSE,
-                          ref_meta_url = NULL){
+                          ref_meta_url = NULL, ...){
+      super$initialize(...)
       #case of codelist url
       if(!is.null(ref_data_url)){
         self$ref_data_url = ref_data_url
@@ -58,7 +59,7 @@ vrule_codelist <- R6Class("vrule_codelist",
           valid = FALSE,
           category = self$getCategory(),
           rule = self$getName(),
-          type = "ERROR",
+          type = self$getType(),
           message = sprintf("Source value '%s' does not match any code in codelist '%s'", 
                               value, self$ref_data_url)
         )

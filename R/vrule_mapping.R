@@ -21,7 +21,8 @@ vrule_mapping <- R6Class("vrule_mapping",
                           ref_source_term = NULL,
                           ref_target_term = NULL,
                           data_target_term = NULL,
-                          ref_meta_url = NULL){
+                          ref_meta_url = NULL, ...){
+      super$initialize(...)
       #case of mapping url
       if(!is.null(ref_data_url)){
         self$ref_data_url = ref_data_url
@@ -68,7 +69,7 @@ vrule_mapping <- R6Class("vrule_mapping",
           valid = FALSE,
           category = self$getCategory(),
           rule = self$getName(),
-          type = "ERROR",
+          type = self$getType(),
           message = sprintf("Source %s '%s' and target %s '%s' are not mapped in '%s'", 
                             self$ref_source_term, value, 
                             self$ref_target_term, target,

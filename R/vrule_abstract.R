@@ -2,16 +2,25 @@
 #'@export
 vrule_abstract <- R6Class("vrule_abstract",
   private = list(
+    type = "ERROR",
     category = NA,
     name = NA
   ),
   public = list(
-    initialize = function(...){
+    initialize = function(..., type = "ERROR"){
+      if(!type %in% c("ERROR", "WARNING")){
+        stop("Rule type should among values [ERROR, WARNING]")
+      }
+      private$type = type
     },
     
     validate = function(value, ...){
       empty_rep = vrule_report$new()
       return(empty_rep)
+    },
+    
+    getType = function(){
+      return(private$type)
     },
     
     getCategory = function(){

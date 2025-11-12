@@ -16,11 +16,11 @@ vrule_operator_relational <- R6Class("vrule_operator_relational",
         stop(sprintf("Invalid relational operator '%s'. Possible values are among values [%s]",
                      operator, paste0(private$operators, collapse=",")))
       }
-      super$initialize(operator = operator, expr = expr)
+      super$initialize(operator = operator, expr = expr, ...)
     },
     
     validate = function(value, ...){
-      nvr = vrule_numeric$new()
+      nvr = vrule_numeric$new(type = self$Type())
       rep = nvr$validate(value)
       if(nrow(rep$report)==0){
         rep = super$validate(value)
@@ -38,8 +38,8 @@ vrule_operator_relational <- R6Class("vrule_operator_relational",
 vrule_threshold <- R6Class("vrule_threshold",
  inherit = vrule_operator_relational,
  public = list(
-   initialize = function(operator, threshold){
-     super$initialize(operator = operator, expr = threshold)
+   initialize = function(operator, threshold, ...){
+     super$initialize(operator = operator, expr = threshold, ...)
    },
    
    validate = function(value, ...){
@@ -56,8 +56,8 @@ vrule_threshold <- R6Class("vrule_threshold",
 vrule_date_threshold <- R6Class("vrule_date_threshold",
                            inherit = vrule_operator_relational,
                            public = list(
-                             initialize = function(operator, threshold){
-                               super$initialize(operator = operator, expr = as.Date(threshold))
+                             initialize = function(operator, threshold, ...){
+                               super$initialize(operator = operator, expr = as.Date(threshold), ...)
                              },
                              
                              validate = function(value, ...){
@@ -74,8 +74,8 @@ vrule_date_threshold <- R6Class("vrule_date_threshold",
 vrule_min <- R6Class("vrule_min",
    inherit = vrule_operator_relational,
    public = list(
-     initialize = function(minValue){
-       super$initialize(operator = ">=", expr = minValue)
+     initialize = function(minValue, ...){
+       super$initialize(operator = ">=", expr = minValue, ...)
      },
      
      validate = function(value, ...){
@@ -92,8 +92,8 @@ vrule_min <- R6Class("vrule_min",
 vrule_date_min <- R6Class("vrule_date_min",
                      inherit = vrule_operator_relational,
                      public = list(
-                       initialize = function(minValue){
-                         super$initialize(operator = ">=", expr = as.Date(minValue))
+                       initialize = function(minValue, ...){
+                         super$initialize(operator = ">=", expr = as.Date(minValue), ...)
                        },
                        
                        validate = function(value, ...){
@@ -110,8 +110,8 @@ vrule_date_min <- R6Class("vrule_date_min",
 vrule_max <- R6Class("vrule_max",
    inherit = vrule_operator_relational,
    public = list(
-     initialize = function(maxValue){
-       super$initialize(operator = "<=", expr = maxValue)
+     initialize = function(maxValue, ...){
+       super$initialize(operator = "<=", expr = maxValue, ...)
      },
      
      validate = function(value, ...){
@@ -128,8 +128,8 @@ vrule_max <- R6Class("vrule_max",
 vrule_date_max <- R6Class("vrule_date_max",
                      inherit = vrule_operator_relational,
                      public = list(
-                       initialize = function(maxValue){
-                         super$initialize(operator = "<=", expr = as.Date(maxValue))
+                       initialize = function(maxValue, ...){
+                         super$initialize(operator = "<=", expr = as.Date(maxValue), ...)
                        },
                        
                        validate = function(value, ...){
@@ -148,15 +148,17 @@ vrule_range <- R6Class("vrule_range",
                        public = list(
                          minValue = NA,
                          maxValue = NA,
-                         initialize = function(minValue, maxValue){
+                         initialize = function(minValue, maxValue, ...){
+                           super$initialize(...)
                            self$minValue = minValue
                            self$maxValue = maxValue
                          },
                          
                          validate = function(value, ...){
                            range_rule = vrule_operator_and$new(
-                             vrule_min$new(minValue = self$minValue),
-                             vrule_max$new(maxValue = self$maxValue)
+                             vrule_min$new(minValue = self$minValue, type = self$getType()),
+                             vrule_max$new(maxValue = self$maxValue, type = self$getType()),
+                             type = self$getType()
                            )
                            report = range_rule$validate(value, ...)
                            return(report)
@@ -176,15 +178,17 @@ vrule_date_range <- R6Class("vrule_date_range",
    public = list(
      minValue = NA,
      maxValue = NA,
-     initialize = function(minValue, maxValue){
+     initialize = function(minValue, maxValue, ...){
+        super$initialize(...)
         self$minValue = as.Date(minValue)
         self$maxValue = as.Date(maxValue)
      },
      
      validate = function(value, ...){
        range_rule = vrule_operator_and$new(
-         vrule_min$new(minValue = self$minValue),
-         vrule_max$new(maxValue = self$maxValue)
+         vrule_min$new(minValue = self$minValue, type = self$getType()),
+         vrule_max$new(maxValue = self$maxValue, type = self$getType()),
+         type = self$getType()
        )
        report = range_rule$validate(as.Date(value), ...)
        return(report)
