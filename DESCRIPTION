@@ -11,6 +11,6 @@ Imports: R6, jsonlite, readr, stringi, stringr, rhandsontable, data.table, paral
 Suggests: testthat
 Description: Provides tools to validate data based on business validation rules
 License: MIT + file LICENSE
-URL: https://github.com/fdiwg/vrule
+URL: https://github.com/fdiwg/vrule, https://fdiwg.github.io/vrule/
 BugReports: https://github.com/fdiwg/vrule/issues
 RoxygenNote: 7.3.1
