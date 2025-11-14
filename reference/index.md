@@ -1,0 +1,73 @@
+# Package index
+
+## All functions
+
+- [`column_spec`](https://fdiwg.github.io/vrule/reference/column_spec.md)
+  : column_spec
+- [`create_vrule_report()`](https://fdiwg.github.io/vrule/reference/create_vrule_report.md)
+  : create_vrule_report
+- [`decodeVrules()`](https://fdiwg.github.io/vrule/reference/decodeVrules.md)
+  : decodeVrules
+- [`format_spec`](https://fdiwg.github.io/vrule/reference/format_spec.md)
+  : format_spec
+- [`getClassesInheriting()`](https://fdiwg.github.io/vrule/reference/getClassesInheriting.md)
+  : getClassesInheriting
+- [`getVruleClasses()`](https://fdiwg.github.io/vrule/reference/getVruleClasses.md)
+  : getVruleClasses
+- [`vrule`](https://fdiwg.github.io/vrule/reference/vrule.md)
+  [`vrule-package`](https://fdiwg.github.io/vrule/reference/vrule.md) :
+  Tools to validate data based on business validation rules
+- [`vrule_character`](https://fdiwg.github.io/vrule/reference/vrule_character.md)
+  : vrule_character
+- [`vrule_codelist`](https://fdiwg.github.io/vrule/reference/vrule_codelist.md)
+  : vrule_codelist
+- [`vrule_cross_column`](https://fdiwg.github.io/vrule/reference/vrule_cross_column.md)
+  : vrule_cross_column
+- [`vrule_datatype`](https://fdiwg.github.io/vrule/reference/vrule_datatype.md)
+  : vrule_datatype
+- [`vrule_date`](https://fdiwg.github.io/vrule/reference/vrule_date.md)
+  : vrule_date
+- [`vrule_date_max`](https://fdiwg.github.io/vrule/reference/vrule_date_max.md)
+  : vrule_date_max
+- [`vrule_date_min`](https://fdiwg.github.io/vrule/reference/vrule_date_min.md)
+  : vrule_date_min
+- [`vrule_date_range`](https://fdiwg.github.io/vrule/reference/vrule_date_range.md)
+  : vrule_date_range
+- [`vrule_date_threshold`](https://fdiwg.github.io/vrule/reference/vrule_date_threshold.md)
+  : vrule_date_threshold
+- [`vrule_double`](https://fdiwg.github.io/vrule/reference/vrule_double.md)
+  : vrule_double
+- [`vrule_if`](https://fdiwg.github.io/vrule/reference/vrule_if.md) :
+  vrule_if
+- [`vrule_integer`](https://fdiwg.github.io/vrule/reference/vrule_integer.md)
+  : vrule_integer
+- [`vrule_logical`](https://fdiwg.github.io/vrule/reference/vrule_logical.md)
+  : vrule_logical
+- [`vrule_mapping`](https://fdiwg.github.io/vrule/reference/vrule_mapping.md)
+  : vrule_mapping
+- [`vrule_max`](https://fdiwg.github.io/vrule/reference/vrule_max.md) :
+  vrule_max
+- [`vrule_min`](https://fdiwg.github.io/vrule/reference/vrule_min.md) :
+  vrule_min
+- [`vrule_numeric`](https://fdiwg.github.io/vrule/reference/vrule_numeric.md)
+  : vrule_numeric
+- [`vrule_operator_and`](https://fdiwg.github.io/vrule/reference/vrule_operator_and.md)
+  : vrule_operator_and
+- [`vrule_operator_binary`](https://fdiwg.github.io/vrule/reference/vrule_operator_binary.md)
+  : vrule_operator_binary
+- [`vrule_operator_logical`](https://fdiwg.github.io/vrule/reference/vrule_operator_logical.md)
+  : vrule_operator_logical
+- [`vrule_operator_or`](https://fdiwg.github.io/vrule/reference/vrule_operator_or.md)
+  : vrule_operator_or
+- [`vrule_operator_relational`](https://fdiwg.github.io/vrule/reference/vrule_operator_relational.md)
+  : vrule_operator_relational
+- [`vrule_range`](https://fdiwg.github.io/vrule/reference/vrule_range.md)
+  : vrule_range
+- [`vrule_raw_codelist`](https://fdiwg.github.io/vrule/reference/vrule_raw_codelist.md)
+  : vrule_raw_codelist
+- [`vrule_report`](https://fdiwg.github.io/vrule/reference/vrule_report.md)
+  : vrule_report
+- [`vrule_threshold`](https://fdiwg.github.io/vrule/reference/vrule_threshold.md)
+  : vrule_threshold
+- [`vrule_year`](https://fdiwg.github.io/vrule/reference/vrule_year.md)
+  : vrule_year
