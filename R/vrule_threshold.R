@@ -20,7 +20,7 @@ vrule_operator_relational <- R6Class("vrule_operator_relational",
     },
     
     validate = function(value, ...){
-      nvr = vrule_numeric$new(type = self$Type())
+      nvr = vrule_numeric$new(type = self$getType())
       rep = nvr$validate(value)
       if(nrow(rep$report)==0){
         rep = super$validate(value)
