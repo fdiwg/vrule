@@ -14,13 +14,13 @@ Source:
 [`DESCRIPTION`](https://github.com/fdiwg/vrule/blob/main/DESCRIPTION)
 
 Blondel E, Bennici A (2025). *vrule: Tools to validate data based on
-business validation rules*. R package version 0.1.20251113,
+business validation rules*. R package version 0.1.20251222,
 <https://github.com/fdiwg/vrule>.
 
     @Manual{,
       title = {vrule: Tools to validate data based on business validation rules},
       author = {Emmanuel Blondel and Alexandre Bennici},
       year = {2025},
-      note = {R package version 0.1.20251113},
+      note = {R package version 0.1.20251222},
       url = {https://github.com/fdiwg/vrule},
     }
