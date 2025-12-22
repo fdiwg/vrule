@@ -1,6 +1,6 @@
 Package: vrule
-Version: 0.1.20251113
-Date: 2025-11-13
+Version: 0.1.20251222
+Date: 2025-12-22
 Title: Tools to validate data based on business validation rules
 Authors@R: c(
   person("Emmanuel", "Blondel", role = c("aut", "cre"), email = "emmanuel.blondel@fao.org", comment = c(ORCID = "0000-0002-5870-5762")),
