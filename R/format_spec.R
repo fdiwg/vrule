@@ -340,6 +340,10 @@ format_spec = R6Class("format_spec",
       }
       
       #2. check content
+      if(nrow(data)==0){
+        #we skip content validation
+        return(structure_report)
+      }
       content_report = self$validateContent(data = data, mode = mode, parallel = parallel, ...)
       
       report = rbind(structure_report, content_report)
