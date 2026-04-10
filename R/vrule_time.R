@@ -31,7 +31,7 @@ vrule_year <- R6Class("vrule_year",
   )
 )
 
-#' vrule_month
+#' vrule_month (allows 1-12 or 01-12) could include a specifier to only allow one type of format
 #' @name vrule_month
 #' @docType class
 #' @importFrom R6 R6Class
@@ -49,13 +49,46 @@ vrule_month <- R6Class("vrule_month",
     validate = function(value, ...){
       rep = super$validate(value, ...)
       if(nrow(rep$report)==0){
-        if(!is.na(value)) if(regexpr("^(?:[1-9]|1[0-2])$", value) < 0){
+        if(!is.na(value)) if(regexpr("^(?:0?[1-9]|1[0-2])$", value) < 0){
           rep <- create_vrule_report(
             valid = FALSE,
             category = self$getCategory(),
             rule = self$getName(),
             type = self$getType(),
             message = sprintf("Source value %s is not valid month", value)
+          )
+        }
+      }
+      return(rep)
+    }
+  )
+)
+
+#' vrule_day (allows 1-31 or 01-31) could include a specifier to only allow one type of format
+#' @name vrule_day
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_day <- R6Class("vrule_day",
+  inherit = vrule_integer,
+  private = list(
+    category = "Time",
+    name = "day"
+  ),
+  public = list(
+    initialize = function(na_allowed = FALSE, ...){
+      super$initialize(na_allowed = na_allowed, ...)
+    },
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
+      if(nrow(rep$report)==0){
+        if(!is.na(value)) if(regexpr("^(0?[1-9]|[12][0-9]|3[01])$", value) < 0){
+          rep <- create_vrule_report(
+            valid = FALSE,
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = self$getType(),
+            message = sprintf("Source value %s is not valid day", value)
           )
         }
       }
