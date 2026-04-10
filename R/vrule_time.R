@@ -31,6 +31,39 @@ vrule_year <- R6Class("vrule_year",
   )
 )
 
+#' vrule_month
+#' @name vrule_month
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_month <- R6Class("vrule_month",
+  inherit = vrule_integer,
+  private = list(
+    category = "Time",
+    name = "month"
+  ),
+  public = list(
+    initialize = function(na_allowed = FALSE, ...){
+      super$initialize(na_allowed = na_allowed, ...)
+    },
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
+      if(nrow(rep$report)==0){
+        if(!is.na(value)) if(regexpr("^(?:[1-9]|1[0-2])$", value) < 0){
+          rep <- create_vrule_report(
+            valid = FALSE,
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = self$getType(),
+            message = sprintf("Source value %s is not valid month", value)
+          )
+        }
+      }
+      return(rep)
+    }
+  )
+)
+
 #' vrule_date
 #' @name vrule_date
 #' @docType class
