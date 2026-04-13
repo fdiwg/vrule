@@ -130,11 +130,40 @@ vrule_date <- R6Class("vrule_date",
   )
 )
 
-#' vrule_datetime
-#' @name vrule_datetime
+#TODO: make it 
+#' vrule_datetimeUTC 
+#' @name vrule_datetimeUTC
 #' @docType class
 #' @importFrom R6 R6Class
+#TODO: make it month specific, similar to date rule.
 
+vrule_datetimeUTC <- R6Class("vrule_datetimeUTC",
+  inherit = vrule_character,
+  private = list(
+    category = "Time",
+    name = "DateTimeUTC"
+  ),
+  public = list(
+    initialize = function(na_allowed = FALSE, ...){
+      super$initialize(na_allowed = na_allowed, ...)
+    },
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
+      if(nrow(rep$report)==0){
+        if(!is.na(value)) if(regexpr("^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}Z$", value) < 0){
+          rep <- create_vrule_report(
+            valid = FALSE,
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = self$getType(),
+            message = sprintf("Source value %s is not valid date", value)
+          )
+        }
+      }
+      return(rep)
+    }
+  )
+)
 
 #' vrule_timestamp
 #' @name vrule_timestamp
