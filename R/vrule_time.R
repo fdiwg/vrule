@@ -150,7 +150,7 @@ vrule_datetimeUTC <- R6Class("vrule_datetimeUTC",
     validate = function(value, ...){
       rep = super$validate(value, ...)
       if(nrow(rep$report)==0){
-        if(!is.na(value)) if(regexpr("^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}Z$", value) < 0){
+        if(!is.na(value)) if(regexpr("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}Z$", value) < 0){
           rep <- create_vrule_report(
             valid = FALSE,
             category = self$getCategory(),

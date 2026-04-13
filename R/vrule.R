@@ -11,6 +11,7 @@
 #' @importFrom string str_to_sentence
 #' @importFrom data.table rbindlist
 #' @import parallel
+#' @import sf
 #'
 #' @title Tools to validate data based on business validation rules
 #' @description Provides tools to validate data based on business validation rules.
