@@ -66,6 +66,8 @@ vrule_date_threshold <- R6Class("vrule_date_threshold",
                            )
 )
 
+
+#TODO: add na_allowed check
 #' vrule_min
 #' @name vrule_min
 #' @docType class
@@ -102,7 +104,8 @@ vrule_date_min <- R6Class("vrule_date_min",
                      )
 )
 
-#' vrule_max
+#TODO: add na_allowed check
+#' vrule_max 
 #' @name vrule_max
 #' @docType class
 #' @importFrom R6 R6Class
