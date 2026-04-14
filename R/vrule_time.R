@@ -130,7 +130,7 @@ vrule_date <- R6Class("vrule_date",
   )
 )
 
-#TODO: make it 
+#TODO: needs to validate POSIXct format, but this is a start
 #' vrule_datetimeUTC 
 #' @name vrule_datetimeUTC
 #' @docType class

@@ -8,9 +8,9 @@ vrule_lonlat_in_shape <- R6Class(
   inherit = vrule_abstract_complex,
 
   private = list(
-    category = "Space",
-    name = "LonLatInShape",
-    shape = NULL
+    category = "spatial",
+    name = "LonLatInShape"
+    
   ),
 
   public = list(
@@ -18,6 +18,7 @@ vrule_lonlat_in_shape <- R6Class(
     lat_field = NA,
     na_allowed = FALSE,
     crs = 4326,
+    shape = NULL,
 
     initialize = function(shape,
                           lon_field = "long",
@@ -119,7 +120,7 @@ vrule_lonlat_in_shape <- R6Class(
 #' @importFrom R6 R6Class
 #' @export
 vrule_coordinate <- R6::R6Class(
-  "vrule_coordinate",
+  "vrule_coordinates",
   inherit = vrule_numeric,
 
   private = list(
@@ -152,6 +153,14 @@ vrule_coordinate <- R6::R6Class(
             rule = self$getName(),
             type = self$getType(),
             message = sprintf("%s value is missing", self$coordinate_type)
+          )
+        } else if(is.character(value)) {
+          rep <- create_vrule_report(
+            valid = FALSE,
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = self$getType(),
+            message = sprintf("%s value %s is not numeric", value)
           )
         } else if (self$coordinate_type == "latitude") {
           if (value < -90 || value > 90) {
