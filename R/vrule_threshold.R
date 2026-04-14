@@ -144,28 +144,54 @@ vrule_date_max <- R6Class("vrule_date_max",
 #' @importFrom R6 R6Class
 #' @export
 vrule_range <- R6Class("vrule_range",
-                       inherit = vrule_abstract_simple,
-                       public = list(
-                         minValue = NA,
-                         maxValue = NA,
-                         initialize = function(minValue, maxValue, ...){
-                           super$initialize(...)
-                           self$minValue = minValue
-                           self$maxValue = maxValue
-                         },
-                         
-                         validate = function(value, ...){
-                           range_rule = vrule_operator_and$new(
-                             vrule_min$new(minValue = self$minValue, type = self$getType()),
-                             vrule_max$new(maxValue = self$maxValue, type = self$getType()),
-                             type = self$getType()
-                           )
-                           report = range_rule$validate(value, ...)
-                           return(report)
-                         }
-                       )
-)
+  inherit = vrule_abstract_simple,
+  private = list(
+    category = "Numeric",
+    name = "Range"
+  ),
+  public = list(
+    minValue = NA,
+    maxValue = NA,
+    na_allowed = FALSE,
 
+    initialize = function(minValue, maxValue, na_allowed = FALSE, ...){
+      super$initialize(...)
+      self$minValue <- minValue
+      self$maxValue <- maxValue
+      self$na_allowed <- na_allowed
+    },
+
+    validate = function(value, ...){
+      rep <- super$validate(value, ...)
+
+      if (is.na(value)) {
+        if (!self$na_allowed) {
+          return(create_vrule_report(
+            valid = FALSE,
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = self$getType(),
+            message = sprintf(
+              "Source value is missing but NA is not allowed. Expected range: %s to %s",
+              self$minValue,
+              self$maxValue
+            )
+          ))
+        }
+        return(rep)
+      }
+
+      range_rule <- vrule_operator_and$new(
+        vrule_min$new(minValue = self$minValue, type = self$getType()),
+        vrule_max$new(maxValue = self$maxValue, type = self$getType()),
+        type = self$getType()
+      )
+
+      report <- range_rule$validate(value, ...)
+      return(report)
+    }
+  )
+)
 
 
 #' vrule_date_range
