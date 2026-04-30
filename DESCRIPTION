@@ -13,4 +13,4 @@ Description: Provides tools to validate data based on business validation rules
 License: MIT + file LICENSE
 URL: https://github.com/fdiwg/vrule, https://fdiwg.github.io/vrule/
 BugReports: https://github.com/fdiwg/vrule/issues
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.3

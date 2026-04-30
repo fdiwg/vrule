@@ -16,18 +16,21 @@ format_spec
 \item \href{#method-format_spec-setName}{\code{format_spec$setName()}}
 \item \href{#method-format_spec-setURN}{\code{format_spec$setURN()}}
 \item \href{#method-format_spec-setTitle}{\code{format_spec$setTitle()}}
+\item \href{#method-format_spec-setType}{\code{format_spec$setType()}}
 \item \href{#method-format_spec-addColumnSpec}{\code{format_spec$addColumnSpec()}}
 \item \href{#method-format_spec-getColumnSpecByName}{\code{format_spec$getColumnSpecByName()}}
 \item \href{#method-format_spec-getColumnSpecByURN}{\code{format_spec$getColumnSpecByURN()}}
 \item \href{#method-format_spec-getColumnSpecByAlias}{\code{format_spec$getColumnSpecByAlias()}}
 \item \href{#method-format_spec-getColumnSpec}{\code{format_spec$getColumnSpec()}}
 \item \href{#method-format_spec-validateStructure}{\code{format_spec$validateStructure()}}
+\item \href{#method-format_spec-validateSeries}{\code{format_spec$validateSeries()}}
 \item \href{#method-format_spec-validateContent}{\code{format_spec$validateContent()}}
 \item \href{#method-format_spec-validate}{\code{format_spec$validate()}}
 \item \href{#method-format_spec-display_as_handsontable}{\code{format_spec$display_as_handsontable()}}
 \item \href{#method-format_spec-validate_and_display_as_handsontable}{\code{format_spec$validate_and_display_as_handsontable()}}
 \item \href{#method-format_spec-standardizeStructure}{\code{format_spec$standardizeStructure()}}
 \item \href{#method-format_spec-standardizeContent}{\code{format_spec$standardizeContent()}}
+\item \href{#method-format_spec-createTemplate}{\code{format_spec$createTemplate()}}
 \item \href{#method-format_spec-clone}{\code{format_spec$clone()}}
 }
 }
@@ -64,6 +67,15 @@ format_spec
 \subsection{Method \code{setTitle()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$setTitle(title)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-setType"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-setType}{}}}
+\subsection{Method \code{setType()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$setType(type)}\if{html}{\out{</div>}}
 }
 
 }
@@ -122,11 +134,25 @@ format_spec
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-validateSeries"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-validateSeries}{}}}
+\subsection{Method \code{validateSeries()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validateSeries(data)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-validateContent"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-validateContent}{}}}
 \subsection{Method \code{validateContent()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$validateContent(data, parallel = FALSE, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validateContent(
+  data,
+  mode = c("column", "pair"),
+  parallel = FALSE,
+  ...
+)}\if{html}{\out{</div>}}
 }
 
 }
@@ -135,7 +161,7 @@ format_spec
 \if{latex}{\out{\hypertarget{method-format_spec-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$validate(data, parallel = FALSE, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$validate(data, mode = c("column", "pair"), parallel = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
 }
@@ -155,7 +181,7 @@ format_spec
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$validate_and_display_as_handsontable(
   data,
-  parallel = parallel,
+  parallel = FALSE,
   read_only = TRUE,
   use_css_classes = FALSE,
   ...
@@ -178,6 +204,15 @@ format_spec
 \subsection{Method \code{standardizeContent()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$standardizeContent(data)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format_spec-createTemplate"></a>}}
+\if{latex}{\out{\hypertarget{method-format_spec-createTemplate}{}}}
+\subsection{Method \code{createTemplate()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$createTemplate(use_aliases = FALSE, dir = getwd())}\if{html}{\out{</div>}}
 }
 
 }

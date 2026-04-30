@@ -119,7 +119,7 @@ vrule_lonlat_in_shape <- R6Class(
 #' @docType class
 #' @importFrom R6 R6Class
 #' @export
-vrule_coordinate <- R6::R6Class(
+vrule_coordinates <- R6::R6Class(
   "vrule_coordinates",
   inherit = vrule_numeric,
 

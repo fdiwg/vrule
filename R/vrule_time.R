@@ -135,9 +135,10 @@ vrule_date <- R6Class("vrule_date",
 #' @name vrule_datetimeUTC
 #' @docType class
 #' @importFrom R6 R6Class
+#' @export
 #TODO: make it month specific, similar to date rule.
 
-vrule_datetimeUTC <- R6Class("vrule_datetimeUTC",
+vrule_datetimeUTC <- R6Class("vrule_datetimeUTC", 
   inherit = vrule_character,
   private = list(
     category = "Time",

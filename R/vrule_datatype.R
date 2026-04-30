@@ -168,7 +168,7 @@ vrule_logical_like <- R6Class("vrule_logical_like",
   public = list(
     na_allowed = FALSE,
 
-    allowed_values = c("yes", "no", "y", "n", "true", "false", "t", "f", "1", "0"),
+    allowed_values = c("Yes", "No", "yes", "no", "y", "n", "true", "false", "True", "False", "t", "f", "1", "0"),
 
     initialize = function(na_allowed = FALSE,
                           allowed_values = NULL,
