@@ -31,6 +31,72 @@ vrule_year <- R6Class("vrule_year",
   )
 )
 
+#' vrule_month (allows 1-12 or 01-12) could include a specifier to only allow one type of format
+#' @name vrule_month
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_month <- R6Class("vrule_month",
+  inherit = vrule_integer,
+  private = list(
+    category = "Time",
+    name = "month"
+  ),
+  public = list(
+    initialize = function(na_allowed = FALSE, ...){
+      super$initialize(na_allowed = na_allowed, ...)
+    },
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
+      if(nrow(rep$report)==0){
+        if(!is.na(value)) if(regexpr("^(?:0?[1-9]|1[0-2])$", value) < 0){
+          rep <- create_vrule_report(
+            valid = FALSE,
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = self$getType(),
+            message = sprintf("Source value %s is not valid month", value)
+          )
+        }
+      }
+      return(rep)
+    }
+  )
+)
+
+#' vrule_day (allows 1-31 or 01-31) could include a specifier to only allow one type of format
+#' @name vrule_day
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_day <- R6Class("vrule_day",
+  inherit = vrule_integer,
+  private = list(
+    category = "Time",
+    name = "day"
+  ),
+  public = list(
+    initialize = function(na_allowed = FALSE, ...){
+      super$initialize(na_allowed = na_allowed, ...)
+    },
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
+      if(nrow(rep$report)==0){
+        if(!is.na(value)) if(regexpr("^(0?[1-9]|[12][0-9]|3[01])$", value) < 0){
+          rep <- create_vrule_report(
+            valid = FALSE,
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = self$getType(),
+            message = sprintf("Source value %s is not valid day", value)
+          )
+        }
+      }
+      return(rep)
+    }
+  )
+)
+
 #' vrule_date
 #' @name vrule_date
 #' @docType class
@@ -64,11 +130,41 @@ vrule_date <- R6Class("vrule_date",
   )
 )
 
-#' vrule_datetime
-#' @name vrule_datetime
+#TODO: needs to validate POSIXct format, but this is a start
+#' vrule_datetimeUTC 
+#' @name vrule_datetimeUTC
 #' @docType class
 #' @importFrom R6 R6Class
+#' @export
+#TODO: make it month specific, similar to date rule.
 
+vrule_datetimeUTC <- R6Class("vrule_datetimeUTC", 
+  inherit = vrule_character,
+  private = list(
+    category = "Time",
+    name = "DateTimeUTC"
+  ),
+  public = list(
+    initialize = function(na_allowed = FALSE, ...){
+      super$initialize(na_allowed = na_allowed, ...)
+    },
+    validate = function(value, ...){
+      rep = super$validate(value, ...)
+      if(nrow(rep$report)==0){
+        if(!is.na(value)) if(regexpr("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}Z$", value) < 0){
+          rep <- create_vrule_report(
+            valid = FALSE,
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = self$getType(),
+            message = sprintf("Source value %s is not valid date", value)
+          )
+        }
+      }
+      return(rep)
+    }
+  )
+)
 
 #' vrule_timestamp
 #' @name vrule_timestamp

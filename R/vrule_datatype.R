@@ -152,3 +152,83 @@ vrule_character <- R6Class("vrule_character",
                            }
                          )
 )
+
+
+#' vrule_logical_like
+#' @name vrule_logical_like
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_logical_like <- R6Class("vrule_logical_like",
+  inherit = vrule_abstract_simple,
+  private = list(
+    category = "Format",
+    name = "Logical-like value"
+  ),
+  public = list(
+    na_allowed = FALSE,
+
+    allowed_values = c("Yes", "No", "yes", "no", "y", "n", "true", "false", "True", "False", "t", "f", "1", "0"),
+
+    initialize = function(na_allowed = FALSE,
+                          allowed_values = NULL,
+                          ...) {
+      super$initialize(...)
+      self$na_allowed <- na_allowed
+
+      if (!is.null(allowed_values)) {
+        self$allowed_values <- allowed_values
+      }
+    },
+
+    validate = function(value, ...){
+      rep <- super$validate(value, ...)
+
+      # NA handling
+      if (is.na(value)) {
+        if (!self$na_allowed) {
+          return(create_vrule_report(
+            valid = FALSE,
+            category = self$getCategory(),
+            rule = self$getName(),
+            type = self$getType(),
+            message = "Source value is missing"
+          ))
+        }
+        return(rep)
+      }
+
+      # logical values
+      if (is.logical(value) && length(value) == 1) {
+        return(rep)
+      }
+
+      # numeric 0/1
+      if (is.numeric(value) && length(value) == 1 && value %in% c(0, 1)) {
+        return(rep)
+      }
+
+      # character values (case-sensitive)
+      if (is.character(value) && length(value) == 1) {
+        value_clean <- trimws(value)
+
+        if (value_clean %in% self$allowed_values) {
+          return(rep)
+        }
+      }
+
+      # failure
+      create_vrule_report(
+        valid = FALSE,
+        category = self$getCategory(),
+        rule = self$getName(),
+        type = self$getType(),
+        message = sprintf(
+          "Source value %s is not valid. Allowed values are: %s",
+          as.character(value),
+          paste(self$allowed_values, collapse = ", ")
+        )
+      )
+    }
+  )
+)

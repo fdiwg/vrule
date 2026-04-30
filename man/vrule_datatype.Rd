@@ -25,6 +25,7 @@ vrule_datatype
 <ul>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getCategory'><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getName'><code>vrule::vrule_abstract$getName()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getType"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getType'><code>vrule::vrule_abstract$getType()</code></a></span></li>
 </ul>
 </details>
 }}
@@ -33,7 +34,7 @@ vrule_datatype
 \if{latex}{\out{\hypertarget{method-vrule_datatype-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_datatype$new(type, na_allowed = FALSE, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_datatype$new(datatype, na_allowed = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
 }

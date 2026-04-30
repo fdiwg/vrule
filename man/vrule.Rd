@@ -12,6 +12,7 @@ Provides tools to validate data based on business validation rules.
 Useful links:
 \itemize{
   \item \url{https://github.com/fdiwg/vrule}
+  \item \url{https://fdiwg.github.io/vrule/}
   \item Report bugs at \url{https://github.com/fdiwg/vrule/issues}
 }
 

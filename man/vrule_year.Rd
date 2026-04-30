@@ -25,6 +25,7 @@ vrule_year
 <ul>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getCategory'><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getName'><code>vrule::vrule_abstract$getName()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getType"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getType'><code>vrule::vrule_abstract$getType()</code></a></span></li>
 </ul>
 </details>
 }}
