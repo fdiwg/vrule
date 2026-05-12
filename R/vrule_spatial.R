@@ -114,7 +114,7 @@ vrule_lonlat_in_shape <- R6Class(
 
 
 
-#' vrule_coordinate
+#' vrule_coordinates
 #' @name vrule_coordinate
 #' @docType class
 #' @importFrom R6 R6Class
@@ -153,14 +153,6 @@ vrule_coordinates <- R6::R6Class(
             rule = self$getName(),
             type = self$getType(),
             message = sprintf("%s value is missing", self$coordinate_type)
-          )
-        } else if(is.character(value)) {
-          rep <- create_vrule_report(
-            valid = FALSE,
-            category = self$getCategory(),
-            rule = self$getName(),
-            type = self$getType(),
-            message = sprintf("%s value %s is not numeric", value)
           )
         } else if (self$coordinate_type == "latitude") {
           if (value < -90 || value > 90) {

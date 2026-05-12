@@ -52,7 +52,7 @@ vrule_operator_and <- R6Class("vrule_operator_and",
   ),
   public = list(
     initialize = function(...){
-      super$initialize(operator = "&", ...)
+        super$initialize(operator = "&", ...)
     },
     
     validate = function(value, row){

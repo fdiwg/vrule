@@ -186,9 +186,8 @@ vrule_range <- R6Class("vrule_range",
 
       range_rule <- vrule_operator_and$new(
         vrule_min$new(minValue = self$minValue, type = self$getType()),
-        vrule_max$new(maxValue = self$maxValue, type = self$getType()),
-        type = self$getType()
-      )
+        vrule_max$new(maxValue = self$maxValue, type = self$getType())
+        )
 
       report <- range_rule$validate(value, ...)
       return(report)
@@ -214,11 +213,10 @@ vrule_date_range <- R6Class("vrule_date_range",
      },
      
      validate = function(value, ...){
-       range_rule = vrule_operator_and$new(
-         vrule_min$new(minValue = self$minValue, type = self$getType()),
-         vrule_max$new(maxValue = self$maxValue, type = self$getType()),
-         type = self$getType()
-       )
+       range_rule <- vrule_operator_and$new(
+        vrule_min$new(minValue = self$minValue, type = self$getType()),
+        vrule_max$new(maxValue = self$maxValue, type = self$getType())
+        )
        report = range_rule$validate(as.Date(value), ...)
        return(report)
      }
