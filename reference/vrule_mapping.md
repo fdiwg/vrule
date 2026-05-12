@@ -6,7 +6,7 @@ vrule_mapping
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_simple` -\>
+`vrule::vrule_abstract` -\> `vrule::vrule_abstract_complex` -\>
 `vrule_mapping`
 
 ## Methods
@@ -23,6 +23,7 @@ Inherited methods
 
 - [`vrule::vrule_abstract$getCategory()`](https://fdiwg.github.io/vrule/reference/vrule_abstract.html#method-getCategory)
 - [`vrule::vrule_abstract$getName()`](https://fdiwg.github.io/vrule/reference/vrule_abstract.html#method-getName)
+- [`vrule::vrule_abstract$getType()`](https://fdiwg.github.io/vrule/reference/vrule_abstract.html#method-getType)
 
 ------------------------------------------------------------------------
 
@@ -34,7 +35,9 @@ Inherited methods
       ref_data_url = NULL,
       ref_source_term = NULL,
       ref_target_term = NULL,
-      ref_meta_url = NULL
+      data_target_term = NULL,
+      ref_meta_url = NULL,
+      ...
     )
 
 ------------------------------------------------------------------------
@@ -43,7 +46,7 @@ Inherited methods
 
 #### Usage
 
-    vrule_mapping$validate(value, target, ...)
+    vrule_mapping$validate(value, row)
 
 ------------------------------------------------------------------------
 

@@ -16,6 +16,8 @@ format_spec
 
 - [`format_spec$setTitle()`](#method-format_spec-setTitle)
 
+- [`format_spec$setType()`](#method-format_spec-setType)
+
 - [`format_spec$addColumnSpec()`](#method-format_spec-addColumnSpec)
 
 - [`format_spec$getColumnSpecByName()`](#method-format_spec-getColumnSpecByName)
@@ -28,6 +30,8 @@ format_spec
 
 - [`format_spec$validateStructure()`](#method-format_spec-validateStructure)
 
+- [`format_spec$validateSeries()`](#method-format_spec-validateSeries)
+
 - [`format_spec$validateContent()`](#method-format_spec-validateContent)
 
 - [`format_spec$validate()`](#method-format_spec-validate)
@@ -39,6 +43,8 @@ format_spec
 - [`format_spec$standardizeStructure()`](#method-format_spec-standardizeStructure)
 
 - [`format_spec$standardizeContent()`](#method-format_spec-standardizeContent)
+
+- [`format_spec$createTemplate()`](#method-format_spec-createTemplate)
 
 - [`format_spec$clone()`](#method-format_spec-clone)
 
@@ -73,6 +79,14 @@ format_spec
 #### Usage
 
     format_spec$setTitle(title)
+
+------------------------------------------------------------------------
+
+### Method `setType()`
+
+#### Usage
+
+    format_spec$setType(type)
 
 ------------------------------------------------------------------------
 
@@ -124,11 +138,24 @@ format_spec
 
 ------------------------------------------------------------------------
 
+### Method `validateSeries()`
+
+#### Usage
+
+    format_spec$validateSeries(data)
+
+------------------------------------------------------------------------
+
 ### Method `validateContent()`
 
 #### Usage
 
-    format_spec$validateContent(data, parallel = FALSE, ...)
+    format_spec$validateContent(
+      data,
+      mode = c("column", "pair"),
+      parallel = FALSE,
+      ...
+    )
 
 ------------------------------------------------------------------------
 
@@ -136,7 +163,7 @@ format_spec
 
 #### Usage
 
-    format_spec$validate(data, parallel = FALSE, ...)
+    format_spec$validate(data, mode = c("column", "pair"), parallel = FALSE, ...)
 
 ------------------------------------------------------------------------
 
@@ -154,7 +181,7 @@ format_spec
 
     format_spec$validate_and_display_as_handsontable(
       data,
-      parallel = parallel,
+      parallel = FALSE,
       read_only = TRUE,
       use_css_classes = FALSE,
       ...
@@ -175,6 +202,14 @@ format_spec
 #### Usage
 
     format_spec$standardizeContent(data)
+
+------------------------------------------------------------------------
+
+### Method `createTemplate()`
+
+#### Usage
+
+    format_spec$createTemplate(use_aliases = FALSE, dir = getwd())
 
 ------------------------------------------------------------------------
 

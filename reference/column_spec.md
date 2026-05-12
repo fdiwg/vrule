@@ -14,6 +14,8 @@ column_spec
 
 - [`column_spec$setURN()`](#method-column_spec-setURN)
 
+- [`column_spec$isDimension()`](#method-column_spec-isDimension)
+
 - [`column_spec$setAliases()`](#method-column_spec-setAliases)
 
 - [`column_spec$setRequired()`](#method-column_spec-setRequired)
@@ -52,6 +54,14 @@ column_spec
 
 ------------------------------------------------------------------------
 
+### Method `isDimension()`
+
+#### Usage
+
+    column_spec$isDimension(isDimension)
+
+------------------------------------------------------------------------
+
 ### Method `setAliases()`
 
 #### Usage
@@ -80,7 +90,7 @@ column_spec
 
 #### Usage
 
-    column_spec$validate(value, row)
+    column_spec$validate(values, rows)
 
 ------------------------------------------------------------------------
 

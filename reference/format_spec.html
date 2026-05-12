@@ -9,7 +9,7 @@ format_spec"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vrule</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.20260209</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.20260512</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,18 +50,21 @@ format_spec"></head><body>
 <li><p><a href="#method-format_spec-setName"><code>format_spec$setName()</code></a></p></li>
 <li><p><a href="#method-format_spec-setURN"><code>format_spec$setURN()</code></a></p></li>
 <li><p><a href="#method-format_spec-setTitle"><code>format_spec$setTitle()</code></a></p></li>
+<li><p><a href="#method-format_spec-setType"><code>format_spec$setType()</code></a></p></li>
 <li><p><a href="#method-format_spec-addColumnSpec"><code>format_spec$addColumnSpec()</code></a></p></li>
 <li><p><a href="#method-format_spec-getColumnSpecByName"><code>format_spec$getColumnSpecByName()</code></a></p></li>
 <li><p><a href="#method-format_spec-getColumnSpecByURN"><code>format_spec$getColumnSpecByURN()</code></a></p></li>
 <li><p><a href="#method-format_spec-getColumnSpecByAlias"><code>format_spec$getColumnSpecByAlias()</code></a></p></li>
 <li><p><a href="#method-format_spec-getColumnSpec"><code>format_spec$getColumnSpec()</code></a></p></li>
 <li><p><a href="#method-format_spec-validateStructure"><code>format_spec$validateStructure()</code></a></p></li>
+<li><p><a href="#method-format_spec-validateSeries"><code>format_spec$validateSeries()</code></a></p></li>
 <li><p><a href="#method-format_spec-validateContent"><code>format_spec$validateContent()</code></a></p></li>
 <li><p><a href="#method-format_spec-validate"><code>format_spec$validate()</code></a></p></li>
 <li><p><a href="#method-format_spec-display_as_handsontable"><code>format_spec$display_as_handsontable()</code></a></p></li>
 <li><p><a href="#method-format_spec-validate_and_display_as_handsontable"><code>format_spec$validate_and_display_as_handsontable()</code></a></p></li>
 <li><p><a href="#method-format_spec-standardizeStructure"><code>format_spec$standardizeStructure()</code></a></p></li>
 <li><p><a href="#method-format_spec-standardizeContent"><code>format_spec$standardizeContent()</code></a></p></li>
+<li><p><a href="#method-format_spec-createTemplate"><code>format_spec$createTemplate()</code></a></p></li>
 <li><p><a href="#method-format_spec-clone"><code>format_spec$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-format_spec-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
@@ -99,11 +102,20 @@ format_spec"></head><body>
 </div>
 
 
+</div><p></p><hr><a id="method-format_spec-setType"></a><div class="section">
+<h3 id="method-settype-">Method <code>setType()</code><a class="anchor" aria-label="anchor" href="#method-settype-"></a></h3>
+
+<div class="section">
+<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">setType</span><span class="op">(</span><span class="va">type</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
 </div><p></p><hr><a id="method-format_spec-addColumnSpec"></a><div class="section">
 <h3 id="method-addcolumnspec-">Method <code>addColumnSpec()</code><a class="anchor" aria-label="anchor" href="#method-addcolumnspec-"></a></h3>
 
 <div class="section">
-<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">addColumnSpec</span><span class="op">(</span><span class="va">column_spec</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -112,7 +124,7 @@ format_spec"></head><body>
 <h3 id="method-getcolumnspecbyname-">Method <code>getColumnSpecByName()</code><a class="anchor" aria-label="anchor" href="#method-getcolumnspecbyname-"></a></h3>
 
 <div class="section">
-<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
+<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">getColumnSpecByName</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -121,7 +133,7 @@ format_spec"></head><body>
 <h3 id="method-getcolumnspecbyurn-">Method <code>getColumnSpecByURN()</code><a class="anchor" aria-label="anchor" href="#method-getcolumnspecbyurn-"></a></h3>
 
 <div class="section">
-<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
+<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">getColumnSpecByURN</span><span class="op">(</span><span class="va">urn</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -130,7 +142,7 @@ format_spec"></head><body>
 <h3 id="method-getcolumnspecbyalias-">Method <code>getColumnSpecByAlias()</code><a class="anchor" aria-label="anchor" href="#method-getcolumnspecbyalias-"></a></h3>
 
 <div class="section">
-<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
+<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">getColumnSpecByAlias</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -139,7 +151,7 @@ format_spec"></head><body>
 <h3 id="method-getcolumnspec-">Method <code>getColumnSpec()</code><a class="anchor" aria-label="anchor" href="#method-getcolumnspec-"></a></h3>
 
 <div class="section">
-<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
+<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">getColumnSpec</span><span class="op">(</span><span class="va">column</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -148,8 +160,17 @@ format_spec"></head><body>
 <h3 id="method-validatestructure-">Method <code>validateStructure()</code><a class="anchor" aria-label="anchor" href="#method-validatestructure-"></a></h3>
 
 <div class="section">
-<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
+<h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validateStructure</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-format_spec-validateSeries"></a><div class="section">
+<h3 id="method-validateseries-">Method <code>validateSeries()</code><a class="anchor" aria-label="anchor" href="#method-validateseries-"></a></h3>
+
+<div class="section">
+<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validateSeries</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
@@ -157,8 +178,13 @@ format_spec"></head><body>
 <h3 id="method-validatecontent-">Method <code>validateContent()</code><a class="anchor" aria-label="anchor" href="#method-validatecontent-"></a></h3>
 
 <div class="section">
-<h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validateContent</span><span class="op">(</span><span class="va">data</span>, parallel <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validateContent</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"column"</span>, <span class="st">"pair"</span><span class="op">)</span>,</span>
+<span>  parallel <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
@@ -166,8 +192,8 @@ format_spec"></head><body>
 <h3 id="method-validate-">Method <code>validate()</code><a class="anchor" aria-label="anchor" href="#method-validate-"></a></h3>
 
 <div class="section">
-<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validate</span><span class="op">(</span><span class="va">data</span>, parallel <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validate</span><span class="op">(</span><span class="va">data</span>, mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"column"</span>, <span class="st">"pair"</span><span class="op">)</span>, parallel <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
@@ -175,7 +201,7 @@ format_spec"></head><body>
 <h3 id="method-display-as-handsontable-">Method <code>display_as_handsontable()</code><a class="anchor" aria-label="anchor" href="#method-display-as-handsontable-"></a></h3>
 
 <div class="section">
-<h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
+<h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">display_as_handsontable</span><span class="op">(</span><span class="va">data</span>, <span class="va">report</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -184,10 +210,10 @@ format_spec"></head><body>
 <h3 id="method-validate-and-display-as-handsontable-">Method <code>validate_and_display_as_handsontable()</code><a class="anchor" aria-label="anchor" href="#method-validate-and-display-as-handsontable-"></a></h3>
 
 <div class="section">
-<h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
+<h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validate_and_display_as_handsontable</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
-<span>  parallel <span class="op">=</span> <span class="va">parallel</span>,</span>
+<span>  parallel <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  read_only <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  use_css_classes <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">...</span></span>
@@ -199,7 +225,7 @@ format_spec"></head><body>
 <h3 id="method-standardizestructure-">Method <code>standardizeStructure()</code><a class="anchor" aria-label="anchor" href="#method-standardizestructure-"></a></h3>
 
 <div class="section">
-<h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
+<h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">standardizeStructure</span><span class="op">(</span><span class="va">data</span>, exclude_unused <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -208,15 +234,24 @@ format_spec"></head><body>
 <h3 id="method-standardizecontent-">Method <code>standardizeContent()</code><a class="anchor" aria-label="anchor" href="#method-standardizecontent-"></a></h3>
 
 <div class="section">
-<h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
+<h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">standardizeContent</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-format_spec-createTemplate"></a><div class="section">
+<h3 id="method-createtemplate-">Method <code>createTemplate()</code><a class="anchor" aria-label="anchor" href="#method-createtemplate-"></a></h3>
+
+<div class="section">
+<h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">createTemplate</span><span class="op">(</span>use_aliases <span class="op">=</span> <span class="cn">FALSE</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
 </div><p></p><hr><a id="method-format_spec-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
+<h4 id="usage-19">Usage<a class="anchor" aria-label="anchor" href="#usage-19"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 

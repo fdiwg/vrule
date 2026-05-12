@@ -8,6 +8,8 @@ Useful links:
 
 - <https://github.com/fdiwg/vrule>
 
+- <https://fdiwg.github.io/vrule/>
+
 - Report bugs at <https://github.com/fdiwg/vrule/issues>
 
 ## Author

@@ -26,6 +26,7 @@ Inherited methods
 
 - [`vrule::vrule_abstract$getCategory()`](https://fdiwg.github.io/vrule/reference/vrule_abstract.html#method-getCategory)
 - [`vrule::vrule_abstract$getName()`](https://fdiwg.github.io/vrule/reference/vrule_abstract.html#method-getName)
+- [`vrule::vrule_abstract$getType()`](https://fdiwg.github.io/vrule/reference/vrule_abstract.html#method-getType)
 
 ------------------------------------------------------------------------
 
@@ -33,7 +34,7 @@ Inherited methods
 
 #### Usage
 
-    vrule_date_max$new(maxValue)
+    vrule_date_max$new(maxValue, ...)
 
 ------------------------------------------------------------------------
 
