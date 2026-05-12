@@ -66,11 +66,22 @@ column_spec <- R6Class("column_spec",
          }else{
            self$rules[[1]]
          }
-         out = NULL
+         report = NULL
+         j = which(names(rows) == self$name)
          if(length(values)==1){
-           out = the_rule$validate(values, rows) 
+           rep = the_rule$validate(values, rows)
+           if(nrow(rep$report)==0){
+             report = NULL
+           }else{
+             ii = as.integer(row.names(rows))
+             report = cbind(
+               i = ii, j = j,
+               row = paste("Row",ii),
+               col = self$name, col_alias = NA,
+               rep$report
+             )
+           }
          }else{
-           j = which(names(rows) == self$name)
            #vectorized form
            report =  do.call("rbind", lapply(1:length(values), function(i){
              rep = the_rule$validate(value = values[[i]], row = rows[i,])
@@ -83,11 +94,11 @@ column_spec <- R6Class("column_spec",
                rep$report
              )
            }))
-           out = vrule_report$new(
-             valid = !any(report$type == "ERROR"),
-             report = report
-           )
          }
+         out = vrule_report$new(
+           valid = !any(report$type == "ERROR"),
+           report = report
+         )
          return(out)
        }else{
          return(vrule_report$new())
