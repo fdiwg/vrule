@@ -13,7 +13,7 @@
         {
           "vrule": "codelist",
           "args": {
-            "ref_data_url": "https://raw.githubusercontent.com/fdiwg/vrule/main/global/firms/gta/cl_tuna_rfmos.csv"
+            "ref_data_url": "https://raw.githubusercontent.com/fdiwg/fdi-codelists/main/global/firms/gta/cl_tuna_rfmos.csv"
           }
         }
       ]
