@@ -11,7 +11,7 @@ context("format_spec")
 
 test_that("decode format spec",{
   format = vrule::format_spec$new(
-    json = jsonlite::read_json("https://raw.githubusercontent.com/fdiwg/fdi-formats/main/cwp_rh_generic_gta_taskI.json")
+    json = jsonlite::read_json("https://raw.githubusercontent.com/fdiwg/vrule/main/inst/extdata/tests/specs/format_spec1.json")
   )
   expect_is(format, "format_spec")
 })
