@@ -10,7 +10,26 @@ vrule_mapping
 vrule_mapping
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_complex} -> \code{vrule_mapping}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_abstract_complex]{vrule::vrule_abstract_complex}} -> \code{vrule_mapping}
+}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{ref_data_url}}{ref data url}
+
+\item{\code{ref_data}}{ref data}
+
+\item{\code{ref_source_term}}{ref source term}
+
+\item{\code{ref_target_term}}{ref target term}
+
+\item{\code{data_target_term}}{data target term}
+
+\item{\code{ref_meta_url}}{ref meta url}
+
+\item{\code{ref_meta}}{ref meta}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,6 +52,7 @@ vrule_mapping
 \if{html}{\out{<a id="method-vrule_mapping-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_mapping-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a mapping-based validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_mapping$new(
   ref_data_url = NULL,
@@ -44,15 +64,45 @@ vrule_mapping
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{ref_data_url}}{ref data url}
+
+\item{\code{ref_source_term}}{ref source term}
+
+\item{\code{ref_target_term}}{ref target term}
+
+\item{\code{data_target_term}}{data target term}
+
+\item{\code{ref_meta_url}}{ref metadata url}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_mapping-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_mapping-validate}{}}}
 \subsection{Method \code{validate()}}{
+Abstract method to validate data
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_mapping$validate(value, row)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{row}}{row}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_mapping-clone"></a>}}

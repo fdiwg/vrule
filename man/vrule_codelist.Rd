@@ -10,7 +10,26 @@ vrule_codelist
 vrule_codelist
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{vrule_codelist}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_abstract_simple]{vrule::vrule_abstract_simple}} -> \code{vrule_codelist}
+}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{ref_data_url}}{ref data url}
+
+\item{\code{ref_data}}{ref data}
+
+\item{\code{ref_data_column}}{ref data column}
+
+\item{\code{ref_data_column_alt}}{ref data alternate column}
+
+\item{\code{ref_meta_url}}{ref metadata url}
+
+\item{\code{ref_meta}}{ref metadata}
+
+\item{\code{allow_labels}}{allow labels?}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,6 +52,7 @@ vrule_codelist
 \if{html}{\out{<a id="method-vrule_codelist-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_codelist-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a codelist validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_codelist$new(
   ref_data_url = NULL,
@@ -44,15 +64,45 @@ vrule_codelist
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{ref_data_url}}{ref data url}
+
+\item{\code{ref_data_column}}{ref data column}
+
+\item{\code{ref_data_column_alt}}{ref data alternate column}
+
+\item{\code{allow_labels}}{Allow labels?}
+
+\item{\code{ref_meta_url}}{ref metadata url}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_codelist-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_codelist-validate}{}}}
 \subsection{Method \code{validate()}}{
+Validates value with a codelist validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_codelist$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{...}}{any other args}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_codelist-clone"></a>}}

@@ -10,14 +10,26 @@ vrule_operator_binary <- R6Class("vrule_operator_binary",
     name = "Binary operator"
   ),
   public = list(
+    
+    #'@field operator operator
     operator = NA,
+    #'@field expr expr
     expr = NA,
+    
+    #'@description Initializes a binary operator validation rule
+    #'@param operator operator
+    #'@param expr expr
+    #'@param ... any other arg
     initialize = function(operator, expr, ...){
       super$initialize(...)
       self$operator = operator
       self$expr = expr
     },
     
+    #'@description Method to validate data
+    #'@param value value
+    #'@param ... any other arg
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, ...){
       rep = super$validate(value, ...)
       expr_value = self$expr

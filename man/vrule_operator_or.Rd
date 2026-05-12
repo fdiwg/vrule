@@ -10,7 +10,7 @@ vrule_operator_or
 vrule_operator_or
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{\link[vrule:vrule_operator_binary]{vrule::vrule_operator_binary}} -> \code{\link[vrule:vrule_operator_logical]{vrule::vrule_operator_logical}} -> \code{vrule_operator_or}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_operator_binary]{vrule::vrule_operator_binary}} -> \code{\link[vrule:vrule_operator_logical]{vrule::vrule_operator_logical}} -> \code{vrule_operator_or}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,19 +33,40 @@ vrule_operator_or
 \if{html}{\out{<a id="method-vrule_operator_or-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_operator_or-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a logical OR operator validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_operator_or$new(...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_operator_or-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_operator_or-validate}{}}}
 \subsection{Method \code{validate()}}{
+Method to validate data
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_operator_or$validate(value, row)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{row}}{row}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_operator_or-clone"></a>}}

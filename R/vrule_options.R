@@ -1,4 +1,6 @@
 #'@name setVruleOptions
+#'@title setVruleOptions
+#'@param ... options
 #'@export
 setVruleOptions = function(...){
  args = list(...)
@@ -13,12 +15,16 @@ setVruleOptions = function(...){
 }
 
 #'@name getVruleOptions
+#'@title getVruleOptions
 #'@export
 getVruleOptions = function(){
   return(as.list(.vrule.options))
 }
 
 #'@name getVruleOption
+#'@title getVruleOption
+#'@param opt an option name
+#'@return the value for that option
 #'@export
 getVruleOption = function(opt){
   return(.vrule.options[[opt]])

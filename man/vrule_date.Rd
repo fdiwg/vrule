@@ -10,7 +10,7 @@ vrule_date
 vrule_date
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{\link[vrule:vrule_character]{vrule::vrule_character}} -> \code{vrule_date}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_abstract_simple]{vrule::vrule_abstract_simple}} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{\link[vrule:vrule_character]{vrule::vrule_character}} -> \code{vrule_date}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,19 +33,42 @@ vrule_date
 \if{html}{\out{<a id="method-vrule_date-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_date-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a date validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_date$new(na_allowed = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{na_allowed}}{\code{TRUE} if NA values are allowed, \code{FALSE otherwise}}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_date-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_date-validate}{}}}
 \subsection{Method \code{validate()}}{
+Validates a date
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_date$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{...}}{any other args}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_date-clone"></a>}}

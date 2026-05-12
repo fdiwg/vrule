@@ -10,7 +10,7 @@ vrule_year
 vrule_year
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{\link[vrule:vrule_integer]{vrule::vrule_integer}} -> \code{vrule_year}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_abstract_simple]{vrule::vrule_abstract_simple}} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{\link[vrule:vrule_integer]{vrule::vrule_integer}} -> \code{vrule_year}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,19 +33,42 @@ vrule_year
 \if{html}{\out{<a id="method-vrule_year-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_year-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a year validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_year$new(na_allowed = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{na_allowed}}{\code{TRUE} if NA values are allowed, \code{FALSE otherwise}}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_year-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_year-validate}{}}}
 \subsection{Method \code{validate()}}{
+Validates a year
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_year$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{...}}{any other args}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_year-clone"></a>}}

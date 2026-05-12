@@ -10,12 +10,13 @@ vrule_numeric
 vrule_numeric
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{vrule_numeric}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_abstract_simple]{vrule::vrule_abstract_simple}} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{vrule_numeric}
 }
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-vrule_numeric-new}{\code{vrule_numeric$new()}}
+\item \href{#method-vrule_numeric-validate}{\code{vrule_numeric$validate()}}
 \item \href{#method-vrule_numeric-clone}{\code{vrule_numeric$clone()}}
 }
 }
@@ -25,7 +26,6 @@ vrule_numeric
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getCategory'><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getName'><code>vrule::vrule_abstract$getName()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getType"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getType'><code>vrule::vrule_abstract$getType()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_datatype" data-id="validate"><a href='../../vrule/html/vrule_datatype.html#method-vrule_datatype-validate'><code>vrule::vrule_datatype$validate()</code></a></span></li>
 </ul>
 </details>
 }}
@@ -33,10 +33,42 @@ vrule_numeric
 \if{html}{\out{<a id="method-vrule_numeric-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_numeric-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a numeric data validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_numeric$new(na_allowed = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{na_allowed}}{is NA allowed?}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-vrule_numeric-validate"></a>}}
+\if{latex}{\out{\hypertarget{method-vrule_numeric-validate}{}}}
+\subsection{Method \code{validate()}}{
+Method to validate data
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{vrule_numeric$validate(value, ...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{...}}{any other args}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_numeric-clone"></a>}}

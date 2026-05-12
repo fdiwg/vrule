@@ -10,9 +10,18 @@ vrule_year <- R6Class("vrule_year",
     name = "Year"
   ),
   public = list(
+    
+    #'@description Initializes a year validation rule
+    #'@param na_allowed \code{TRUE} if NA values are allowed, \code{FALSE otherwise}
+    #'@param ... any other arg
     initialize = function(na_allowed = FALSE, ...){
       super$initialize(na_allowed = na_allowed, ...)
     },
+    
+    #'@description Validates a year
+    #'@param value value
+    #'@param ... any other args
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, ...){
       rep = super$validate(value, ...)
       if(nrow(rep$report)==0){
@@ -43,9 +52,18 @@ vrule_date <- R6Class("vrule_date",
     name = "Date"
   ),
   public = list(
+    
+    #'@description Initializes a date validation rule
+    #'@param na_allowed \code{TRUE} if NA values are allowed, \code{FALSE otherwise}
+    #'@param ... any other arg
     initialize = function(na_allowed = FALSE, ...){
       super$initialize(na_allowed = na_allowed, ...)
     },
+    
+    #'@description Validates a date
+    #'@param value value
+    #'@param ... any other args
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, ...){
       rep = super$validate(value, ...)
       if(nrow(rep$report)==0){

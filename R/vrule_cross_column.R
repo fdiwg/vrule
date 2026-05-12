@@ -23,14 +23,25 @@ vrule_cross_column <- R6Class("vrule_cross_column",
     }
   ),
   public = list(
+    #'@field operator operator
     operator = NA,
+    #'@field expr expr
     expr = NA,
+    
+    #'@description Initializes a cross-column check validation rule
+    #'@param operator operator
+    #'@param expr expr
+    #'@param ... any other arg
     initialize = function(operator, expr, ...){
       super$initialize(...)
       self$operator = operator
       self$expr = expr
     },
     
+    #'@description Abstract method to validate data
+    #'@param value value
+    #'@param row row
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, row){
       expr = private$eval_crossfield_expr(row = row, expr = self$expr)
       logical_rule = vrule_operator_binary$new(operator = self$operator, expr = expr, type = self$getType())

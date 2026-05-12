@@ -6,11 +6,20 @@
 format_spec = R6Class("format_spec",
   
   public = list(
+    
+    #'@field name format name
     name = NA,
+    #'@field urn urn
     urn = NA,
+    #'@field title title
     title = NA,
+    #'@field type tpe
     type = NA,
+    #'@field column_specs column specifications
     column_specs = list(),
+    
+    #'@description Initializes a format specification from a JSON list object
+    #'@param json json
     initialize = function(json = NULL){
       if(!is.null(json)){
         self$name = json$name
@@ -25,27 +34,32 @@ format_spec = R6Class("format_spec",
       }
     },
     
-    #setName
+    #'@description Set name
+    #'@param name name
     setName = function(name){
       self$name = name
     },
     
-    #setURN
+    #'@description Set URN
+    #'@param urn urn
     setURN = function(urn){
       self$urn = urn
     },
     
-    #setTitle
+    #'@description Set title
+    #'@param title title
     setTitle = function(title){
       self$title = title
     },
     
-    #setType
+    #'@description Set type
+    #'@param type type
     setType = function(type){
       self$type = type
     },
     
-    #addColumnSpec
+    #'@description Adds a column specification
+    #'@param column_spec an object of class \link{column_spec}
     addColumnSpec = function(column_spec){
       if(!inherits(column_spec, "column_spec")){
         stop("The column specification should be an object of class 'column_spec'")
@@ -53,7 +67,9 @@ format_spec = R6Class("format_spec",
       self$column_specs[[length(self$column_specs)+1]] <- column_spec
     },
     
-    #getColumnSpecByName
+    #'@description Get column specification by name
+    #'@param name name
+    #'@return an object of class \link{column_spec}, or \code{NULL} if no column specification is found
     getColumnSpecByName = function(name){
       cspec = NULL
       cspecs = self$column_specs[sapply(self$column_specs, function(spec){spec$name == name})]
@@ -61,7 +77,9 @@ format_spec = R6Class("format_spec",
       return(cspec)
     },
     
-    #getColumnSpecByURN
+    #'@description Get column specification by URN
+    #'@param urn urn
+    #'@return an object of class \link{column_spec}, or \code{NULL} if no column specification is found
     getColumnSpecByURN = function(urn){
       cspec = NULL
       cspecs = self$column_specs[sapply(self$column_specs, function(spec){spec$urn == urn})]
@@ -69,7 +87,9 @@ format_spec = R6Class("format_spec",
       return(cspec)
     },
     
-    #getColumnSpecByAlias
+    #'@description Get column specification by alias
+    #'@param alias alias
+    #'@return an object of class \link{column_spec}, or \code{NULL} if no column specification is found
     getColumnSpecByAlias = function(alias){
       cspec = NULL
       cspecs = self$column_specs[sapply(self$column_specs, function(spec){alias %in% spec$aliases})]
@@ -77,14 +97,18 @@ format_spec = R6Class("format_spec",
       return(cspec)
     },
     
-    #getColumnSpec
+    #'@description Get column specification
+    #'@param column column name or alias
+    #'@return an object of class \link{column_spec}, or \code{NULL} if no column specification is found
     getColumnSpec = function(column){
       cspec = self$getColumnSpecByName(name = column)
       if(is.null(cspec)) cspec = self$getColumnSpecByAlias(alias = column)
       return(cspec)
     },
     
-    #validateStructure
+    #'@description Applies data structure validation
+    #'@param data object of class \link{data.frame} or \link[tibble]{tibble}
+    #'@return an object of class \link{data.frame} if any data structure validation issue is found (ERROR or WARNING), or \code{NULL} if valid
     validateStructure = function(data){
       if(tibble::is_tibble(data)){
         data = as.data.frame(data)
@@ -152,7 +176,9 @@ format_spec = R6Class("format_spec",
       
     },
     
-    #validateSeries
+    #'@description Applies data series validation
+    #'@param data object of class \link{data.frame} or \link[tibble]{tibble}
+    #'@return an object of class \link{data.frame} if any data series validation issue is found (ERROR or WARNING), or \code{NULL} if valid
     validateSeries = function(data){
       dup_report = NULL
       if(tibble::is_tibble(data)){
@@ -185,7 +211,12 @@ format_spec = R6Class("format_spec",
       return(dup_report)
     },
     
-    #validateContent
+    #'@description Applies data content validation
+    #'@param data object of class \link{data.frame} or \link[tibble]{tibble}
+    #'@param mode validation mode, either "column" (default) or "pair"
+    #'@param parallel whether the validation should be run as parallel (default \code{FALSE})
+    #'@param ... any other arg
+    #'@return an object of class \link{data.frame}
     validateContent = function(data, mode = c("column","pair"), parallel = FALSE, ...){
       mode = match.arg(mode)
       if(tibble::is_tibble(data)){
@@ -325,7 +356,12 @@ format_spec = R6Class("format_spec",
       
     },
     
-    #validate
+    #'@description Applies data validation
+    #'@param data object of class \link{data.frame} or \link[tibble]{tibble}
+    #'@param mode validation mode, either "column" (default) or "pair"
+    #'@param parallel whether the validation should be run as parallel (default \code{FALSE})
+    #'@param ... any other arg
+    #'@return an object of class \link{data.frame}
     validate = function(data, mode = c("column","pair"), parallel = FALSE, ...){
       mode = match.arg(mode)
       
@@ -351,7 +387,11 @@ format_spec = R6Class("format_spec",
       return(report)
     }, 
     
-    #display_as_handsontable
+    #'@description Display data and validation report as Handsontable
+    #'@param data data
+    #'@param report report
+    #'@param ... any other arg
+    #'@return an object of class \link[rhandsontable]{rhandsontable}
     display_as_handsontable = function(data, report, ...){
       
       #check if any warning
@@ -465,7 +505,13 @@ format_spec = R6Class("format_spec",
       out_tbl
     },
     
-    #validate_and_display_as_handsontable
+    #'@description Applies data validation
+    #'@param data object of class \link{data.frame} or \link[tibble]{tibble}
+    #'@param parallel whether the validation should be run as parallel (default \code{FALSE})
+    #'@param read_only read only
+    #'@param use_css_classes use css classes
+    #'@param ... any other arg
+    #'@return an object of class \link[rhandsontable]{rhandsontable}
     validate_and_display_as_handsontable = function(data, parallel = FALSE,
                                                     read_only = TRUE, use_css_classes = FALSE, ...){
       
@@ -474,7 +520,10 @@ format_spec = R6Class("format_spec",
       self$display_as_handsontable(data = data, report = report, read_only = read_only, use_css_classes = use_css_classes)
     },
     
-    #standardizeStructure
+    #'@description Standardize structure
+    #'@param data data
+    #'@param exclude_unused exclude unsed columns
+    #'@return the standardized data structure
     standardizeStructure = function(data, exclude_unused = TRUE){
       if(tibble::is_tibble(data)) data = as.data.frame(data)
       format_spec_cols = sapply(self$column_specs, function(x){x$name})
@@ -496,7 +545,9 @@ format_spec = R6Class("format_spec",
       return(data)
     },
     
-    #standardizeContent
+    #'@description Standardize content
+    #'@param data data
+    #'@return the standardized data
     standardizeContent = function(data){
       if(tibble::is_tibble(data)) data = as.data.frame(data)
       data = self$standardizeStructure(data, exclude_unused = T)
@@ -535,10 +586,12 @@ format_spec = R6Class("format_spec",
       return(data)
     },
     
-    #createTemplate
-    createTemplate = function(use_aliases=FALSE,dir=getwd()){
-      original_dir <- getwd()
-      setwd(dir)
+    #'@description Creates template based on the format specification, including
+    #'a template structure and eventual reference data files (codelists)
+    #'@param use_aliases use aliases?
+    #'@param dir directory where to save the template
+    #'@return the path of the output template (as ZIP file)
+    createTemplate = function(use_aliases=FALSE, dir){
       col_names<-unlist(lapply(self$column_specs, function(col) {
         col_name<-col$name
         if(use_aliases)col_name<-unlist(col$aliases)[[1]]
@@ -546,26 +599,25 @@ format_spec = R6Class("format_spec",
       }))
       
       data_template <- setNames(data.frame(matrix(ncol = length(col_names), nrow = 0)), col_names)
-      data_file<-file.path(dir,sprintf("template_%s.csv",self$name))
-      write.csv(data_template,data_file,row.names = FALSE)
+      data_file <- file.path(dir,sprintf("template_%s.csv",self$name))
+      readr::write_csv(data_template, data_file)
       
       list_files <- unlist(lapply(self$column_specs, function(col) {
         if (col$hasCodelist()) {
           unlist(lapply(col$rules, function(rule) {
             if (!is.null(rule$ref_data)) {
               file_name <- file.path(dir,basename(rule$ref_data_url))
-              write.csv(rule$ref_data, file_name, row.names = FALSE)
+              readr::write_csv(rule$ref_data, file_name)
               return(file_name)
             }
             return(NULL)
           }))
         }
       }))
-      list_files<-c(data_file,list_files)
-      zipfile_name <- file.path(dir,sprintf("template_%s.zip",self$name))
+      list_files<-c(data_file, list_files)
+      zipfile_name <- file.path(dir, sprintf("template_%s.zip",self$name))
       zip(zipfile_name, files = basename(list_files))
       file.remove(list_files)
-      setwd(original_dir)
       return(zipfile_name)
     }
   )

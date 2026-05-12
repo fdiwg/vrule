@@ -11,8 +11,16 @@ vrule_operator_logical <- R6Class("vrule_operator_logical",
     name = "Logical operator"
   ),
   public = list(
+    
+    #'@field operator_fun operator function
     operator_fun = NA,
+    
+    #'@field rules rules
     rules = list(),
+    
+    #'@description Initializes a logical operator validation rule
+    #'@param operator operator
+    #'@param ... any other arg
     initialize = function(operator, ...){
       super$initialize(operator, expr = NULL, ...)
       if(!operator %in% private$operators){
@@ -27,6 +35,10 @@ vrule_operator_logical <- R6Class("vrule_operator_logical",
       self$rules = rules
     },
     
+    #'@description Method to validate data
+    #'@param value value
+    #'@param row row
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, row){
       reports = lapply(self$rules, function(rule){
         rule$validate(value, row)
@@ -51,10 +63,17 @@ vrule_operator_and <- R6Class("vrule_operator_and",
     name = "Logical AND operator"
   ),
   public = list(
+    
+    #'@description Initializes a logical AND operator validation rule
+    #'@param ... any other arg
     initialize = function(...){
       super$initialize(operator = "&", ...)
     },
     
+    #'@description Method to validate data
+    #'@param value value
+    #'@param row row
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, row){
       super$validate(value, row)
     }
@@ -72,10 +91,17 @@ vrule_operator_or <- R6Class("vrule_operator_or",
     name = "Logical OR operator"
   ),
   public = list(
+    
+    #'@description Initializes a logical OR operator validation rule
+    #'@param ... any other arg
     initialize = function(...){
       super$initialize(operator = "|", ...)
     },
     
+    #'@description Method to validate data
+    #'@param value value
+    #'@param row row
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, row){
       super$validate(value, row)
     }

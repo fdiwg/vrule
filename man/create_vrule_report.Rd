@@ -6,6 +6,17 @@
 \usage{
 create_vrule_report(valid, category, rule, type, message)
 }
+\arguments{
+\item{valid}{valid \code{TRUE} or \code{FALSE}}
+
+\item{category}{category}
+
+\item{rule}{rule}
+
+\item{type}{type}
+
+\item{message}{message}
+}
 \description{
 create_vrule_report
 }

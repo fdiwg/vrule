@@ -9,8 +9,20 @@ vrule_date_range
 
 vrule_date_range
 }
+\details{
+vrule_date_range
+}
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{vrule_date_range}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_abstract_simple]{vrule::vrule_abstract_simple}} -> \code{vrule_date_range}
+}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{minValue}}{min value}
+
+\item{\code{maxValue}}{max value}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,19 +45,44 @@ vrule_date_range
 \if{html}{\out{<a id="method-vrule_date_range-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_date_range-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a range validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_date_range$new(minValue, maxValue, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{minValue}}{min value}
+
+\item{\code{maxValue}}{max value}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_date_range-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_date_range-validate}{}}}
 \subsection{Method \code{validate()}}{
+Validates data based on a date range
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_date_range$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{...}}{any other args}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_date_range-clone"></a>}}

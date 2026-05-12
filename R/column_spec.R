@@ -5,12 +5,22 @@
 #' @export
 column_spec <- R6Class("column_spec",
    public = list(
+     
+     #'@field name name
      name = NA,
+     #'@field urn urn
      urn = NA,
+     #'@field dimension dimension
      dimension = FALSE,
+     #'@field aliases aliases
      aliases = list(),
+     #'@field required required
      required = TRUE,
+     #'@field rules rules
      rules = list(),
+     
+     #'@description Initializes a column specification
+     #'@param json object of class \link{list}
      initialize = function(json = NULL){
        if(!is.null(json)){
          self$name = json$name
@@ -25,32 +35,38 @@ column_spec <- R6Class("column_spec",
        }
      },
      
-     #setName
+     #'@description set name
+     #'@param name name
      setName = function(name){
        self$name = name
      },
      
-     #setURN
+     #'@description set URN
+     #'@param urn urn
      setURN = function(urn){
        self$urn = urn
      },
      
-     #isDimension
+     #'@description Set if the column is a dimension
+     #'@param isDimension isDimension
      isDimension = function(isDimension){
        self$dimension = isDimension
      },
      
-     #setAliases
+     #'@description Set aliases
+     #'@param aliases aliases
      setAliases = function(aliases){
        self$aliases = aliases
      },
      
-     #setRequired
+     #'@description Set if the column is required
+     #'@param required required
      setRequired = function(required){
        self$required = required
      },
      
-     #addRule
+     #'@description Adds a validation rule
+     #'@param rule rule
      addRule = function(rule){
        if(!inherits(rule, "vrule_abstract")){
          stop("The rule should be an vrule object")
@@ -58,7 +74,10 @@ column_spec <- R6Class("column_spec",
        self$rules[[length(self$rules)+1]] <- rule
      },
      
-     #validate
+     #'@description Method to validate column data
+     #'@param values values
+     #'@param rows rows
+     #'@return a validation report, object of class \link{vrule_report}
      validate = function(values, rows){
        if(length(self$rules)>0){
          the_rule = if(length(self$rules)>1){
@@ -105,7 +124,8 @@ column_spec <- R6Class("column_spec",
        }
      },
      
-     #hasCodelist
+     #'@description Indicates if column specification includes a codelist validation rule
+     #'@return \code{TRUE} if it includes codelist validation, \code{FALSE} otherwise
      hasCodelist = function(){
        any(sapply(self$rules, is, "vrule_codelist")) |
        any(sapply(self$rules, is, "vrule_raw_codelist"))

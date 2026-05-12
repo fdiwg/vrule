@@ -10,13 +10,28 @@ vrule_codelist <- R6Class("vrule_codelist",
     name = "Codelist"
   ),
   public = list(
+    #'@field ref_data_url ref data url
     ref_data_url = NULL,
+    #'@field ref_data ref data
     ref_data = NULL,
+    #'@field ref_data_column ref data column
     ref_data_column = "code",
+    #'@field ref_data_column_alt ref data alternate column
     ref_data_column_alt = "label",
+    #'@field ref_meta_url ref metadata url
     ref_meta_url = NULL,
+    #'@field ref_meta ref metadata
     ref_meta = NULL,
+    #'@field allow_labels allow labels?
     allow_labels = TRUE,
+    
+    #'@description Initializes a codelist validation rule
+    #'@param ref_data_url ref data url
+    #'@param ref_data_column ref data column
+    #'@param ref_data_column_alt ref data alternate column
+    #'@param allow_labels Allow labels?
+    #'@param ref_meta_url ref metadata url
+    #'@param ... any other arg
     initialize = function(ref_data_url = NULL, 
                           ref_data_column = "code", ref_data_column_alt = "label",
                           allow_labels = FALSE,
@@ -51,6 +66,10 @@ vrule_codelist <- R6Class("vrule_codelist",
       }
     },
     
+    #'@description Validates value with a codelist validation rule
+    #'@param value value
+    #'@param ... any other args
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, ...){
       rep <- super$validate(value, ...)
       #ref codelist

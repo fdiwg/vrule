@@ -10,7 +10,7 @@ vrule_logical
 vrule_logical
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{vrule_logical}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_abstract_simple]{vrule::vrule_abstract_simple}} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{vrule_logical}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,19 +33,42 @@ vrule_logical
 \if{html}{\out{<a id="method-vrule_logical-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_logical-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a logical data validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_logical$new(na_allowed = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{na_allowed}}{is NA allowed?}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_logical-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_logical-validate}{}}}
 \subsection{Method \code{validate()}}{
+Method to validate data
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_logical$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{...}}{any other args}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_logical-clone"></a>}}

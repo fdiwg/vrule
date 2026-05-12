@@ -10,13 +10,29 @@ vrule_mapping <- R6Class("vrule_mapping",
     name = "Mapping"
   ),
   public = list(
+    
+    #'@field ref_data_url ref data url
     ref_data_url = NULL,
+    #'@field ref_data ref data
     ref_data = NULL,
+    #'@field ref_source_term ref source term
     ref_source_term = NULL,
+    #'@field ref_target_term ref target term
     ref_target_term = NULL,
+    #'@field data_target_term data target term
     data_target_term = NULL,
+    #'@field ref_meta_url ref meta url
     ref_meta_url = NULL,
+    #'@field ref_meta ref meta
     ref_meta = NULL,
+    
+    #'@description Initializes a mapping-based validation rule
+    #'@param ref_data_url ref data url
+    #'@param ref_source_term ref source term
+    #'@param ref_target_term ref target term
+    #'@param data_target_term data target term
+    #'@param ref_meta_url ref metadata url
+    #'@param ... any other arg
     initialize = function(ref_data_url = NULL, 
                           ref_source_term = NULL,
                           ref_target_term = NULL,
@@ -57,6 +73,10 @@ vrule_mapping <- R6Class("vrule_mapping",
       }
     },
     
+    #'@description Abstract method to validate data
+    #'@param value value
+    #'@param row row
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, row){
       rep <- super$validate(value, row)
       #ref mapping

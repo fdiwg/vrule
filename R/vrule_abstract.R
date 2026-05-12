@@ -1,4 +1,7 @@
 #'@name vrule_abstract
+#'@title Abstract validation rule
+#'@docType class
+#'@importFrom R6 R6Class
 #'@export
 vrule_abstract <- R6Class("vrule_abstract",
   private = list(
@@ -7,26 +10,37 @@ vrule_abstract <- R6Class("vrule_abstract",
     name = NA
   ),
   public = list(
-    initialize = function(..., type = "ERROR"){
-      if(!type %in% c("ERROR", "WARNING")){
-        stop("Rule type should among values [ERROR, WARNING]")
-      }
+    #'@description Initializes an abstract validation rule
+    #'@param ... args
+    #'@param type the type of rule either \code{ERROR} or \code{WARNING}
+    initialize = function(..., type = c("ERROR","WARNING")){
+      type = match.arg(type)
       private$type = type
     },
     
+    #'@description Abstract method to validate data
+    #'@param value value
+    #'@param ... any other args
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, ...){
       empty_rep = vrule_report$new()
       return(empty_rep)
     },
     
+    #'@description Get validation type
+    #'@return \code{ERROR} or \code{WARNING}
     getType = function(){
       return(private$type)
     },
     
+    #'@description Get validation rule category
+    #'@return the validation rule category
     getCategory = function(){
       return(private$category)
     },
     
+    #'@description Get validation rule name
+    #'@return the validation rule name
     getName = function(){
       return(private$name)
     }

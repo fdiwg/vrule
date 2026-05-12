@@ -9,8 +9,11 @@ vrule_date_max
 
 vrule_date_max
 }
+\details{
+vrule_date_max
+}
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{\link[vrule:vrule_operator_binary]{vrule::vrule_operator_binary}} -> \code{\link[vrule:vrule_operator_relational]{vrule::vrule_operator_relational}} -> \code{vrule_date_max}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_operator_binary]{vrule::vrule_operator_binary}} -> \code{\link[vrule:vrule_operator_relational]{vrule::vrule_operator_relational}} -> \code{vrule_date_max}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,19 +36,42 @@ vrule_date_max
 \if{html}{\out{<a id="method-vrule_date_max-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_date_max-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a date max validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_date_max$new(maxValue, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{maxValue}}{max value}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_date_max-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_date_max-validate}{}}}
 \subsection{Method \code{validate()}}{
+Validates data based on a max date threshold
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_date_max$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{...}}{any other args}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_date_max-clone"></a>}}

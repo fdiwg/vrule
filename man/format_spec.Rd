@@ -9,6 +9,21 @@ format_spec
 
 format_spec
 }
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{name}}{format name}
+
+\item{\code{urn}}{urn}
+
+\item{\code{title}}{title}
+
+\item{\code{type}}{tpe}
+
+\item{\code{column_specs}}{column specifications}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -38,114 +53,229 @@ format_spec
 \if{html}{\out{<a id="method-format_spec-new"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a format specification from a JSON list object
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$new(json = NULL)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{json}}{json}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-setName"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-setName}{}}}
 \subsection{Method \code{setName()}}{
+Set name
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$setName(name)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{name}}{name}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-setURN"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-setURN}{}}}
 \subsection{Method \code{setURN()}}{
+Set URN
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$setURN(urn)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{urn}}{urn}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-setTitle"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-setTitle}{}}}
 \subsection{Method \code{setTitle()}}{
+Set title
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$setTitle(title)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{title}}{title}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-setType"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-setType}{}}}
 \subsection{Method \code{setType()}}{
+Set type
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$setType(type)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{type}}{type}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-addColumnSpec"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-addColumnSpec}{}}}
 \subsection{Method \code{addColumnSpec()}}{
+Adds a column specification
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$addColumnSpec(column_spec)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{column_spec}}{an object of class \link{column_spec}}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-getColumnSpecByName"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-getColumnSpecByName}{}}}
 \subsection{Method \code{getColumnSpecByName()}}{
+Get column specification by name
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$getColumnSpecByName(name)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{name}}{name}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link{column_spec}, or \code{NULL} if no column specification is found
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-getColumnSpecByURN"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-getColumnSpecByURN}{}}}
 \subsection{Method \code{getColumnSpecByURN()}}{
+Get column specification by URN
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$getColumnSpecByURN(urn)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{urn}}{urn}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link{column_spec}, or \code{NULL} if no column specification is found
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-getColumnSpecByAlias"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-getColumnSpecByAlias}{}}}
 \subsection{Method \code{getColumnSpecByAlias()}}{
+Get column specification by alias
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$getColumnSpecByAlias(alias)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{alias}}{alias}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link{column_spec}, or \code{NULL} if no column specification is found
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-getColumnSpec"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-getColumnSpec}{}}}
 \subsection{Method \code{getColumnSpec()}}{
+Get column specification
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$getColumnSpec(column)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{column}}{column name or alias}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link{column_spec}, or \code{NULL} if no column specification is found
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-validateStructure"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-validateStructure}{}}}
 \subsection{Method \code{validateStructure()}}{
+Applies data structure validation
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$validateStructure(data)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{object of class \link{data.frame} or \link[tibble]{tibble}}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link{data.frame} if any data structure validation issue is found (ERROR or WARNING), or \code{NULL} if valid
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-validateSeries"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-validateSeries}{}}}
 \subsection{Method \code{validateSeries()}}{
+Applies data series validation
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$validateSeries(data)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{object of class \link{data.frame} or \link[tibble]{tibble}}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link{data.frame} if any data series validation issue is found (ERROR or WARNING), or \code{NULL} if valid
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-validateContent"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-validateContent}{}}}
 \subsection{Method \code{validateContent()}}{
+Applies data content validation
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$validateContent(
   data,
@@ -155,29 +285,78 @@ format_spec
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{object of class \link{data.frame} or \link[tibble]{tibble}}
+
+\item{\code{mode}}{validation mode, either "column" (default) or "pair"}
+
+\item{\code{parallel}}{whether the validation should be run as parallel (default \code{FALSE})}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link{data.frame}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-validate}{}}}
 \subsection{Method \code{validate()}}{
+Applies data validation
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$validate(data, mode = c("column", "pair"), parallel = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{object of class \link{data.frame} or \link[tibble]{tibble}}
+
+\item{\code{mode}}{validation mode, either "column" (default) or "pair"}
+
+\item{\code{parallel}}{whether the validation should be run as parallel (default \code{FALSE})}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link{data.frame}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-display_as_handsontable"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-display_as_handsontable}{}}}
 \subsection{Method \code{display_as_handsontable()}}{
+Display data and validation report as Handsontable
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$display_as_handsontable(data, report, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{data}
+
+\item{\code{report}}{report}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link[rhandsontable]{rhandsontable}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-validate_and_display_as_handsontable"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-validate_and_display_as_handsontable}{}}}
 \subsection{Method \code{validate_and_display_as_handsontable()}}{
+Applies data validation
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$validate_and_display_as_handsontable(
   data,
@@ -188,33 +367,89 @@ format_spec
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{object of class \link{data.frame} or \link[tibble]{tibble}}
+
+\item{\code{parallel}}{whether the validation should be run as parallel (default \code{FALSE})}
+
+\item{\code{read_only}}{read only}
+
+\item{\code{use_css_classes}}{use css classes}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+an object of class \link[rhandsontable]{rhandsontable}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-standardizeStructure"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-standardizeStructure}{}}}
 \subsection{Method \code{standardizeStructure()}}{
+Standardize structure
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$standardizeStructure(data, exclude_unused = TRUE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{data}
+
+\item{\code{exclude_unused}}{exclude unsed columns}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+the standardized data structure
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-standardizeContent"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-standardizeContent}{}}}
 \subsection{Method \code{standardizeContent()}}{
+Standardize content
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{format_spec$standardizeContent(data)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{data}}{data}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+the standardized data
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-createTemplate"></a>}}
 \if{latex}{\out{\hypertarget{method-format_spec-createTemplate}{}}}
 \subsection{Method \code{createTemplate()}}{
+Creates template based on the format specification, including
+a template structure and eventual reference data files (codelists)
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$createTemplate(use_aliases = FALSE, dir = getwd())}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$createTemplate(use_aliases = FALSE, dir)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{use_aliases}}{use aliases?}
+
+\item{\code{dir}}{directory where to save the template}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+the path of the output template (as ZIP file)
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format_spec-clone"></a>}}

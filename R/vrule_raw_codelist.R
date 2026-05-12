@@ -10,13 +10,23 @@ vrule_raw_codelist <- R6Class("vrule_raw_codelist",
     name = "Raw Codelist"
   ),
   public = list(
+    
+    #'@field ref_values ref values
     ref_values = NULL,
+    
+    #'@description Initializes a raw codelist validation rule
+    #'@param ref_values the raw codelists values
+    #'@param ... any other arg
     initialize = function(ref_values = NULL, ...){
       super$initialize(...)
       #case of raw values
       self$ref_values = ref_values
     },
     
+    #'@description Validates value with a raw codelist validation rule
+    #'@param value value
+    #'@param ... any other args
+    #'@return a validation report, object of class \link{vrule_report}
     validate = function(value, ...){
       rep <- super$validate(value, ...)
       if(length(which(value == self$ref_values))==0){

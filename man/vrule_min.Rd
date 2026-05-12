@@ -9,8 +9,11 @@ vrule_min
 
 vrule_min
 }
+\details{
+vrule_min
+}
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{\link[vrule:vrule_operator_binary]{vrule::vrule_operator_binary}} -> \code{\link[vrule:vrule_operator_relational]{vrule::vrule_operator_relational}} -> \code{vrule_min}
+\code{\link[vrule:vrule_abstract]{vrule::vrule_abstract}} -> \code{\link[vrule:vrule_operator_binary]{vrule::vrule_operator_binary}} -> \code{\link[vrule:vrule_operator_relational]{vrule::vrule_operator_relational}} -> \code{vrule_min}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,19 +36,42 @@ vrule_min
 \if{html}{\out{<a id="method-vrule_min-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_min-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a min threshold validation rule
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_min$new(minValue, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{minValue}}{min value}
+
+\item{\code{...}}{any other arg}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_min-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_min-validate}{}}}
 \subsection{Method \code{validate()}}{
+Validates data based on a min threshold
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_min$validate(value, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value}
+
+\item{\code{...}}{any other args}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a validation report, object of class \link{vrule_report}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_min-clone"></a>}}

@@ -9,6 +9,15 @@ vrule_report
 
 vrule_report
 }
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{valid}}{valid}
+
+\item{\code{report}}{report}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -20,10 +29,20 @@ vrule_report
 \if{html}{\out{<a id="method-vrule_report-new"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_report-new}{}}}
 \subsection{Method \code{new()}}{
+Initializes a validation report
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{vrule_report$new(valid = NULL, report = NULL)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{valid}}{\code{TRUE} or \code{FALSE}}
+
+\item{\code{report}}{report}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_report-clone"></a>}}
