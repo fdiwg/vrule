@@ -232,7 +232,8 @@ format_spec = R6Class("format_spec",
           ))
         }
         rep$report$col_alias = sapply(1:nrow(rep$report), function(i){
-          if(colnames(x)[rep$report[i,]$j] %in% column_specs[[rep$report[i,]$j]]$aliases) colnames(x)[rep$report[i,]$j] else NA
+          print(colnames(x)[rep$report[i,]$j])
+          if(colnames(x)[rep$report[i,]$j] %in% spec$aliases) colnames(x)[rep$report[i,]$j] else NA
         })
         return(rep$report)
       }
