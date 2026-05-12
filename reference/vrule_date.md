@@ -6,7 +6,10 @@ vrule_date
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_simple` -\>
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_simple`](https://fdiwg.github.io/vrule/reference/vrule_abstract_simple.md)
+-\>
 [`vrule::vrule_datatype`](https://fdiwg.github.io/vrule/reference/vrule_datatype.md)
 -\>
 [`vrule::vrule_character`](https://fdiwg.github.io/vrule/reference/vrule_character.md)
@@ -32,17 +35,46 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a date validation rule
+
 #### Usage
 
     vrule_date$new(na_allowed = FALSE, ...)
+
+#### Arguments
+
+- `na_allowed`:
+
+  `TRUE` if NA values are allowed, `FALSE otherwise`
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Validates a date
+
 #### Usage
 
     vrule_date$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other args
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

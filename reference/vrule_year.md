@@ -6,7 +6,10 @@ vrule_year
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_simple` -\>
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_simple`](https://fdiwg.github.io/vrule/reference/vrule_abstract_simple.md)
+-\>
 [`vrule::vrule_datatype`](https://fdiwg.github.io/vrule/reference/vrule_datatype.md)
 -\>
 [`vrule::vrule_integer`](https://fdiwg.github.io/vrule/reference/vrule_integer.md)
@@ -32,17 +35,46 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a year validation rule
+
 #### Usage
 
     vrule_year$new(na_allowed = FALSE, ...)
+
+#### Arguments
+
+- `na_allowed`:
+
+  `TRUE` if NA values are allowed, `FALSE otherwise`
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Validates a year
+
 #### Usage
 
     vrule_year$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other args
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

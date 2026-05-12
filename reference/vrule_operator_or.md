@@ -6,7 +6,8 @@ vrule_operator_or
 
 ## Super classes
 
-`vrule::vrule_abstract` -\>
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
 [`vrule::vrule_operator_binary`](https://fdiwg.github.io/vrule/reference/vrule_operator_binary.md)
 -\>
 [`vrule::vrule_operator_logical`](https://fdiwg.github.io/vrule/reference/vrule_operator_logical.md)
@@ -32,17 +33,42 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a logical OR operator validation rule
+
 #### Usage
 
     vrule_operator_or$new(...)
+
+#### Arguments
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Method to validate data
+
 #### Usage
 
     vrule_operator_or$validate(value, row)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `row`:
+
+  row
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

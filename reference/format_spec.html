@@ -41,6 +41,30 @@ format_spec"></head><body>
 
 
     <div class="section level2">
+    <h2 id="public-fields">Public fields<a class="anchor" aria-label="anchor" href="#public-fields"></a></h2>
+    <p></p><div class="r6-fields"><dl><dt><code>name</code></dt>
+<dd><p>format name</p></dd>
+
+
+<dt><code>urn</code></dt>
+<dd><p>urn</p></dd>
+
+
+<dt><code>title</code></dt>
+<dd><p>title</p></dd>
+
+
+<dt><code>type</code></dt>
+<dd><p>tpe</p></dd>
+
+
+<dt><code>column_specs</code></dt>
+<dd><p>column specifications</p></dd>
+
+
+</dl><p></p></div>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
 
 <div class="section">
@@ -68,116 +92,223 @@ format_spec"></head><body>
 <li><p><a href="#method-format_spec-clone"><code>format_spec$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-format_spec-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
-
-<div class="section">
+<p>Initializes a format specification from a JSON list object</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/format_spec.html">format_spec</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>json <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>json</code></dt>
+<dd><p>json</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-setName"></a><div class="section">
 <h3 id="method-setname-">Method <code>setName()</code><a class="anchor" aria-label="anchor" href="#method-setname-"></a></h3>
-
-<div class="section">
+<p>Set name</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">setName</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>name</code></dt>
+<dd><p>name</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-setURN"></a><div class="section">
 <h3 id="method-seturn-">Method <code>setURN()</code><a class="anchor" aria-label="anchor" href="#method-seturn-"></a></h3>
-
-<div class="section">
+<p>Set URN</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">setURN</span><span class="op">(</span><span class="va">urn</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>urn</code></dt>
+<dd><p>urn</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-setTitle"></a><div class="section">
 <h3 id="method-settitle-">Method <code>setTitle()</code><a class="anchor" aria-label="anchor" href="#method-settitle-"></a></h3>
-
-<div class="section">
+<p>Set title</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">setTitle</span><span class="op">(</span><span class="va">title</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>title</code></dt>
+<dd><p>title</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-setType"></a><div class="section">
 <h3 id="method-settype-">Method <code>setType()</code><a class="anchor" aria-label="anchor" href="#method-settype-"></a></h3>
-
-<div class="section">
+<p>Set type</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">setType</span><span class="op">(</span><span class="va">type</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>type</code></dt>
+<dd><p>type</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-addColumnSpec"></a><div class="section">
 <h3 id="method-addcolumnspec-">Method <code>addColumnSpec()</code><a class="anchor" aria-label="anchor" href="#method-addcolumnspec-"></a></h3>
-
-<div class="section">
+<p>Adds a column specification</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">addColumnSpec</span><span class="op">(</span><span class="va">column_spec</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>column_spec</code></dt>
+<dd><p>an object of class <a href="column_spec.html">column_spec</a></p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-getColumnSpecByName"></a><div class="section">
 <h3 id="method-getcolumnspecbyname-">Method <code>getColumnSpecByName()</code><a class="anchor" aria-label="anchor" href="#method-getcolumnspecbyname-"></a></h3>
-
-<div class="section">
+<p>Get column specification by name</p><div class="section">
 <h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">getColumnSpecByName</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>name</code></dt>
+<dd><p>name</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>an object of class <a href="column_spec.html">column_spec</a>, or <code>NULL</code> if no column specification is found</p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-getColumnSpecByURN"></a><div class="section">
 <h3 id="method-getcolumnspecbyurn-">Method <code>getColumnSpecByURN()</code><a class="anchor" aria-label="anchor" href="#method-getcolumnspecbyurn-"></a></h3>
-
-<div class="section">
+<p>Get column specification by URN</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">getColumnSpecByURN</span><span class="op">(</span><span class="va">urn</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>urn</code></dt>
+<dd><p>urn</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
+<p>an object of class <a href="column_spec.html">column_spec</a>, or <code>NULL</code> if no column specification is found</p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-getColumnSpecByAlias"></a><div class="section">
 <h3 id="method-getcolumnspecbyalias-">Method <code>getColumnSpecByAlias()</code><a class="anchor" aria-label="anchor" href="#method-getcolumnspecbyalias-"></a></h3>
-
-<div class="section">
+<p>Get column specification by alias</p><div class="section">
 <h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">getColumnSpecByAlias</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>alias</code></dt>
+<dd><p>alias</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
+<p>an object of class <a href="column_spec.html">column_spec</a>, or <code>NULL</code> if no column specification is found</p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-getColumnSpec"></a><div class="section">
 <h3 id="method-getcolumnspec-">Method <code>getColumnSpec()</code><a class="anchor" aria-label="anchor" href="#method-getcolumnspec-"></a></h3>
-
-<div class="section">
+<p>Get column specification</p><div class="section">
 <h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">getColumnSpec</span><span class="op">(</span><span class="va">column</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>column</code></dt>
+<dd><p>column name or alias</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<p>an object of class <a href="column_spec.html">column_spec</a>, or <code>NULL</code> if no column specification is found</p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-validateStructure"></a><div class="section">
 <h3 id="method-validatestructure-">Method <code>validateStructure()</code><a class="anchor" aria-label="anchor" href="#method-validatestructure-"></a></h3>
-
-<div class="section">
+<p>Applies data structure validation</p><div class="section">
 <h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validateStructure</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>data</code></dt>
+<dd><p>object of class <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> or <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<p>an object of class <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> if any data structure validation issue is found (ERROR or WARNING), or <code>NULL</code> if valid</p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-validateSeries"></a><div class="section">
 <h3 id="method-validateseries-">Method <code>validateSeries()</code><a class="anchor" aria-label="anchor" href="#method-validateseries-"></a></h3>
-
-<div class="section">
+<p>Applies data series validation</p><div class="section">
 <h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validateSeries</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>data</code></dt>
+<dd><p>object of class <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> or <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
+<p>an object of class <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> if any data series validation issue is found (ERROR or WARNING), or <code>NULL</code> if valid</p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-validateContent"></a><div class="section">
 <h3 id="method-validatecontent-">Method <code>validateContent()</code><a class="anchor" aria-label="anchor" href="#method-validatecontent-"></a></h3>
-
-<div class="section">
+<p>Applies data content validation</p><div class="section">
 <h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validateContent</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
@@ -187,29 +318,94 @@ format_spec"></head><body>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>data</code></dt>
+<dd><p>object of class <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> or <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></p></dd>
+
+
+<dt><code>mode</code></dt>
+<dd><p>validation mode, either "column" (default) or "pair"</p></dd>
+
+
+<dt><code>parallel</code></dt>
+<dd><p>whether the validation should be run as parallel (default <code>FALSE</code>)</p></dd>
+
+
+<dt><code>...</code></dt>
+<dd><p>any other arg</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
+<p>an object of class <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-validate"></a><div class="section">
 <h3 id="method-validate-">Method <code>validate()</code><a class="anchor" aria-label="anchor" href="#method-validate-"></a></h3>
-
-<div class="section">
+<p>Applies data validation</p><div class="section">
 <h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validate</span><span class="op">(</span><span class="va">data</span>, mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"column"</span>, <span class="st">"pair"</span><span class="op">)</span>, parallel <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>data</code></dt>
+<dd><p>object of class <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> or <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></p></dd>
+
+
+<dt><code>mode</code></dt>
+<dd><p>validation mode, either "column" (default) or "pair"</p></dd>
+
+
+<dt><code>parallel</code></dt>
+<dd><p>whether the validation should be run as parallel (default <code>FALSE</code>)</p></dd>
+
+
+<dt><code>...</code></dt>
+<dd><p>any other arg</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
+<p>an object of class <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-display_as_handsontable"></a><div class="section">
 <h3 id="method-display-as-handsontable-">Method <code>display_as_handsontable()</code><a class="anchor" aria-label="anchor" href="#method-display-as-handsontable-"></a></h3>
-
-<div class="section">
+<p>Display data and validation report as Handsontable</p><div class="section">
 <h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">display_as_handsontable</span><span class="op">(</span><span class="va">data</span>, <span class="va">report</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>data</code></dt>
+<dd><p>data</p></dd>
+
+
+<dt><code>report</code></dt>
+<dd><p>report</p></dd>
+
+
+<dt><code>...</code></dt>
+<dd><p>any other arg</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
+<p>an object of class <a href="https://rdrr.io/pkg/rhandsontable/man/rhandsontable.html" class="external-link">rhandsontable</a></p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-validate_and_display_as_handsontable"></a><div class="section">
 <h3 id="method-validate-and-display-as-handsontable-">Method <code>validate_and_display_as_handsontable()</code><a class="anchor" aria-label="anchor" href="#method-validate-and-display-as-handsontable-"></a></h3>
-
-<div class="section">
+<p>Applies data validation</p><div class="section">
 <h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">validate_and_display_as_handsontable</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
@@ -220,33 +416,103 @@ format_spec"></head><body>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>data</code></dt>
+<dd><p>object of class <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> or <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></p></dd>
+
+
+<dt><code>parallel</code></dt>
+<dd><p>whether the validation should be run as parallel (default <code>FALSE</code>)</p></dd>
+
+
+<dt><code>read_only</code></dt>
+<dd><p>read only</p></dd>
+
+
+<dt><code>use_css_classes</code></dt>
+<dd><p>use css classes</p></dd>
+
+
+<dt><code>...</code></dt>
+<dd><p>any other arg</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-9">Returns<a class="anchor" aria-label="anchor" href="#returns-9"></a></h4>
+<p>an object of class <a href="https://rdrr.io/pkg/rhandsontable/man/rhandsontable.html" class="external-link">rhandsontable</a></p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-standardizeStructure"></a><div class="section">
 <h3 id="method-standardizestructure-">Method <code>standardizeStructure()</code><a class="anchor" aria-label="anchor" href="#method-standardizestructure-"></a></h3>
-
-<div class="section">
+<p>Standardize structure</p><div class="section">
 <h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">standardizeStructure</span><span class="op">(</span><span class="va">data</span>, exclude_unused <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>data</code></dt>
+<dd><p>data</p></dd>
+
+
+<dt><code>exclude_unused</code></dt>
+<dd><p>exclude unsed columns</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-10">Returns<a class="anchor" aria-label="anchor" href="#returns-10"></a></h4>
+<p>the standardized data structure</p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-standardizeContent"></a><div class="section">
 <h3 id="method-standardizecontent-">Method <code>standardizeContent()</code><a class="anchor" aria-label="anchor" href="#method-standardizecontent-"></a></h3>
-
-<div class="section">
+<p>Standardize content</p><div class="section">
 <h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">standardizeContent</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>data</code></dt>
+<dd><p>data</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-11">Returns<a class="anchor" aria-label="anchor" href="#returns-11"></a></h4>
+<p>the standardized data</p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-createTemplate"></a><div class="section">
 <h3 id="method-createtemplate-">Method <code>createTemplate()</code><a class="anchor" aria-label="anchor" href="#method-createtemplate-"></a></h3>
-
-<div class="section">
+<p>Creates template based on the format specification, including
+a template structure and eventual reference data files (codelists)</p><div class="section">
 <h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">createTemplate</span><span class="op">(</span>use_aliases <span class="op">=</span> <span class="cn">FALSE</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">format_spec</span><span class="op">$</span><span class="fu">createTemplate</span><span class="op">(</span>use_aliases <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">dir</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>use_aliases</code></dt>
+<dd><p>use aliases?</p></dd>
+
+
+<dt><code>dir</code></dt>
+<dd><p>directory where to save the template</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-12">Returns<a class="anchor" aria-label="anchor" href="#returns-12"></a></h4>
+<p>the path of the output template (as ZIP file)</p>
+</div>
 
 </div><p></p><hr><a id="method-format_spec-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
@@ -256,7 +522,7 @@ format_spec"></head><body>
 </div>
 
 <div class="section">
-<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

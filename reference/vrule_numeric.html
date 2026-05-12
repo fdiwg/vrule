@@ -42,7 +42,7 @@ vrule_numeric"></head><body>
 
     <div class="section level2">
     <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
-    <p><code>vrule::vrule_abstract</code> -&gt; <code>vrule::vrule_abstract_simple</code> -&gt; <code><a href="vrule_datatype.html">vrule::vrule_datatype</a></code> -&gt; <code>vrule_numeric</code></p>
+    <p><code><a href="vrule_abstract.html">vrule::vrule_abstract</a></code> -&gt; <code><a href="vrule_abstract_simple.html">vrule::vrule_abstract_simple</a></code> -&gt; <code><a href="vrule_datatype.html">vrule::vrule_datatype</a></code> -&gt; <code>vrule_numeric</code></p>
     </div>
     <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
@@ -51,29 +51,64 @@ vrule_numeric"></head><body>
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-vrule_numeric-new"><code>vrule_numeric$new()</code></a></p></li>
+<li><p><a href="#method-vrule_numeric-validate"><code>vrule_numeric$validate()</code></a></p></li>
 <li><p><a href="#method-vrule_numeric-clone"><code>vrule_numeric$clone()</code></a></p></li>
 </ul></div><p><details open><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href="vrule_abstract.html#method-getCategory"><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href="vrule_abstract.html#method-getName"><code>vrule::vrule_abstract$getName()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getType"><a href="vrule_abstract.html#method-getType"><code>vrule::vrule_abstract$getType()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_datatype" data-id="validate"><a href="vrule_datatype.html#method-validate"><code>vrule::vrule_datatype$validate()</code></a></span></li>
 </ul></details></p><hr><a id="method-vrule_numeric-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
-
-<div class="section">
+<p>Initializes a numeric data validation rule</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/vrule_numeric.html">vrule_numeric</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>na_allowed <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>na_allowed</code></dt>
+<dd><p>is NA allowed?</p></dd>
+
+
+<dt><code>...</code></dt>
+<dd><p>any other arg</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-vrule_numeric-validate"></a><div class="section">
+<h3 id="method-validate-">Method <code>validate()</code><a class="anchor" aria-label="anchor" href="#method-validate-"></a></h3>
+<p>Method to validate data</p><div class="section">
+<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">vrule_numeric</span><span class="op">$</span><span class="fu">validate</span><span class="op">(</span><span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>value</code></dt>
+<dd><p>value</p></dd>
+
+
+<dt><code>...</code></dt>
+<dd><p>any other args</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>a validation report, object of class <a href="vrule_report.html">vrule_report</a></p>
+</div>
 
 </div><p></p><hr><a id="method-vrule_numeric-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">vrule_numeric</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

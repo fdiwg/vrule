@@ -1,27 +1,23 @@
-# vrule_operator_and
+# vrule_abstract_simple
 
-vrule_operator_and
+vrule_abstract_simple
 
-vrule_operator_and
+vrule_abstract_simple
 
-## Super classes
+## Super class
 
 [`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
--\>
-[`vrule::vrule_operator_binary`](https://fdiwg.github.io/vrule/reference/vrule_operator_binary.md)
--\>
-[`vrule::vrule_operator_logical`](https://fdiwg.github.io/vrule/reference/vrule_operator_logical.md)
--\> `vrule_operator_and`
+-\> `vrule_abstract_simple`
 
 ## Methods
 
 ### Public methods
 
-- [`vrule_operator_and$new()`](#method-vrule_operator_and-new)
+- [`vrule_abstract_simple$new()`](#method-vrule_abstract_simple-new)
 
-- [`vrule_operator_and$validate()`](#method-vrule_operator_and-validate)
+- [`vrule_abstract_simple$validate()`](#method-vrule_abstract_simple-validate)
 
-- [`vrule_operator_and$clone()`](#method-vrule_operator_and-clone)
+- [`vrule_abstract_simple$clone()`](#method-vrule_abstract_simple-clone)
 
 Inherited methods
 
@@ -33,27 +29,27 @@ Inherited methods
 
 ### Method `new()`
 
-Initializes a logical AND operator validation rule
+Initializes an abstract simple validation rule
 
 #### Usage
 
-    vrule_operator_and$new(...)
+    vrule_abstract_simple$new(...)
 
 #### Arguments
 
 - `...`:
 
-  any other arg
+  args
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
-Method to validate data
+Abstract method to validate data
 
 #### Usage
 
-    vrule_operator_and$validate(value, row)
+    vrule_abstract_simple$validate(value, ...)
 
 #### Arguments
 
@@ -61,9 +57,9 @@ Method to validate data
 
   value
 
-- `row`:
+- `...`:
 
-  row
+  any other args
 
 #### Returns
 
@@ -78,7 +74,7 @@ The objects of this class are cloneable with this method.
 
 #### Usage
 
-    vrule_operator_and$clone(deep = FALSE)
+    vrule_abstract_simple$clone(deep = FALSE)
 
 #### Arguments
 

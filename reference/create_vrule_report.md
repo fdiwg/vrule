@@ -7,3 +7,25 @@ create_vrule_report
 ``` r
 create_vrule_report(valid, category, rule, type, message)
 ```
+
+## Arguments
+
+- valid:
+
+  valid `TRUE` or `FALSE`
+
+- category:
+
+  category
+
+- rule:
+
+  rule
+
+- type:
+
+  type
+
+- message:
+
+  message

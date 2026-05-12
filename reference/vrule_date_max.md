@@ -4,9 +4,14 @@ vrule_date_max
 
 vrule_date_max
 
+## Details
+
+vrule_date_max
+
 ## Super classes
 
-`vrule::vrule_abstract` -\>
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
 [`vrule::vrule_operator_binary`](https://fdiwg.github.io/vrule/reference/vrule_operator_binary.md)
 -\>
 [`vrule::vrule_operator_relational`](https://fdiwg.github.io/vrule/reference/vrule_operator_relational.md)
@@ -32,17 +37,46 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a date max validation rule
+
 #### Usage
 
     vrule_date_max$new(maxValue, ...)
+
+#### Arguments
+
+- `maxValue`:
+
+  max value
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Validates data based on a max date threshold
+
 #### Usage
 
     vrule_date_max$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other args
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

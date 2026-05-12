@@ -41,8 +41,12 @@ vrule_operator_relational"></head><body>
 
 
     <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>vrule_operator_relational</p>
+    </div>
+    <div class="section level2">
     <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
-    <p><code>vrule::vrule_abstract</code> -&gt; <code><a href="vrule_operator_binary.html">vrule::vrule_operator_binary</a></code> -&gt; <code>vrule_operator_relational</code></p>
+    <p><code><a href="vrule_abstract.html">vrule::vrule_abstract</a></code> -&gt; <code><a href="vrule_operator_binary.html">vrule::vrule_operator_binary</a></code> -&gt; <code>vrule_operator_relational</code></p>
     </div>
     <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
@@ -58,21 +62,51 @@ vrule_operator_relational"></head><body>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getType"><a href="vrule_abstract.html#method-getType"><code>vrule::vrule_abstract$getType()</code></a></span></li>
 </ul></details></p><hr><a id="method-vrule_operator_relational-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
-
-<div class="section">
+<p>Initializes a operator relational validation rule</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/vrule_operator_relational.html">vrule_operator_relational</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">operator</span>, <span class="va">expr</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>operator</code></dt>
+<dd><p>operator</p></dd>
+
+
+<dt><code>expr</code></dt>
+<dd><p>expr</p></dd>
+
+
+<dt><code>...</code></dt>
+<dd><p>any other arg</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-vrule_operator_relational-validate"></a><div class="section">
 <h3 id="method-validate-">Method <code>validate()</code><a class="anchor" aria-label="anchor" href="#method-validate-"></a></h3>
-
-<div class="section">
+<p>Abstract method to validate data</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">vrule_operator_relational</span><span class="op">$</span><span class="fu">validate</span><span class="op">(</span><span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>value</code></dt>
+<dd><p>value</p></dd>
+
+
+<dt><code>...</code></dt>
+<dd><p>any other args</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>a validation report, object of class <a href="vrule_report.html">vrule_report</a></p>
+</div>
 
 </div><p></p><hr><a id="method-vrule_operator_relational-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
@@ -82,7 +116,7 @@ vrule_operator_relational"></head><body>
 </div>
 
 <div class="section">
-<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

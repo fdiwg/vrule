@@ -6,7 +6,10 @@ vrule_double
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_simple` -\>
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_simple`](https://fdiwg.github.io/vrule/reference/vrule_abstract_simple.md)
+-\>
 [`vrule::vrule_datatype`](https://fdiwg.github.io/vrule/reference/vrule_datatype.md)
 -\> `vrule_double`
 
@@ -30,17 +33,46 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a double data validation rule
+
 #### Usage
 
     vrule_double$new(na_allowed = FALSE, ...)
+
+#### Arguments
+
+- `na_allowed`:
+
+  is NA allowed?
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Method to validate data
+
 #### Usage
 
     vrule_double$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other args
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

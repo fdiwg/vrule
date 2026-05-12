@@ -1,6 +1,7 @@
 # getVruleClasses
 
-get the list of validation classes, ie classes extending vrule_abstract
+get the list of validation classes, ie classes extending
+[vrule_abstract](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
 super class, including classes eventually defined outside vrule. In case
 the latter is on the search path, the list of validation classes will be
 cached for optimized used by vrule encoder/decoder.

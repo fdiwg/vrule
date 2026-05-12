@@ -14,9 +14,21 @@
   : getClassesInheriting
 - [`getVruleClasses()`](https://fdiwg.github.io/vrule/reference/getVruleClasses.md)
   : getVruleClasses
+- [`getVruleOption()`](https://fdiwg.github.io/vrule/reference/getVruleOption.md)
+  : getVruleOption
+- [`getVruleOptions()`](https://fdiwg.github.io/vrule/reference/getVruleOptions.md)
+  : getVruleOptions
+- [`setVruleOptions()`](https://fdiwg.github.io/vrule/reference/setVruleOptions.md)
+  : setVruleOptions
 - [`vrule`](https://fdiwg.github.io/vrule/reference/vrule.md)
   [`vrule-package`](https://fdiwg.github.io/vrule/reference/vrule.md) :
   Tools to validate data based on business validation rules
+- [`vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+  : Abstract validation rule
+- [`vrule_abstract_complex`](https://fdiwg.github.io/vrule/reference/vrule_abstract_complex.md)
+  : vrule_abstract_complex
+- [`vrule_abstract_simple`](https://fdiwg.github.io/vrule/reference/vrule_abstract_simple.md)
+  : vrule_abstract_simple
 - [`vrule_character`](https://fdiwg.github.io/vrule/reference/vrule_character.md)
   : vrule_character
 - [`vrule_codelist`](https://fdiwg.github.io/vrule/reference/vrule_codelist.md)

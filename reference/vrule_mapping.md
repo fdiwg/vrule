@@ -6,8 +6,40 @@ vrule_mapping
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_complex` -\>
-`vrule_mapping`
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_complex`](https://fdiwg.github.io/vrule/reference/vrule_abstract_complex.md)
+-\> `vrule_mapping`
+
+## Public fields
+
+- `ref_data_url`:
+
+  ref data url
+
+- `ref_data`:
+
+  ref data
+
+- `ref_source_term`:
+
+  ref source term
+
+- `ref_target_term`:
+
+  ref target term
+
+- `data_target_term`:
+
+  data target term
+
+- `ref_meta_url`:
+
+  ref meta url
+
+- `ref_meta`:
+
+  ref meta
 
 ## Methods
 
@@ -29,6 +61,8 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a mapping-based validation rule
+
 #### Usage
 
     vrule_mapping$new(
@@ -40,13 +74,56 @@ Inherited methods
       ...
     )
 
+#### Arguments
+
+- `ref_data_url`:
+
+  ref data url
+
+- `ref_source_term`:
+
+  ref source term
+
+- `ref_target_term`:
+
+  ref target term
+
+- `data_target_term`:
+
+  data target term
+
+- `ref_meta_url`:
+
+  ref metadata url
+
+- `...`:
+
+  any other arg
+
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Abstract method to validate data
+
 #### Usage
 
     vrule_mapping$validate(value, row)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `row`:
+
+  row
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

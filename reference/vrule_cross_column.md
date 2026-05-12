@@ -6,8 +6,20 @@ vrule_cross_column
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_complex` -\>
-`vrule_cross_column`
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_complex`](https://fdiwg.github.io/vrule/reference/vrule_abstract_complex.md)
+-\> `vrule_cross_column`
+
+## Public fields
+
+- `operator`:
+
+  operator
+
+- `expr`:
+
+  expr
 
 ## Methods
 
@@ -29,17 +41,50 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a cross-column check validation rule
+
 #### Usage
 
     vrule_cross_column$new(operator, expr, ...)
+
+#### Arguments
+
+- `operator`:
+
+  operator
+
+- `expr`:
+
+  expr
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Abstract method to validate data
+
 #### Usage
 
     vrule_cross_column$validate(value, row)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `row`:
+
+  row
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

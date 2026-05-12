@@ -4,6 +4,16 @@ vrule_report
 
 vrule_report
 
+## Public fields
+
+- `valid`:
+
+  valid
+
+- `report`:
+
+  report
+
 ## Methods
 
 ### Public methods
@@ -16,9 +26,21 @@ vrule_report
 
 ### Method `new()`
 
+Initializes a validation report
+
 #### Usage
 
     vrule_report$new(valid = NULL, report = NULL)
+
+#### Arguments
+
+- `valid`:
+
+  `TRUE` or `FALSE`
+
+- `report`:
+
+  report
 
 ------------------------------------------------------------------------
 

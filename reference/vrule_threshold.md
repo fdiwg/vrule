@@ -4,9 +4,14 @@ vrule_threshold
 
 vrule_threshold
 
+## Details
+
+vrule_threshold
+
 ## Super classes
 
-`vrule::vrule_abstract` -\>
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
 [`vrule::vrule_operator_binary`](https://fdiwg.github.io/vrule/reference/vrule_operator_binary.md)
 -\>
 [`vrule::vrule_operator_relational`](https://fdiwg.github.io/vrule/reference/vrule_operator_relational.md)
@@ -32,17 +37,50 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a threshold validation rule
+
 #### Usage
 
     vrule_threshold$new(operator, threshold, ...)
+
+#### Arguments
+
+- `operator`:
+
+  operator
+
+- `threshold`:
+
+  threshold
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Validates data based on a threshold
+
 #### Usage
 
     vrule_threshold$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other args
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

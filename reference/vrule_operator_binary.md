@@ -6,7 +6,18 @@ vrule_operator_binary
 
 ## Super class
 
-`vrule::vrule_abstract` -\> `vrule_operator_binary`
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\> `vrule_operator_binary`
+
+## Public fields
+
+- `operator`:
+
+  operator
+
+- `expr`:
+
+  expr
 
 ## Methods
 
@@ -28,17 +39,50 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a binary operator validation rule
+
 #### Usage
 
     vrule_operator_binary$new(operator, expr, ...)
+
+#### Arguments
+
+- `operator`:
+
+  operator
+
+- `expr`:
+
+  expr
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Method to validate data
+
 #### Usage
 
     vrule_operator_binary$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other arg
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

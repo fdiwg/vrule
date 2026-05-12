@@ -6,8 +6,40 @@ vrule_codelist
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_simple` -\>
-`vrule_codelist`
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_simple`](https://fdiwg.github.io/vrule/reference/vrule_abstract_simple.md)
+-\> `vrule_codelist`
+
+## Public fields
+
+- `ref_data_url`:
+
+  ref data url
+
+- `ref_data`:
+
+  ref data
+
+- `ref_data_column`:
+
+  ref data column
+
+- `ref_data_column_alt`:
+
+  ref data alternate column
+
+- `ref_meta_url`:
+
+  ref metadata url
+
+- `ref_meta`:
+
+  ref metadata
+
+- `allow_labels`:
+
+  allow labels?
 
 ## Methods
 
@@ -29,6 +61,8 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a codelist validation rule
+
 #### Usage
 
     vrule_codelist$new(
@@ -40,13 +74,56 @@ Inherited methods
       ...
     )
 
+#### Arguments
+
+- `ref_data_url`:
+
+  ref data url
+
+- `ref_data_column`:
+
+  ref data column
+
+- `ref_data_column_alt`:
+
+  ref data alternate column
+
+- `allow_labels`:
+
+  Allow labels?
+
+- `ref_meta_url`:
+
+  ref metadata url
+
+- `...`:
+
+  any other arg
+
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Validates value with a codelist validation rule
+
 #### Usage
 
     vrule_codelist$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other args
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

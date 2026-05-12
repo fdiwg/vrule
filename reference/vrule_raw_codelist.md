@@ -6,8 +6,16 @@ vrule_raw_codelist
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_simple` -\>
-`vrule_raw_codelist`
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_simple`](https://fdiwg.github.io/vrule/reference/vrule_abstract_simple.md)
+-\> `vrule_raw_codelist`
+
+## Public fields
+
+- `ref_values`:
+
+  ref values
 
 ## Methods
 
@@ -29,17 +37,46 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a raw codelist validation rule
+
 #### Usage
 
     vrule_raw_codelist$new(ref_values = NULL, ...)
+
+#### Arguments
+
+- `ref_values`:
+
+  the raw codelists values
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Validates value with a raw codelist validation rule
+
 #### Usage
 
     vrule_raw_codelist$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other args
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

@@ -41,6 +41,34 @@ column_spec"></head><body>
 
 
     <div class="section level2">
+    <h2 id="public-fields">Public fields<a class="anchor" aria-label="anchor" href="#public-fields"></a></h2>
+    <p></p><div class="r6-fields"><dl><dt><code>name</code></dt>
+<dd><p>name</p></dd>
+
+
+<dt><code>urn</code></dt>
+<dd><p>urn</p></dd>
+
+
+<dt><code>dimension</code></dt>
+<dd><p>dimension</p></dd>
+
+
+<dt><code>aliases</code></dt>
+<dd><p>aliases</p></dd>
+
+
+<dt><code>required</code></dt>
+<dd><p>required</p></dd>
+
+
+<dt><code>rules</code></dt>
+<dd><p>rules</p></dd>
+
+
+</dl><p></p></div>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
 
 <div class="section">
@@ -58,84 +86,151 @@ column_spec"></head><body>
 <li><p><a href="#method-column_spec-clone"><code>column_spec$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-column_spec-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
-
-<div class="section">
+<p>Initializes a column specification</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/column_spec.html">column_spec</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>json <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>json</code></dt>
+<dd><p>object of class <a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-column_spec-setName"></a><div class="section">
 <h3 id="method-setname-">Method <code>setName()</code><a class="anchor" aria-label="anchor" href="#method-setname-"></a></h3>
-
-<div class="section">
+<p>set name</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">column_spec</span><span class="op">$</span><span class="fu">setName</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>name</code></dt>
+<dd><p>name</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-column_spec-setURN"></a><div class="section">
 <h3 id="method-seturn-">Method <code>setURN()</code><a class="anchor" aria-label="anchor" href="#method-seturn-"></a></h3>
-
-<div class="section">
+<p>set URN</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">column_spec</span><span class="op">$</span><span class="fu">setURN</span><span class="op">(</span><span class="va">urn</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>urn</code></dt>
+<dd><p>urn</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-column_spec-isDimension"></a><div class="section">
 <h3 id="method-isdimension-">Method <code>isDimension()</code><a class="anchor" aria-label="anchor" href="#method-isdimension-"></a></h3>
-
-<div class="section">
+<p>Set if the column is a dimension</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">column_spec</span><span class="op">$</span><span class="fu">isDimension</span><span class="op">(</span><span class="va">isDimension</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>isDimension</code></dt>
+<dd><p>isDimension</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-column_spec-setAliases"></a><div class="section">
 <h3 id="method-setaliases-">Method <code>setAliases()</code><a class="anchor" aria-label="anchor" href="#method-setaliases-"></a></h3>
-
-<div class="section">
+<p>Set aliases</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">column_spec</span><span class="op">$</span><span class="fu">setAliases</span><span class="op">(</span><span class="va">aliases</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>aliases</code></dt>
+<dd><p>aliases</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-column_spec-setRequired"></a><div class="section">
 <h3 id="method-setrequired-">Method <code>setRequired()</code><a class="anchor" aria-label="anchor" href="#method-setrequired-"></a></h3>
-
-<div class="section">
+<p>Set if the column is required</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">column_spec</span><span class="op">$</span><span class="fu">setRequired</span><span class="op">(</span><span class="va">required</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>required</code></dt>
+<dd><p>required</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-column_spec-addRule"></a><div class="section">
 <h3 id="method-addrule-">Method <code>addRule()</code><a class="anchor" aria-label="anchor" href="#method-addrule-"></a></h3>
-
-<div class="section">
+<p>Adds a validation rule</p><div class="section">
 <h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">column_spec</span><span class="op">$</span><span class="fu">addRule</span><span class="op">(</span><span class="va">rule</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>rule</code></dt>
+<dd><p>rule</p></dd>
+
+
+</dl><p></p></div>
+</div>
 
 </div><p></p><hr><a id="method-column_spec-validate"></a><div class="section">
 <h3 id="method-validate-">Method <code>validate()</code><a class="anchor" aria-label="anchor" href="#method-validate-"></a></h3>
-
-<div class="section">
+<p>Method to validate column data</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">column_spec</span><span class="op">$</span><span class="fu">validate</span><span class="op">(</span><span class="va">values</span>, <span class="va">rows</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>values</code></dt>
+<dd><p>values</p></dd>
+
+
+<dt><code>rows</code></dt>
+<dd><p>rows</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>a validation report, object of class <a href="vrule_report.html">vrule_report</a></p>
+</div>
 
 </div><p></p><hr><a id="method-column_spec-hasCodelist"></a><div class="section">
 <h3 id="method-hascodelist-">Method <code>hasCodelist()</code><a class="anchor" aria-label="anchor" href="#method-hascodelist-"></a></h3>
-
-<div class="section">
+<p>Indicates if column specification includes a codelist validation rule</p><div class="section">
 <h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">column_spec</span><span class="op">$</span><span class="fu">hasCodelist</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
+<p><code>TRUE</code> if it includes codelist validation, <code>FALSE</code> otherwise</p>
+</div>
 
 </div><p></p><hr><a id="method-column_spec-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
@@ -145,7 +240,7 @@ column_spec"></head><body>
 </div>
 
 <div class="section">
-<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

@@ -4,10 +4,26 @@ vrule_range
 
 vrule_range
 
+## Details
+
+vrule_range
+
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_simple` -\>
-`vrule_range`
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_simple`](https://fdiwg.github.io/vrule/reference/vrule_abstract_simple.md)
+-\> `vrule_range`
+
+## Public fields
+
+- `minValue`:
+
+  min value
+
+- `maxValue`:
+
+  max value
 
 ## Methods
 
@@ -29,17 +45,50 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a range validation rule
+
 #### Usage
 
     vrule_range$new(minValue, maxValue, ...)
+
+#### Arguments
+
+- `minValue`:
+
+  min value
+
+- `maxValue`:
+
+  max value
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Validates data based on a range
+
 #### Usage
 
     vrule_range$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other args
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

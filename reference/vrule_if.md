@@ -6,8 +6,24 @@ vrule_if
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_complex` -\>
-`vrule_if`
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_complex`](https://fdiwg.github.io/vrule/reference/vrule_abstract_complex.md)
+-\> `vrule_if`
+
+## Public fields
+
+- `if_condition`:
+
+  if expression
+
+- `then_apply`:
+
+  list of expressions to apply if condition is fulfilled
+
+- `else_apply`:
+
+  list of expressions to apply if condition is not fulfilled
 
 ## Methods
 
@@ -29,17 +45,54 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a conditionnal validation rule
+
 #### Usage
 
     vrule_if$new(if_condition, then_apply = list(), else_apply = list(), ...)
+
+#### Arguments
+
+- `if_condition`:
+
+  if condition
+
+- `then_apply`:
+
+  list of expressions to apply if condition is fulfilled
+
+- `else_apply`:
+
+  list of expressions to apply if condition is not fulfilled
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Abstract method to validate data
+
 #### Usage
 
     vrule_if$validate(value, row)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `row`:
+
+  row
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 

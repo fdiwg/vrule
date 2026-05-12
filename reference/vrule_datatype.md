@@ -6,8 +6,20 @@ vrule_datatype
 
 ## Super classes
 
-`vrule::vrule_abstract` -\> `vrule::vrule_abstract_simple` -\>
-`vrule_datatype`
+[`vrule::vrule_abstract`](https://fdiwg.github.io/vrule/reference/vrule_abstract.md)
+-\>
+[`vrule::vrule_abstract_simple`](https://fdiwg.github.io/vrule/reference/vrule_abstract_simple.md)
+-\> `vrule_datatype`
+
+## Public fields
+
+- `datatype`:
+
+  data type
+
+- `na_allowed`:
+
+  is NA allowed?
 
 ## Methods
 
@@ -29,17 +41,50 @@ Inherited methods
 
 ### Method `new()`
 
+Initializes a data type validation rule
+
 #### Usage
 
     vrule_datatype$new(datatype, na_allowed = FALSE, ...)
+
+#### Arguments
+
+- `datatype`:
+
+  data type
+
+- `na_allowed`:
+
+  is NA allowed?
+
+- `...`:
+
+  any other arg
 
 ------------------------------------------------------------------------
 
 ### Method `validate()`
 
+Abstract method to validate data
+
 #### Usage
 
     vrule_datatype$validate(value, ...)
+
+#### Arguments
+
+- `value`:
+
+  value
+
+- `...`:
+
+  any other args
+
+#### Returns
+
+a validation report, object of class
+[vrule_report](https://fdiwg.github.io/vrule/reference/vrule_report.md)
 
 ------------------------------------------------------------------------
 
