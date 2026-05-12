@@ -1,6 +1,6 @@
 Package: vrule
-Version: 0.1.20260209
-Date: 2026-02-09
+Version: 0.1.20260512
+Date: 2026-05-12
 Title: Tools to validate data based on business validation rules
 Authors@R: c(
   person("Emmanuel", "Blondel", role = c("aut", "cre"), email = "emmanuel.blondel@fao.org", comment = c(ORCID = "0000-0002-5870-5762")),
@@ -13,4 +13,4 @@ Description: Provides tools to validate data based on business validation rules
 License: MIT + file LICENSE
 URL: https://github.com/fdiwg/vrule, https://fdiwg.github.io/vrule/
 BugReports: https://github.com/fdiwg/vrule/issues
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.3

@@ -15,6 +15,7 @@ column_spec
 \item \href{#method-column_spec-new}{\code{column_spec$new()}}
 \item \href{#method-column_spec-setName}{\code{column_spec$setName()}}
 \item \href{#method-column_spec-setURN}{\code{column_spec$setURN()}}
+\item \href{#method-column_spec-isDimension}{\code{column_spec$isDimension()}}
 \item \href{#method-column_spec-setAliases}{\code{column_spec$setAliases()}}
 \item \href{#method-column_spec-setRequired}{\code{column_spec$setRequired()}}
 \item \href{#method-column_spec-addRule}{\code{column_spec$addRule()}}
@@ -51,6 +52,15 @@ column_spec
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-column_spec-isDimension"></a>}}
+\if{latex}{\out{\hypertarget{method-column_spec-isDimension}{}}}
+\subsection{Method \code{isDimension()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$isDimension(isDimension)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-column_spec-setAliases"></a>}}
 \if{latex}{\out{\hypertarget{method-column_spec-setAliases}{}}}
 \subsection{Method \code{setAliases()}}{
@@ -82,7 +92,7 @@ column_spec
 \if{latex}{\out{\hypertarget{method-column_spec-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{column_spec$validate(value, row)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$validate(values, rows)}\if{html}{\out{</div>}}
 }
 
 }

@@ -10,7 +10,7 @@ vrule_mapping
 vrule_mapping
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{vrule_mapping}
+\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_complex} -> \code{vrule_mapping}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -25,6 +25,7 @@ vrule_mapping
 <ul>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getCategory'><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getName'><code>vrule::vrule_abstract$getName()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getType"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getType'><code>vrule::vrule_abstract$getType()</code></a></span></li>
 </ul>
 </details>
 }}
@@ -37,7 +38,9 @@ vrule_mapping
   ref_data_url = NULL,
   ref_source_term = NULL,
   ref_target_term = NULL,
-  ref_meta_url = NULL
+  data_target_term = NULL,
+  ref_meta_url = NULL,
+  ...
 )}\if{html}{\out{</div>}}
 }
 
@@ -47,7 +50,7 @@ vrule_mapping
 \if{latex}{\out{\hypertarget{method-vrule_mapping-validate}{}}}
 \subsection{Method \code{validate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_mapping$validate(value, target, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{vrule_mapping$validate(value, row)}\if{html}{\out{</div>}}
 }
 
 }
