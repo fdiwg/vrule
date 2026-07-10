@@ -55,13 +55,17 @@ format_spec
 \subsection{Method \code{new()}}{
 Initializes a format specification from a JSON list object
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{format_spec$new(json = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{format_spec$new(file = NULL, obj = NULL, json = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{json}}{json}
+\item{\code{file}}{a file, either in \code{JSON} or \code{YAML} format}
+
+\item{\code{obj}}{an object of class \link{list}}
+
+\item{\code{json}}{an object of class \link{list}. Deprecated. Use \code{obj} instead}
 }
 \if{html}{\out{</div>}}
 }

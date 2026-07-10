@@ -20,17 +20,17 @@ column_spec <- R6Class("column_spec",
      rules = list(),
      
      #'@description Initializes a column specification
-     #'@param json object of class \link{list}
-     initialize = function(json = NULL){
-       if(!is.null(json)){
-         self$name = json$name
-         self$urn = json$urn
-         self$dimension = if(!is.null(json$dimension)) json$dimension else FALSE
-         if(!is.null(json$aliases)) self$aliases = json$aliases
-         if(!is.null(json$required)) self$required = json$required
+     #'@param obj object of class \link{list}
+     initialize = function(obj = NULL){
+       if(!is.null(obj)){
+         self$name = obj$name
+         self$urn = obj$urn
+         self$dimension = if(!is.null(obj$dimension)) obj$dimension else FALSE
+         if(!is.null(obj$aliases)) self$aliases = obj$aliases
+         if(!is.null(obj$required)) self$required = obj$required
          #rules
-         if(!is.null(json$rules)){
-           self$rules = decodeVrules(json$rules)
+         if(!is.null(obj$rules)){
+           self$rules = decodeVrules(obj$rules)
          }
        }
      },

@@ -47,13 +47,13 @@ column_spec
 \subsection{Method \code{new()}}{
 Initializes a column specification
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{column_spec$new(json = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{column_spec$new(obj = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{json}}{object of class \link{list}}
+\item{\code{obj}}{object of class \link{list}}
 }
 \if{html}{\out{</div>}}
 }

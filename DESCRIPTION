@@ -7,8 +7,8 @@ Authors@R: c(
   person("Alexandre", "Bennici", role = c("aut"), email = "alexandre.bennici@fao.org", comment = c(ORCID = "0000-0003-2160-3487")))
 Maintainer: Emmanuel Blondel <emmanuel.blondel1@gmail.com>
 Depends: R (>= 4.0), methods
-Imports: R6, jsonlite, readr, stringr, rhandsontable, data.table, parallel
-Suggests: testthat
+Imports: R6, jsonlite, yaml, readr, stringr, rhandsontable, data.table, parallel
+Suggests: testthat, waldo
 Description: Provides tools to validate data based on business validation rules
 License: MIT + file LICENSE
 URL: https://github.com/fdiwg/vrule, https://fdiwg.github.io/vrule/

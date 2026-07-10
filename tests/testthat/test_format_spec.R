@@ -6,12 +6,31 @@
 require(vrule, quietly = TRUE)
 require(testthat)
 require(jsonlite)
+require(yaml)
+require(waldo)
 
 context("format_spec")
 
-test_that("decode format spec 1",{
+test_that("decode format spec 1 - from files",{
+  format_from_yaml = vrule::format_spec$new(
+    file = system.file("extdata", "tests/specs/format_spec1.yaml", package = "vrule")
+  )
+  format_from_json = vrule::format_spec$new(
+    file = system.file("extdata", "tests/specs/format_spec1.json", package = "vrule")
+  )
+  #waldo::compare(format_from_yaml, format_from_json)
+})
+
+test_that("decode format spec 1 - from YAML",{
   format = vrule::format_spec$new(
-    json = jsonlite::read_json("https://raw.githubusercontent.com/fdiwg/vrule/main/inst/extdata/tests/specs/format_spec1.json")
+    obj = yaml::read_yaml(system.file("extdata", "tests/specs/format_spec1.yaml", package = "vrule"))
+  )
+  expect_is(format, "format_spec")
+})
+
+test_that("decode format spec 1 - from JSON",{
+  format = vrule::format_spec$new(
+    obj = jsonlite::read_json(system.file("extdata", "tests/specs/format_spec1.json", package = "vrule"))
   )
   expect_is(format, "format_spec")
 })

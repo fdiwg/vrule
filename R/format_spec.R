@@ -19,16 +19,27 @@ format_spec = R6Class("format_spec",
     column_specs = list(),
     
     #'@description Initializes a format specification from a JSON list object
-    #'@param json json
-    initialize = function(json = NULL){
-      if(!is.null(json)){
-        self$name = json$name
-        self$urn = json$urn
-        self$title = json$title
-        self$type = if(!is.null(json$type)) json$type else "default"
+    #'@param file a file, either in \code{JSON} or \code{YAML} format
+    #'@param obj an object of class \link{list}
+    #'@param json an object of class \link{list}. Deprecated. Use \code{obj} instead
+    initialize = function(file = NULL, obj = NULL, json = NULL){
+      if(!is.null(file)){
+        obj = switch(mime::guess_type(file),
+          "application/json" = jsonlite::read_json(file),
+          "application/yaml" = yaml::read_yaml(file)
+        )
+        if(is.null(obj)) stop(sprintf("Mime type '%s' not supported in vrule!", mime::guess_type(file)))
+      }
+      print(obj)
+      if(!is.null(json)) obj = json
+      if(!is.null(obj)){
+        self$name = obj$name
+        self$urn = obj$urn
+        self$title = obj$title
+        self$type = if(!is.null(obj$type)) obj$type else "default"
         #column_specs
-        self$column_specs = lapply(json$column_specs, function(json_column_spec){
-          column_spec = column_spec$new(json = json_column_spec)
+        self$column_specs = lapply(obj$column_specs, function(json_column_spec){
+          column_spec = column_spec$new(obj = json_column_spec)
           return(column_spec)
         })
       }

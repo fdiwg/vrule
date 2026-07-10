@@ -1,0 +1,129 @@
+name: cwp_rh_generic_gta_format
+urn: urn:fdi:format:generic:gta
+title: CWP TG-RH generic GTA data exchange format - nominal catch
+type: series
+column_specs:
+- name: source_authority
+  urn: urn:fdi:term:source_authority
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: codelist
+    args:
+      ref_data_url: https://raw.githubusercontent.com/fdiwg/fdi-codelists/main/global/firms/gta/cl_tuna_rfmos.csv
+- name: fishing_fleet
+  urn: urn:fdi:term:fishing_fleet
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: codelist
+    args:
+      ref_data_url: https://raw.githubusercontent.com/fdiwg/fdi-codelists/main/global/firms/gta/cl_fishing_fleet.csv
+- name: time_start
+  urn: urn:fdi:term:time_start
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: cross_column
+    args:
+      operator: <
+      expr: row$time_end
+- name: time_end
+  urn: urn:fdi:term:time_end
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: cross_column
+    args:
+      operator: '>'
+      expr: row$time_start
+- name: geographic_identifier
+  urn: urn:fdi:term:geographic_identifier
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: codelist
+    args:
+      ref_data_url: https://github.com/fdiwg/fdi-codelists/raw/main/global/firms/gta/cl_nc_areas.csv
+- name: gear_type
+  urn: urn:fdi:term:gear_type
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: codelist
+    args:
+      ref_data_url: https://raw.githubusercontent.com/fdiwg/fdi-codelists/main/global/cwp/cl_isscfg_gear.csv
+- name: species
+  urn: urn:fdi:term:species
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: mapping
+    args:
+      ref_data_url: https://raw.githubusercontent.com/fdiwg/fdi-mappings/main/cross-term/codelist_mapping_source_authority_species.csv
+      ref_source_term: species
+      ref_target_term: source_authority
+      data_target_term: source_authority
+- name: fishing_mode
+  urn: urn:fdi:term:fishing_mode
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: codelist
+    args:
+      ref_data_url: https://raw.githubusercontent.com/fdiwg/fdi-codelists/main/global/firms/gta/cl_fishing_mode.csv
+- name: measurement
+  urn: urn:fdi:term:measurement
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: raw_codelist
+    args:
+      ref_values:
+      - catch
+- name: measurement_type
+  urn: urn:fdi:term:measurement_type
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: raw_codelist
+    args:
+      ref_values:
+      - NC
+      - NL
+      - D
+      - DL
+      - DD
+- name: measurement_value
+  urn: urn:fdi:term:measurement_value
+  required: yes
+  rules:
+  - vrule: if
+    args:
+      if_condition: '!is.na(value)'
+      then_apply:
+      - vrule: threshold
+        args:
+          operator: '>'
+          threshold: 0
+- name: measurement_unit
+  urn: urn:fdi:term:measurement_unit
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: if
+    args:
+      if_condition: '!is.na(row$measurement_value)'
+      then_apply:
+      - vrule: raw_codelist
+        args:
+          ref_values:
+          - t
+- name: measurement_processing_level
+  urn: urn:fdi:term:measurement_processing_level
+  required: yes
+  dimension: yes
+  rules:
+  - vrule: codelist
+    args:
+      ref_data_url: https://raw.githubusercontent.com/fdiwg/fdi-codelists/main/global/fdi/cl_measurement_processing_level.csv

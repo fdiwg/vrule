@@ -5,6 +5,7 @@
 #' @import R6
 #' @import methods
 #' @import jsonlite
+#' @import yaml
 #' @import readr
 #' @import rhandsontable
 #' @importFrom stringr str_to_sentence
