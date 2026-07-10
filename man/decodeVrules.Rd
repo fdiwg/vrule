@@ -6,6 +6,9 @@
 \usage{
 decodeVrules(json)
 }
+\arguments{
+\item{json}{json object}
+}
 \description{
 decodeVrules
 }

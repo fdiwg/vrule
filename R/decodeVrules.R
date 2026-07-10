@@ -1,5 +1,6 @@
 #' decodeVrules
 #' @name decodeVrules
+#' @param json json object
 #' @export
 decodeVrules = function(json){
   out = json
