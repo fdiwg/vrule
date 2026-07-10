@@ -7,3 +7,9 @@ decodeVrules
 ``` r
 decodeVrules(json)
 ```
+
+## Arguments
+
+- json:
+
+  json object
