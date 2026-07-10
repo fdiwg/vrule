@@ -78,13 +78,22 @@ Initializes a format specification from a JSON list object
 
 #### Usage
 
-    format_spec$new(json = NULL)
+    format_spec$new(file = NULL, obj = NULL, json = NULL)
 
 #### Arguments
 
+- `file`:
+
+  a file, either in `JSON` or `YAML` format
+
+- `obj`:
+
+  an object of class [list](https://rdrr.io/r/base/list.html)
+
 - `json`:
 
-  json
+  an object of class [list](https://rdrr.io/r/base/list.html).
+  Deprecated. Use `obj` instead
 
 ------------------------------------------------------------------------
 

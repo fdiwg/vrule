@@ -62,11 +62,11 @@ Initializes a column specification
 
 #### Usage
 
-    column_spec$new(json = NULL)
+    column_spec$new(obj = NULL)
 
 #### Arguments
 
-- `json`:
+- `obj`:
 
   object of class [list](https://rdrr.io/r/base/list.html)
 
