@@ -30,7 +30,6 @@ format_spec = R6Class("format_spec",
         )
         if(is.null(obj)) stop(sprintf("Mime type '%s' not supported in vrule!", mime::guess_type(file)))
       }
-      print(obj)
       if(!is.null(json)) obj = json
       if(!is.null(obj)){
         self$name = obj$name
