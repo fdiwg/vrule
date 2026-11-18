@@ -33,3 +33,40 @@ vrule_raw_codelist <- R6Class("vrule_raw_codelist",
     }
   )
 )
+
+
+#' vrule_codelist_R
+#' @name vrule_codelist_R
+#' @docType class
+#' @importFrom R6 R6Class
+#' @export
+vrule_codelist_R <- R6::R6Class(
+  "vrule_Robject",
+  inherit = vrule_raw_codelist,
+  public = list(
+    ref_package = NULL,
+    ref_data = NULL,
+    ref_data_column = NULL,
+
+    initialize = function(ref_package, ref_data, ref_data_column, ...) {
+      codelist <- getExportedValue(ref_package, ref_data)
+
+      if (!ref_data_column %in% names(codelist)) {
+        stop(
+          "Column ", ref_data_column, " not found in ",
+          ref_package, "::", ref_data, ".",
+          call. = FALSE
+        )
+      }
+
+      self$ref_package <- ref_package
+      self$ref_data <- ref_data
+      self$ref_data_column <- ref_data_column
+
+      super$initialize(
+        ref_values = unique(codelist[[ref_data_column]]),
+        ...
+      )
+    }
+  )
+)

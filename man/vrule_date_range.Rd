@@ -6,61 +6,64 @@
 \title{vrule_date_range}
 \description{
 vrule_date_range
-
-vrule_date_range
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{vrule_date_range}
+\code{vrule_abstract} -> \code{vrule_abstract_simple} -> \code{vrule_date_range}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-vrule_date_range-new}{\code{vrule_date_range$new()}}
-\item \href{#method-vrule_date_range-validate}{\code{vrule_date_range$validate()}}
-\item \href{#method-vrule_date_range-clone}{\code{vrule_date_range$clone()}}
+  \itemize{
+    \item \href{#method-vrule_date_range-initialize}{\code{vrule_date_range$new()}}
+    \item \href{#method-vrule_date_range-validate}{\code{vrule_date_range$validate()}}
+    \item \href{#method-vrule_date_range-clone}{\code{vrule_date_range$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getCategory'><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getName'><code>vrule::vrule_abstract$getName()</code></a></span></li>
+  <li><code>vrule_abstract$getCategory()</code></li>
+  <li><code>vrule_abstract$getName()</code></li>
+  <li><code>vrule_abstract$getType()</code></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-vrule_date_range-new"></a>}}
-\if{latex}{\out{\hypertarget{method-vrule_date_range-new}{}}}
-\subsection{Method \code{new()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_date_range$new(minValue, maxValue)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-vrule_date_range-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-vrule_date_range-initialize}{}}}
+\subsection{\code{vrule_date_range$new()}}{
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_date_range$new(minValue, maxValue, ...)}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_date_range-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_date_range-validate}{}}}
-\subsection{Method \code{validate()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_date_range$validate(value, ...)}\if{html}{\out{</div>}}
+\subsection{\code{vrule_date_range$validate()}}{
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_date_range$validate(value, ...)}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_date_range-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_date_range-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_date_range$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{vrule_date_range$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_date_range$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

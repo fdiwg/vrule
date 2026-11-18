@@ -6,61 +6,64 @@
 \title{vrule_raw_codelist}
 \description{
 vrule_raw_codelist
-
-vrule_raw_codelist
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{vrule_raw_codelist}
+\code{vrule_abstract} -> \code{vrule_abstract_simple} -> \code{vrule_raw_codelist}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-vrule_raw_codelist-new}{\code{vrule_raw_codelist$new()}}
-\item \href{#method-vrule_raw_codelist-validate}{\code{vrule_raw_codelist$validate()}}
-\item \href{#method-vrule_raw_codelist-clone}{\code{vrule_raw_codelist$clone()}}
+  \itemize{
+    \item \href{#method-vrule_raw_codelist-initialize}{\code{vrule_raw_codelist$new()}}
+    \item \href{#method-vrule_raw_codelist-validate}{\code{vrule_raw_codelist$validate()}}
+    \item \href{#method-vrule_raw_codelist-clone}{\code{vrule_raw_codelist$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getCategory'><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getName'><code>vrule::vrule_abstract$getName()</code></a></span></li>
+  <li><code>vrule_abstract$getCategory()</code></li>
+  <li><code>vrule_abstract$getName()</code></li>
+  <li><code>vrule_abstract$getType()</code></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-vrule_raw_codelist-new"></a>}}
-\if{latex}{\out{\hypertarget{method-vrule_raw_codelist-new}{}}}
-\subsection{Method \code{new()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_raw_codelist$new(ref_values = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-vrule_raw_codelist-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-vrule_raw_codelist-initialize}{}}}
+\subsection{\code{vrule_raw_codelist$new()}}{
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_raw_codelist$new(ref_values = NULL, ...)}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_raw_codelist-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_raw_codelist-validate}{}}}
-\subsection{Method \code{validate()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_raw_codelist$validate(value, ...)}\if{html}{\out{</div>}}
+\subsection{\code{vrule_raw_codelist$validate()}}{
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_raw_codelist$validate(value, ...)}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_raw_codelist-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_raw_codelist-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_raw_codelist$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{vrule_raw_codelist$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_raw_codelist$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

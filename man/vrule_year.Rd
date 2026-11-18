@@ -6,61 +6,64 @@
 \title{vrule_year}
 \description{
 vrule_year
-
-vrule_year
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{\link[vrule:vrule_integer]{vrule::vrule_integer}} -> \code{vrule_year}
+\code{vrule_abstract} -> \code{vrule_abstract_simple} -> \code{\link[vrule:vrule_datatype]{vrule_datatype}} -> \code{\link[vrule:vrule_integer]{vrule_integer}} -> \code{vrule_year}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-vrule_year-new}{\code{vrule_year$new()}}
-\item \href{#method-vrule_year-validate}{\code{vrule_year$validate()}}
-\item \href{#method-vrule_year-clone}{\code{vrule_year$clone()}}
+  \itemize{
+    \item \href{#method-vrule_year-initialize}{\code{vrule_year$new()}}
+    \item \href{#method-vrule_year-validate}{\code{vrule_year$validate()}}
+    \item \href{#method-vrule_year-clone}{\code{vrule_year$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getCategory'><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getName'><code>vrule::vrule_abstract$getName()</code></a></span></li>
+  <li><code>vrule_abstract$getCategory()</code></li>
+  <li><code>vrule_abstract$getName()</code></li>
+  <li><code>vrule_abstract$getType()</code></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-vrule_year-new"></a>}}
-\if{latex}{\out{\hypertarget{method-vrule_year-new}{}}}
-\subsection{Method \code{new()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_year$new(na_allowed = FALSE, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-vrule_year-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-vrule_year-initialize}{}}}
+\subsection{\code{vrule_year$new()}}{
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_year$new(na_allowed = FALSE, ...)}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_year-validate"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_year-validate}{}}}
-\subsection{Method \code{validate()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_year$validate(value, ...)}\if{html}{\out{</div>}}
+\subsection{\code{vrule_year$validate()}}{
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_year$validate(value, ...)}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_year-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_year-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_year$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{vrule_year$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_year$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

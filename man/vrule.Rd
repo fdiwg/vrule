@@ -12,6 +12,7 @@ Provides tools to validate data based on business validation rules.
 Useful links:
 \itemize{
   \item \url{https://github.com/fdiwg/vrule}
+  \item \url{https://fdiwg.github.io/vrule/}
   \item Report bugs at \url{https://github.com/fdiwg/vrule/issues}
 }
 
@@ -21,6 +22,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Emmanuel Blondel \email{emmanuel.blondel@fao.org} (\href{https://orcid.org/0000-0002-5870-5762}{ORCID})
   \item Alexandre Bennici \email{alexandre.bennici@fao.org} (\href{https://orcid.org/0000-0003-2160-3487}{ORCID})
 }
 

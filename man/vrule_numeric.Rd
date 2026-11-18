@@ -6,52 +6,53 @@
 \title{vrule_numeric}
 \description{
 vrule_numeric
-
-vrule_numeric
 }
 \section{Super classes}{
-\code{vrule::vrule_abstract} -> \code{vrule::vrule_abstract_simple} -> \code{\link[vrule:vrule_datatype]{vrule::vrule_datatype}} -> \code{vrule_numeric}
+\code{vrule_abstract} -> \code{vrule_abstract_simple} -> \code{\link[vrule:vrule_datatype]{vrule_datatype}} -> \code{vrule_numeric}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-vrule_numeric-new}{\code{vrule_numeric$new()}}
-\item \href{#method-vrule_numeric-clone}{\code{vrule_numeric$clone()}}
+  \itemize{
+    \item \href{#method-vrule_numeric-initialize}{\code{vrule_numeric$new()}}
+    \item \href{#method-vrule_numeric-clone}{\code{vrule_numeric$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getCategory"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getCategory'><code>vrule::vrule_abstract$getCategory()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_abstract" data-id="getName"><a href='../../vrule/html/vrule_abstract.html#method-vrule_abstract-getName'><code>vrule::vrule_abstract$getName()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_datatype" data-id="validate"><a href='../../vrule/html/vrule_datatype.html#method-vrule_datatype-validate'><code>vrule::vrule_datatype$validate()</code></a></span></li>
+  <li><code>vrule_abstract$getCategory()</code></li>
+  <li><code>vrule_abstract$getName()</code></li>
+  <li><code>vrule_abstract$getType()</code></li>
+  <li><span class="pkg-link" data-pkg="vrule" data-topic="vrule_datatype" data-id="validate"><a href='../../vrule/html/vrule_datatype.html#method-vrule_datatype-validate'><code>vrule_datatype$validate()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-vrule_numeric-new"></a>}}
-\if{latex}{\out{\hypertarget{method-vrule_numeric-new}{}}}
-\subsection{Method \code{new()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_numeric$new(na_allowed = FALSE, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-vrule_numeric-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-vrule_numeric-initialize}{}}}
+\subsection{\code{vrule_numeric$new()}}{
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_numeric$new(na_allowed = FALSE, ...)}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-vrule_numeric-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-vrule_numeric-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{vrule_numeric$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{vrule_numeric$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{vrule_numeric$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }
