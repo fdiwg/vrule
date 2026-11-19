@@ -29,6 +29,7 @@ vrule_operator_logical <- R6Class("vrule_operator_logical",
       }
       self$operator_fun = switch(operator, "&" = all, "|" = any)
       rules = list(...)
+      rules = rules[names(rules) != "type"]
       if(!all(sapply(rules, is, "vrule_abstract"))){
         stop("At least one rule defined is not an object extending 'vrule_abstract'")
       }
